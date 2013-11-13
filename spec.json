@@ -22,7 +22,7 @@
   "Persons": {
     "mra": "Marc René Arns \u003clinux@marcrenearns.de\u003e"
   },
-  "Parent": "[speclib](http://rawgithub.com/metakeule/speclib/master/spec)",
+  "Parent": "http://rawgithub.com/metakeule/speclib/master/spec",
   "Sections": {
     "CONTRADICTIONS": [
       {

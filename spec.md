@@ -1,9 +1,9 @@
 # speccer - a CLI tool for specs  
 [HTML](http://rawgithub.com/metakeule/speccer/master/spec.html)  
 [Text (Markdown)](http://rawgithub.com/metakeule/speccer/master/spec.md)  
-[JSON](http://rawgithub.com/metakeule/speccer/master/spec.js)  
+[JSON](http://rawgithub.com/metakeule/speccer/master/spec.json)  
 
-PARENT <[speclib](http://rawgithub.com/metakeule/speclib/master/spec)>  
+PARENT <http://rawgithub.com/metakeule/speclib/master/spec>  
 
 PROJECT `speclib`  
 COMPANY `Know GmbH`  

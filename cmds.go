@@ -226,11 +226,18 @@ func (s *speccer) addCMD() error {
 	if s.Args.Set == "" {
 		return fmt.Errorf("no set given")
 	}
-	text, err := s.readSetFile()
+	all, err := s.readSetFile()
 	if err != nil {
 		return err
 	}
-	p := s.Spec.NewParagraph(s.Args.Responsible, text)
+	all = speclib.NormalizeLineFeeds(all)
+	sep := strings.Index(all, "\n")
+	if sep == -1 {
+		return fmt.Errorf("can't find linefeed")
+	}
+	title := all[:sep]
+	text := all[sep+1:]
+	p := s.Spec.NewParagraph(s.Args.Responsible, title, text)
 	s.Spec.AddParagraph(speclib.SectionObj[s.Args.Section], p)
 	return nil
 }
@@ -305,7 +312,7 @@ func (s *speccer) positionsCMD() error {
 func (s *speccer) allPositionsAllSections() string {
 	var buffer bytes.Buffer
 	for _, sec := range speclib.AllSections {
-		buffer.WriteString("\n" + sec.String() + "\n")
+		// buffer.WriteString("\n" + sec.String() + "\n")
 		s._allPositions(&buffer, sec)
 	}
 	return buffer.String()
@@ -314,12 +321,15 @@ func (s *speccer) allPositionsAllSections() string {
 func (s *speccer) _allPositions(buffer *bytes.Buffer, sec speclib.Section) {
 	ps := s.Spec.GetSection(sec)
 	for i, p := range ps {
-		end := strings.Index(p.Text, "\n")
-		if end == -1 {
-			fmt.Fprintf(buffer, "%v %s (%s)\n", i+1, p.Text, p.State)
-		} else {
-			fmt.Fprintf(buffer, "%v %s (%s)\n", i+1, p.Text[0:end], p.State)
-		}
+		/*
+			end := strings.Index(p.Text, "\n")
+			if end == -1 {
+				fmt.Fprintf(buffer, "%d %s (%s)\n", i+1, p.Text, p.State)
+			} else {
+				fmt.Fprintf(buffer, "%d %s (%s)\n", i+1, p.Text[0:end], p.State)
+			}
+		*/
+		fmt.Fprintf(buffer, "%s %d %s (%s)\n", sec.String(), i+1, p.Title, p.State)
 	}
 }
 

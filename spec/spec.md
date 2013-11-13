@@ -29,24 +29,23 @@ It is a frontend to the [speclib](https://github.com/metakeule/speclib).
 
 
 
-## SCENARIOS
+## SCENARIO 1 Create Specification
 
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### Create Specification
 
 Mike wants to create a specification. He gets a clean
 starting point with `speccer`.
 
 ******
 
+
+## SCENARIO 2 Add comments
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### Add comments
 
 Mike receives comments for his specification.
 He wants to add them without hassle.
@@ -54,11 +53,12 @@ He wants to add them without hassle.
 
 ******
 
+
+## SCENARIO 3 See and update specification
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### See and update specification
 
 Mike wants to update his specification with is
 editor.
@@ -66,22 +66,24 @@ editor.
 
 ******
 
+
+## SCENARIO 4 Script
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### Script
 
 Gill wants to change specifications with a script.
 
 
 ******
 
+
+## SCENARIO 5 Import and export
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### Import and export
 
 Gill wants to read import and export specifications
 from different places.
@@ -89,11 +91,12 @@ from different places.
 
 ******
 
+
+## SCENARIO 6 View as HTML and markdown
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### View as HTML and markdown
 
 Sue wants to read the specifications in HTML and 
 be able to mail them as markdown.
@@ -101,45 +104,46 @@ be able to mail them as markdown.
 
 ******
 
+
+## SCENARIO 7 Filter for documentation
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### Filter for documentation
 
 Peter wants to create a documentation from the spec and
 wants the unneccessary informations to be filtered.
 
 ******
 
+
+## SCENARIO 8 Filter for implementation
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### Filter for implementation
 
 Anne wants to implement parts of the specification.
 She just wants to read the parts that are ready
 to be implemented.
 
-## NONGOALS
+## NONGOAL 1 No GUI
 
 RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### No GUI
 
 To have a GUI would be a project on its own.
 However such a project could also be external and be built upon speccer.
 
 ******
 
+
+## NONGOAL 2 No Database
+
 RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### No Database
 
 `speccer` will operate on plain text json files only.
 There will be no way to have a database and search.
@@ -148,11 +152,12 @@ via json files.
 
 ******
 
+
+## NONGOAL 3 No versioning
+
 RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### No versioning
 
 `speccer` will not do any backups or have versions.
 You are advised to use a version control system to save your
@@ -160,11 +165,12 @@ specs or make backups by a backup tool.
 
 ******
 
+
+## NONGOAL 4 No editing
+
 RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### No editing
 
 `speccer` will have any functionality of an editor.
 You may however replace parts of the spec by exporting them
@@ -172,11 +178,12 @@ to your favourite editor and reimport them when you are finished.
 
 ******
 
+
+## NONGOAL 5 No merging of specs
+
 RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### No merging of specs
 
 `speccer` won't provide any mechanism to merge specs.
 Since you can export and import parts of the specs in
@@ -184,22 +191,24 @@ plain text or markdown, it is not hard to merge by hand.
 
 ******
 
+
+## NONGOAL 6 No copying of specs
+
 RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### No copying of specs
 
 `speccer` won't help you copying specs, since you can simply
 copy the json files yourself and then edit the copy.
 
 ******
 
+
+## NONGOAL 7 No rights management
+
 RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### No rights management
 
 `speccer` won't have any rights management baked in. 
 You could manage the viewing and changing rights for
@@ -210,11 +219,12 @@ around `speccer` or the `speclib`.
 
 ******
 
+
+## NONGOAL 8 No multiple comments per author and paragraph
+
 RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### No multiple comments per author and paragraph
 
 With `speclib` (and therefor `speccer` too),
 a single author can only have one comment per paragraph.
@@ -228,11 +238,12 @@ Also it is possible to have comments of arbitrary length.
 
 ******
 
+
+## NONGOAL 9 No 'threads'
+
 RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### No 'threads'
 
 Again this is a decision by `speclib` and considered a good 
 thing. There should not be comments on comments and endless
@@ -247,11 +258,12 @@ which may each have their own state of consense and comments.
 
 ******
 
+
+## NONGOAL 10 No order of comments
+
 RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### No order of comments
 
 Again this is a decision by `speclib`.
 Since each author may just have one comment per paragraph, 
@@ -263,22 +275,24 @@ be changed.
 
 ******
 
+
+## NONGOAL 11 No text generation
+
 RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### No text generation
 
 Since the specs format is based on json, it is very easy 
 and flexible to have own templates and copy them.
 
 ******
 
+
+## NONGOAL 12 No PDF export
+
 RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### No PDF export
 
 There are great tools to convert from HTML to PDF, like `wkhtmltopdf` and
 also markdown to pdf converter like `pandoc`. Since `speccer` exports 
@@ -287,11 +301,12 @@ PDFs.
 
 ******
 
+
+## NONGOAL 13 No Translations for SPECS
+
 RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### No Translations for SPECS
 
 There is rudimentary support for translations of key words that
 are automatically inserted via `speclib`.
@@ -308,11 +323,12 @@ specs of the translation in the TRANSLATIONS section of the specs.
 
 ******
 
+
+## NONGOAL 14 No time tracking
+
 RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### No time tracking
 
 Each paragraph has a field ESTIMATEDHOURS that could be used to
 do basic scheduling.
@@ -325,11 +341,12 @@ More time tracking functionality is not part of this project.
 
 ******
 
+
+## NONGOAL 15 No shortcuts for commands or presets
+
 RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### No shortcuts for commands or presets
 
 Some commands and options are hard to remember.
 But instead of bake new options into `speccer` we
@@ -341,23 +358,22 @@ In the alias you could also set defaults for responsibles etc.
 
 ******
 
+
+## NONGOAL 16 No translation of options
+
 RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### No translation of options
 
 In order to be able to associate the wordings of the options
 to the corresponding keys in the json file and the untranslated
 specs the options will not be translated.
 
-## CONTRADICTIONS
+## CONTRADICTION 1 Rights Management vs responsible
 
 RESPONSIBLE `mra`  
 STATE `OBSOLET` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-11` ESTIMATEDHOURS `1`  
-
-### Conflict: Rights Management vs responsible
 
 Rights Management is a Non Goal but on the other hand we have
 persons responsible for paragraphs. 
@@ -377,13 +393,12 @@ must constantly change (and is worthless) or it is false.
 > if necessary. Although with version control it should not be necessary.
 
 
-## UNDECIDED
+## UNDECIDED 1 It is not really clear how the linefeed is
 
 RESPONSIBLE `mra`  
 STATE `OBSOLET` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-11` ESTIMATEDHOURS `1`  
 
-It is not really clear how the linefeed is
 exported in markdown and json.
 See the linefeed paragraph
 
@@ -395,21 +410,22 @@ See the linefeed paragraph
 > before editing.
 
 
-## DEFINITIONS
+## DEFINITION 1 All definitions of the `speclib` apply
 
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
-### All definitions of the `speclib` apply
+
 
 ******
 
+
+## DEFINITION 2 -name
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### -name
 
 The parameter passed via `-name` is the name of a spec property (like
 `TRANSLATIONS` with the command `property`) or the name of a paragraph
@@ -417,11 +433,12 @@ property (like `STATE` with the command `meta`).
 
 ******
 
+
+## DEFINITION 3 -usage
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-13`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### -usage
 
 The parameter passed via `-usage` is the name of a filter provided by
 `speccer` for typical usage scenarios.
@@ -463,13 +480,11 @@ There are currently:
   - OBSOLET
 
 
-## FEATURES
+## FEATURE 1 create a new spec
 
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### create a new spec
 
 Go into a folder that should contain your spec and run
 
@@ -493,11 +508,12 @@ properties. You can s validate a spec to see them:
 
 ******
 
+
+## FEATURE 2 validate a spec
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### validate a spec
 
 Go into a folder that contains your spec and run
 
@@ -507,11 +523,12 @@ It it returns nothing your spec is valid.
 
 ******
 
+
+## FEATURE 3 recreate HTML and markdown export based on current spec.json
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### recreate HTML and markdown export based on current spec.json
 
 Go into a folder that contains your spec and run
 
@@ -521,11 +538,12 @@ Go into a folder that contains your spec and run
 
 ******
 
+
+## FEATURE 4 export markdown to stdout without overwriting json.md
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### export markdown to stdout without overwriting json.md
 
 Go into a folder that contains your spec and run
 
@@ -541,11 +559,12 @@ You might also pass the usage option to filter out some data, e.g.
 
 ******
 
+
+## FEATURE 5 export HTML to stdout without overwriting json.html
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### export HTML to stdout without overwriting json.html
 
 Go into a folder that contains your spec and run
 
@@ -561,11 +580,12 @@ You might also pass the usage option to filter out some data, e.g.
 
 ******
 
+
+## FEATURE 6 print property of spec
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### print property of spec
 
 Go into a folder that contains your spec and run
 
@@ -579,11 +599,12 @@ all written in high caps and defined in `speclib`.
 
 ******
 
+
+## FEATURE 7 set property of spec
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### set property of spec
 
 Go into a folder that contains your spec and run
 
@@ -597,11 +618,12 @@ all written in high caps and defined in `speclib`.
 
 ******
 
+
+## FEATURE 8 unset property of spec
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### unset property of spec
 
 Go into a folder that contains your spec and run
 
@@ -621,11 +643,12 @@ be unset:
 
 ******
 
+
+## FEATURE 9 add markdown text to a section
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### add markdown text to a section
 
 Go into a folder that contains your spec and write your text
 into a file, let's say `new.md` and then run
@@ -638,11 +661,12 @@ The available sections are defined in the `speclib`.
 
 ******
 
+
+## FEATURE 10 show list of paragraphs of a section
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### show list of paragraphs of a section
 
 Go into a folder that contains your spec and run
 
@@ -657,11 +681,12 @@ the paragraph.
 
 ******
 
+
+## FEATURE 11 show content of a paragraphs of a section
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-13`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### show content of a paragraphs of a section
 
 Go into a folder that contains your spec.
 You will need to know the position of the paragraph
@@ -685,11 +710,12 @@ If you want to include comments and meta data, run
 
 ******
 
+
+## FEATURE 12 change content of a paragraphs of a section
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-13`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### change content of a paragraphs of a section
 
 Go into a folder that contains your spec.
 You will need to know the position of the paragraph
@@ -719,11 +745,12 @@ by this operation. So you may want to change them too.
 
 ******
 
+
+## FEATURE 13 see, add and change comment to a paragraph of a section
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### see, add and change comment to a paragraph of a section
 
 Go into a folder that contains your spec.
 You will need to know the position of the paragraph
@@ -762,11 +789,12 @@ to the content of the file `temp.md`.
 
 ******
 
+
+## FEATURE 14 move a paragraph of a section
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### move a paragraph of a section
 
 Go into a folder that contains your spec.
 You will need to know the position of the paragraph
@@ -785,11 +813,12 @@ to move the 3rd paragraph in the SCENARIOS section to be the first.
 
 ******
 
+
+## FEATURE 15 delete a paragraph of a section
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### delete a paragraph of a section
 
 Go into a folder that contains your spec.
 You will need to know the position of the paragraph
@@ -808,11 +837,12 @@ to remove the 3rd paragraph in the SCENARIOS section.
 
 ******
 
+
+## FEATURE 16 see and change meta data of a paragraph of a section
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
-### see and change meta data of a paragraph of a section
 
 Go into a folder that contains your spec.
 You will need to know the position of the paragraph
@@ -837,11 +867,12 @@ If you want to change a datum you will have to pass the name:
 
 ******
 
+
+## FEATURE 17 shortcuts
+
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-13`  
 DEADLINE `2013-11-13` ESTIMATEDHOURS `1`  
-
-### shortcuts
 
 To use the `bash` / `zsh` shortcuts, copy the `aliases.sh`
 into your home directory
@@ -886,7 +917,6 @@ Then you will have access to the following shortcuts
 `spec-COMPANY`   
 `spec-PROJECT`   
 `spec-PERSONS`   
-`spec-TITLE`   
 `spec-URL`   
 `spec-LANGUAGE`   
 `spec-DATEFORMAT`   
@@ -910,7 +940,6 @@ Then you will have access to the following shortcuts
 `spec-PARENT-set` **'http://other.com/parent-spec'**  
 `spec-COMPANY-set` **acme**  
 `spec-PROJECT-set` **'my project'**  
-`spec-TITLE-set` **'great spec'**  
 `spec-URL-set` **'http://greatspec.com/spec'**  
 `spec-LANGUAGE-set` **en_US**  
 `spec-DATEFORMAT-set` **YYYY-MM-DD**  
@@ -1003,6 +1032,7 @@ Then you will have access to the following shortcuts
 `spec-DEADLINE`  
 `spec-LASTUPDATE`  
 `spec-ESTIMATEDHOURS`  
+`spec-TITLE`  
 
 #### Get Meta Data of Section
 `spec-SCENARIO-RESPONSIBLE-at`  **2**  
@@ -1010,36 +1040,42 @@ Then you will have access to the following shortcuts
 `spec-SCENARIO-DEADLINE-at`  **2**  
 `spec-SCENARIO-LASTUPDATE-at`  **2**  
 `spec-SCENARIO-ESTIMATEDHOURS-at`  **2**  
+`spec-SCENARIO-TITLE-at`  **2**  
 
 `spec-CONTRADICTION-RESPONSIBLE-at`  **2**  
 `spec-CONTRADICTION-STATE-at`  **2**  
 `spec-CONTRADICTION-DEADLINE-at`  **2**  
 `spec-CONTRADICTION-LASTUPDATE-at`  **2**  
 `spec-CONTRADICTION-ESTIMATEDHOURS-at`  **2**  
+`spec-CONTRADICTION-TITLE-at`  **2**  
 
 `spec-DEFINITION-RESPONSIBLE-at`  **2**  
 `spec-DEFINITION-STATE-at`  **2**  
 `spec-DEFINITION-DEADLINE-at`  **2**  
 `spec-DEFINITION-LASTUPDATE-at`  **2**  
 `spec-DEFINITION-ESTIMATEDHOURS-at`  **2**  
+`spec-DEFINITION-TITLE-at`  **2**  
 
 `spec-FEATURE-RESPONSIBLE-at`  **2**  
 `spec-FEATURE-STATE-at`  **2**  
 `spec-FEATURE-DEADLINE-at`  **2**  
 `spec-FEATURE-LASTUPDATE-at`  **2**  
 `spec-FEATURE-ESTIMATEDHOURS-at`  **2**  
+`spec-FEATURE-TITLE-at`  **2**  
 
 `spec-NONGOAL-RESPONSIBLE-at`  **2**  
 `spec-NONGOAL-STATE-at`  **2**  
 `spec-NONGOAL-DEADLINE-at`   **2**  
 `spec-NONGOAL-LASTUPDATE-at`  **2**  
 `spec-NONGOAL-ESTIMATEDHOURS-at`  **2**  
+`spec-NONGOAL-TITLE-at`  **2**  
 
 `spec-UNDECIDED-RESPONSIBLE-at`  **2**  
 `spec-UNDECIDED-STATE-at`  **2**  
 `spec-UNDECIDED-DEADLINE-at`  **2**  
 `spec-UNDECIDED-LASTUPDATE-at`  **2**  
 `spec-UNDECIDED-ESTIMATEDHOURS-at` **2**  
+`spec-UNDECIDED-TITLE-at`  **2**  
 
 #### Set Meta Data of Overview / Spec
 `spec-set-RESPONSIBLE` **'Peter Pan'**  
@@ -1050,6 +1086,7 @@ Then you will have access to the following shortcuts
 `spec-set-OBSOLET`  
 `spec-set-DEADLINE`  **'2014-12-24'**  
 `spec-set-ESTIMATEDHOURS`  **12**  
+`spec-set-TITLE`  **'my title'**  
 
 #### Set Meta Data of Section
 
@@ -1061,6 +1098,7 @@ Then you will have access to the following shortcuts
 `spec-set-SCENARIO-OBSOLET`   **-at 2**  
 `spec-set-SCENARIO-DEADLINE`   **'2014-12-24' -at 2**  
 `spec-set-SCENARIO-ESTIMATEDHOURS`  **12 -at 2**  
+`spec-set-SCENARIO-TITLE`  **'my title' -at 3**  
 
 `spec-set-CONTRADICTION-RESPONSIBLE`  **'Peter Pan' -at 2**    
 `spec-set-CONTRADICTION-PLANNING`   **-at 2**  
@@ -1070,6 +1108,7 @@ Then you will have access to the following shortcuts
 `spec-set-CONTRADICTION-OBSOLET`   **-at 2**  
 `spec-set-CONTRADICTION-DEADLINE`  **'2014-12-24' -at 2**  
 `spec-set-CONTRADICTION-ESTIMATEDHOURS`  **3 -at 2**  
+`spec-set-CONTRADICTION-TITLE`  **'my title' -at 3**  
 
 `spec-set-DEFINITION-RESPONSIBLE` **'Peter Pan' -at 2**    
 `spec-set-DEFINITION-PLANNING`   **-at 2**  
@@ -1079,6 +1118,7 @@ Then you will have access to the following shortcuts
 `spec-set-DEFINITION-OBSOLET`   **-at 2**  
 `spec-set-DEFINITION-DEADLINE`  **'2014-12-24' -at 2**  
 `spec-set-DEFINITION-ESTIMATEDHOURS`  **3 -at 2**  
+`spec-set-DEFINITION-TITLE`  **'my title' -at 3**  
 
 `spec-set-FEATURE-RESPONSIBLE`  **'Peter Pan' -at 2**    
 `spec-set-FEATURE-PLANNING`  **-at 2**  
@@ -1088,6 +1128,7 @@ Then you will have access to the following shortcuts
 `spec-set-FEATURE-OBSOLET`   **-at 2**  
 `spec-set-FEATURE-DEADLINE`  **'2014-12-24' -at 2**  
 `spec-set-FEATURE-ESTIMATEDHOURS`  **3 -at 2**  
+`spec-set-FEATURE-TITLE`  **'my title' -at 3**  
 
 `spec-set-NONGOAL-RESPONSIBLE` **'Peter Pan' -at 2**    
 `spec-set-NONGOAL-PLANNING`   **-at 2**  
@@ -1097,6 +1138,7 @@ Then you will have access to the following shortcuts
 `spec-set-NONGOAL-OBSOLET`   **-at 2**  
 `spec-set-NONGOAL-DEADLINE`  **'2014-12-24' -at 2**  
 `spec-set-NONGOAL-ESTIMATEDHOURS`  **3 -at 2**  
+`spec-set-NONGOAL-TITLE`  **'my title' -at 3**  
 
 `spec-set-UNDECIDED-RESPONSIBLE`  **'Peter Pan' -at 2**    
 `spec-set-UNDECIDED-PLANNING`   **-at 2**  
@@ -1106,6 +1148,8 @@ Then you will have access to the following shortcuts
 `spec-set-UNDECIDED-OBSOLET`   **-at 2**  
 `spec-set-UNDECIDED-DEADLINE`  **'2014-12-24' -at 2**  
 `spec-set-UNDECIDED-ESTIMATEDHOURS`  **3 -at 2**  
+`spec-set-UNDECIDED-TITLE`  **'my title' -at 3**  
+
 
 
 

@@ -12,10 +12,13 @@ var metas = map[string]bool{
 	"DEADLINE":       true,
 	"LASTUPDATE":     true,
 	"ESTIMATEDHOURS": true,
+	"TITLE":          true,
 }
 
 func (s *speccer) getMeta(meta string) string {
 	switch meta {
+	case "TITLE":
+		return s.Paragraph.Title
 	case "RESPONSIBLE":
 		return s.Paragraph.Responsible
 	case "STATE":
@@ -33,6 +36,9 @@ func (s *speccer) getMeta(meta string) string {
 
 func (s *speccer) setMeta(meta string, val string) error {
 	switch meta {
+	case "TITLE":
+		s.Paragraph.Title = val
+		return nil
 	case "LASTUPDATE":
 		return fmt.Errorf("LastUpdate is only readable")
 	case "RESPONSIBLE":

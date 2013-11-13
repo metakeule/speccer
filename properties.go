@@ -10,7 +10,6 @@ import (
 var properties = map[string]bool{
 	"COMPANY":      true,
 	"PROJECT":      true,
-	"TITLE":        true,
 	"URL":          true,
 	"LANGUAGE":     true,
 	"DATEFORMAT":   true,
@@ -41,9 +40,6 @@ func (s *speccer) setProperty(property string, val string) error {
 		return nil
 	case "PROJECT":
 		s.Spec.Project = val
-		return nil
-	case "TITLE":
-		s.Spec.Title = val
 		return nil
 	// TODO maybe check if it is a valid URI
 	case "URL":
@@ -121,8 +117,6 @@ func (s *speccer) getProperty(property string) string {
 		return s.Spec.Company
 	case "PROJECT":
 		return s.Spec.Project
-	case "TITLE":
-		return s.Spec.Title
 	case "URL":
 		return s.Spec.URL
 	case "LANGUAGE":

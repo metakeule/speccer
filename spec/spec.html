@@ -968,6 +968,299 @@ with</p>
 <pre><code>speccer -cmd meta -sec SCENARIOS -at 3 -name RESPONSIBLE -set Jim
 </code></pre>
 
+<hr />
+
+<p>RESPONSIBLE <code>mra</code><br />
+STATE <code>FULLY_IMPLEMENTED</code> LASTUPDATE <code>2013-11-13</code><br />
+DEADLINE <code>2013-11-13</code> ESTIMATEDHOURS <code>1</code></p>
+
+<h3>shortcuts</h3>
+
+<p>To use the <code>bash</code> / <code>zsh</code> shortcuts, copy the <code>aliases.sh</code>
+into your home directory</p>
+
+<pre><code>cp aliases.sh ~/.speccer_aliases.sh
+</code></pre>
+
+<p>and write the following into your <code>.bashrc</code></p>
+
+<pre><code>. ~/.speccer_aliases.sh
+</code></pre>
+
+<p>Then you will have access to the following shortcuts
+(in bold is an example input to put after the alias).</p>
+
+<h4>General</h4>
+
+<p><code>spec-create</code><br />
+<code>spec-validate</code><br />
+<code>spec-save</code></p>
+
+<h4>Markdown export</h4>
+
+<p><code>spec-markdown</code><br />
+<code>spec-markdown-doc</code><br />
+<code>spec-markdown-approve</code><br />
+<code>spec-markdown-discuss</code><br />
+<code>spec-markdown-implement</code><br />
+<code>spec-markdown-clean</code></p>
+
+<h4>HTML export</h4>
+
+<p><code>spec-html</code><br />
+<code>spec-html-doc</code><br />
+<code>spec-html-approve</code><br />
+<code>spec-html-discuss</code><br />
+<code>spec-html-implement</code><br />
+<code>spec-html-clean</code></p>
+
+<h4>Spec property getters</h4>
+
+<p><code>spec-REQUESTEDBY</code><br />
+<code>spec-RELATED</code><br />
+<code>spec-TRANSLATIONS</code><br />
+<code>spec-SUPERSEDEDBY</code><br />
+<code>spec-RESOURCES</code><br />
+<code>spec-PARENT</code><br />
+<code>spec-COMPANY</code><br />
+<code>spec-PROJECT</code><br />
+<code>spec-PERSONS</code><br />
+<code>spec-TITLE</code><br />
+<code>spec-URL</code><br />
+<code>spec-LANGUAGE</code><br />
+<code>spec-DATEFORMAT</code><br />
+<code>spec-APPROVED</code></p>
+
+<h4>Spec property unsetters</h4>
+
+<p><code>spec-REQUESTEDBY-uset</code><br />
+<code>spec-RELATED-uset</code><br />
+<code>spec-TRANSLATIONS-uset</code><br />
+<code>spec-SUPERSEDEDBY-uset</code><br />
+<code>spec-RESOURCES-uset</code><br />
+<code>spec-PARENT-uset</code><br />
+<code>spec-PERSONS-uset</code></p>
+
+<h4>Spec property setters</h4>
+
+<p><code>spec-REQUESTEDBY-set</code> <strong>Jim</strong><br />
+<code>spec-RELATED-set</code> <strong>&rsquo;{&ldquo;other&rdquo;: &ldquo;<a href="http://other.com/spec&quot;}'">http://other.com/spec&quot;}'</a></strong><br />
+<code>spec-TRANSLATIONS-set</code>  <strong>&rsquo;{&ldquo;de_DE&rdquo;: &ldquo;<a href="http://de.other.com/spec&quot;}'">http://de.other.com/spec&quot;}'</a></strong><br />
+<code>spec-SUPERSEDEDBY-set</code> <strong>&rsquo;{&ldquo;v2&rdquo;: &ldquo;<a href="http://other.com/v2/spec&quot;}'">http://other.com/v2/spec&quot;}'</a></strong><br />
+<code>spec-RESOURCES-set</code> <strong>&rsquo;{&ldquo;ER diagramm&rdquo;: &ldquo;<a href="http://other.com/er.png&quot;}'">http://other.com/er.png&quot;}'</a></strong><br />
+<code>spec-PARENT-set</code> <strong>&lsquo;<a href="http://other.com/parent-spec'">http://other.com/parent-spec'</a></strong><br />
+<code>spec-COMPANY-set</code> <strong>acme</strong><br />
+<code>spec-PROJECT-set</code> <strong>&lsquo;my project&rsquo;</strong><br />
+<code>spec-TITLE-set</code> <strong>&lsquo;great spec&rsquo;</strong><br />
+<code>spec-URL-set</code> <strong>&lsquo;<a href="http://greatspec.com/spec'">http://greatspec.com/spec'</a></strong><br />
+<code>spec-LANGUAGE-set</code> <strong>en_US</strong><br />
+<code>spec-DATEFORMAT-set</code> <strong>YYYY-MM-DD</strong><br />
+<code>spec-APPROVED-set</code>  <strong>true</strong><br />
+<code>spec-PERSONS-set</code>  <strong>&rsquo;{&ldquo;PP&rdquo;: &ldquo;Paul Panther <a href="mailto:paul@panther.com">paul@panther.com</a>&rdquo;}&rsquo;</strong></p>
+
+<h4>Add Sections</h4>
+
+<p><code>spec-add-SCENARIO</code>  <strong>new.md</strong><br />
+<code>spec-add-CONTRADICTION</code>  <strong>new.md</strong><br />
+<code>spec-add-DEFINITION</code> <strong>new.md</strong><br />
+<code>spec-add-FEATURE</code> <strong>new.md</strong><br />
+<code>spec-add-NONGOAL</code>  <strong>new.md</strong><br />
+<code>spec-add-UNDECIDED</code> <strong>new.md</strong></p>
+
+<h4>Show Sections</h4>
+
+<p><code>spec-OVERVIEW</code><br />
+<code>spec-SCENARIO-at</code> <strong>2</strong><br />
+<code>spec-CONTRADICTION-at</code> <strong>5</strong><br />
+<code>spec-DEFINITION-at</code> <strong>20</strong><br />
+<code>spec-FEATURE-at</code> <strong>1</strong><br />
+<code>spec-NONGOAL-at</code>  <strong>2</strong><br />
+<code>spec-UNDECIDED-at</code>  <strong>5</strong></p>
+
+<h4>Show Sections with comments and meta</h4>
+
+<p><code>spec-OVERVIEW-full</code><br />
+<code>spec-SCENARIO-full-at</code> <strong>2</strong><br />
+<code>spec-CONTRADICTION-full-at</code> <strong>2</strong><br />
+<code>spec-DEFINITION-full-at</code> <strong>5</strong><br />
+<code>spec-FEATURE-full-at</code> <strong>2</strong><br />
+<code>spec-NONGOAL-full-at</code>  <strong>7</strong><br />
+<code>spec-UNDECIDED-full-at</code> <strong>2</strong></p>
+
+<h4>Get list of Paragraphs for all section</h4>
+
+<p><code>spec-ls</code></p>
+
+<h4>Get list of Paragraphs for a section</h4>
+
+<p><code>spec-ls-SCENARIO</code><br />
+<code>spec-ls-CONTRADICTION</code><br />
+<code>spec-ls-DEFINITION</code><br />
+<code>spec-ls-FEATURE</code><br />
+<code>spec-ls-NONGOAL</code><br />
+<code>spec-ls-UNDECIDED</code></p>
+
+<h4>Get Comments of Paragraphs for a section</h4>
+
+<p><code>spec-comment-OVERVIEW</code><br />
+<code>spec-comment-SCENARIO-at</code>  <strong>2</strong><br />
+<code>spec-comment-CONTRADICTION-at</code>  <strong>2</strong><br />
+<code>spec-comment-DEFINITION-at</code>  <strong>2</strong><br />
+<code>spec-comment-FEATURE-at</code>  <strong>2</strong><br />
+<code>spec-comment-NONGOAL-at</code>  <strong>2</strong><br />
+<code>spec-comment-UNDECIDED-at</code> <strong>2</strong></p>
+
+<h4>Set Comment of Paragraph for a section</h4>
+
+<p><code>spec-comment-OVERVIEW-set</code>  <strong>new.md</strong><br />
+<code>spec-comment-SCENARIO-set</code>  <strong>new.md -at 2</strong><br />
+<code>spec-comment-CONTRADICTION-set</code>  <strong>new.md -at 2</strong><br />
+<code>spec-comment-DEFINITION-set</code>  <strong>new.md -at 2</strong><br />
+<code>spec-comment-FEATURE-set</code>  <strong>new.md -at 2</strong><br />
+<code>spec-comment-NONGOAL-set</code>  <strong>new.md -at 2</strong><br />
+<code>spec-comment-UNDECIDED-set</code>  <strong>new.md -at 2</strong></p>
+
+<h4>Replace Sections</h4>
+
+<p><code>spec-set-OVERVIEW</code>  <strong>new.md</strong><br />
+<code>spec-set-SCENARIO</code>  <strong>new.md -at 2</strong><br />
+<code>spec-set-CONTRADICTION</code> <strong>new.md -at 2</strong><br />
+<code>spec-set-DEFINITION</code> <strong>new.md -at 2</strong><br />
+<code>spec-set-FEATURE</code> <strong>new.md -at 2</strong><br />
+<code>spec-set-NONGOAL</code> <strong>new.md -at 2</strong><br />
+<code>spec-set-UNDECIDED</code> <strong>new.md -at 2</strong></p>
+
+<h4>Move Sections</h4>
+
+<p><code>spec-mv-SCENARIO-at</code>  <strong>2 -to 5</strong><br />
+<code>spec-mv-CONTRADICTION-at</code> <strong>2 -to 5</strong><br />
+<code>spec-mv-DEFINITION-at</code> <strong>2 -to 5</strong><br />
+<code>spec-mv-FEATURE-at</code> <strong>2 -to 5</strong><br />
+<code>spec-mv-NONGOAL-at</code> <strong>2 -to 5</strong><br />
+<code>spec-mv-UNDECIDED-at</code> <strong>2 -to 5</strong></p>
+
+<h4>Remove Sections</h4>
+
+<p><code>spec-rm-SCENARIO-at</code> <strong>2</strong><br />
+<code>spec-rm-CONTRADICTION-at</code> <strong>2</strong><br />
+<code>spec-rm-DEFINITION-at</code> <strong>2</strong><br />
+<code>spec-rm-FEATURE-at</code> <strong>2</strong><br />
+<code>spec-rm-NONGOAL-at</code> <strong>2</strong><br />
+<code>spec-rm-UNDECIDED-at</code>  <strong>2</strong></p>
+
+<h4>Get Meta Data of Overview / Spec</h4>
+
+<p><code>spec-RESPONSIBLE</code><br />
+<code>spec-STATE</code><br />
+<code>spec-DEADLINE</code><br />
+<code>spec-LASTUPDATE</code><br />
+<code>spec-ESTIMATEDHOURS</code></p>
+
+<h4>Get Meta Data of Section</h4>
+
+<p><code>spec-SCENARIO-RESPONSIBLE-at</code>  <strong>2</strong><br />
+<code>spec-SCENARIO-STATE-at</code>  <strong>2</strong><br />
+<code>spec-SCENARIO-DEADLINE-at</code>  <strong>2</strong><br />
+<code>spec-SCENARIO-LASTUPDATE-at</code>  <strong>2</strong><br />
+<code>spec-SCENARIO-ESTIMATEDHOURS-at</code>  <strong>2</strong></p>
+
+<p><code>spec-CONTRADICTION-RESPONSIBLE-at</code>  <strong>2</strong><br />
+<code>spec-CONTRADICTION-STATE-at</code>  <strong>2</strong><br />
+<code>spec-CONTRADICTION-DEADLINE-at</code>  <strong>2</strong><br />
+<code>spec-CONTRADICTION-LASTUPDATE-at</code>  <strong>2</strong><br />
+<code>spec-CONTRADICTION-ESTIMATEDHOURS-at</code>  <strong>2</strong></p>
+
+<p><code>spec-DEFINITION-RESPONSIBLE-at</code>  <strong>2</strong><br />
+<code>spec-DEFINITION-STATE-at</code>  <strong>2</strong><br />
+<code>spec-DEFINITION-DEADLINE-at</code>  <strong>2</strong><br />
+<code>spec-DEFINITION-LASTUPDATE-at</code>  <strong>2</strong><br />
+<code>spec-DEFINITION-ESTIMATEDHOURS-at</code>  <strong>2</strong></p>
+
+<p><code>spec-FEATURE-RESPONSIBLE-at</code>  <strong>2</strong><br />
+<code>spec-FEATURE-STATE-at</code>  <strong>2</strong><br />
+<code>spec-FEATURE-DEADLINE-at</code>  <strong>2</strong><br />
+<code>spec-FEATURE-LASTUPDATE-at</code>  <strong>2</strong><br />
+<code>spec-FEATURE-ESTIMATEDHOURS-at</code>  <strong>2</strong></p>
+
+<p><code>spec-NONGOAL-RESPONSIBLE-at</code>  <strong>2</strong><br />
+<code>spec-NONGOAL-STATE-at</code>  <strong>2</strong><br />
+<code>spec-NONGOAL-DEADLINE-at</code>   <strong>2</strong><br />
+<code>spec-NONGOAL-LASTUPDATE-at</code>  <strong>2</strong><br />
+<code>spec-NONGOAL-ESTIMATEDHOURS-at</code>  <strong>2</strong></p>
+
+<p><code>spec-UNDECIDED-RESPONSIBLE-at</code>  <strong>2</strong><br />
+<code>spec-UNDECIDED-STATE-at</code>  <strong>2</strong><br />
+<code>spec-UNDECIDED-DEADLINE-at</code>  <strong>2</strong><br />
+<code>spec-UNDECIDED-LASTUPDATE-at</code>  <strong>2</strong><br />
+<code>spec-UNDECIDED-ESTIMATEDHOURS-at</code> <strong>2</strong></p>
+
+<h4>Set Meta Data of Overview / Spec</h4>
+
+<p><code>spec-set-RESPONSIBLE</code> <strong>&lsquo;Peter Pan&rsquo;</strong><br />
+<code>spec-set-PLANNING</code><br />
+<code>spec-set-APPROVED</code><br />
+<code>spec-set-PARTLY_IMPLEMENTED</code><br />
+<code>spec-set-FULLY_IMPLEMENTED</code><br />
+<code>spec-set-OBSOLET</code><br />
+<code>spec-set-DEADLINE</code>  <strong>&lsquo;2014-12-24&rsquo;</strong><br />
+<code>spec-set-ESTIMATEDHOURS</code>  <strong>12</strong></p>
+
+<h4>Set Meta Data of Section</h4>
+
+<p><code>spec-set-SCENARIO-RESPONSIBLE</code>   <strong>&lsquo;Peter Pan&rsquo; -at 2</strong><br />
+<code>spec-set-SCENARIO-PLANNING</code>  <strong>-at 2</strong><br />
+<code>spec-set-SCENARIO-APPROVED</code>   <strong>-at 2</strong><br />
+<code>spec-set-SCENARIO-PARTLY_IMPLEMENTED</code>   <strong>-at 2</strong><br />
+<code>spec-set-SCENARIO-FULLY_IMPLEMENTED</code>   <strong>-at 2</strong><br />
+<code>spec-set-SCENARIO-OBSOLET</code>   <strong>-at 2</strong><br />
+<code>spec-set-SCENARIO-DEADLINE</code>   <strong>&lsquo;2014-12-24&rsquo; -at 2</strong><br />
+<code>spec-set-SCENARIO-ESTIMATEDHOURS</code>  <strong>12 -at 2</strong></p>
+
+<p><code>spec-set-CONTRADICTION-RESPONSIBLE</code>  <strong>&lsquo;Peter Pan&rsquo; -at 2</strong><br />
+<code>spec-set-CONTRADICTION-PLANNING</code>   <strong>-at 2</strong><br />
+<code>spec-set-CONTRADICTION-APPROVED</code>   <strong>-at 2</strong><br />
+<code>spec-set-CONTRADICTION-PARTLY_IMPLEMENTED</code>   <strong>-at 2</strong><br />
+<code>spec-set-CONTRADICTION-FULLY_IMPLEMENTED</code>   <strong>-at 2</strong><br />
+<code>spec-set-CONTRADICTION-OBSOLET</code>   <strong>-at 2</strong><br />
+<code>spec-set-CONTRADICTION-DEADLINE</code>  <strong>&lsquo;2014-12-24&rsquo; -at 2</strong><br />
+<code>spec-set-CONTRADICTION-ESTIMATEDHOURS</code>  <strong>3 -at 2</strong></p>
+
+<p><code>spec-set-DEFINITION-RESPONSIBLE</code> <strong>&lsquo;Peter Pan&rsquo; -at 2</strong><br />
+<code>spec-set-DEFINITION-PLANNING</code>   <strong>-at 2</strong><br />
+<code>spec-set-DEFINITION-APPROVED</code>   <strong>-at 2</strong><br />
+<code>spec-set-DEFINITION-PARTLY_IMPLEMENTED</code>   <strong>-at 2</strong><br />
+<code>spec-set-DEFINITION-FULLY_IMPLEMENTED</code>   <strong>-at 2</strong><br />
+<code>spec-set-DEFINITION-OBSOLET</code>   <strong>-at 2</strong><br />
+<code>spec-set-DEFINITION-DEADLINE</code>  <strong>&lsquo;2014-12-24&rsquo; -at 2</strong><br />
+<code>spec-set-DEFINITION-ESTIMATEDHOURS</code>  <strong>3 -at 2</strong></p>
+
+<p><code>spec-set-FEATURE-RESPONSIBLE</code>  <strong>&lsquo;Peter Pan&rsquo; -at 2</strong><br />
+<code>spec-set-FEATURE-PLANNING</code>  <strong>-at 2</strong><br />
+<code>spec-set-FEATURE-APPROVED</code>  <strong>-at 2</strong><br />
+<code>spec-set-FEATURE-PARTLY_IMPLEMENTED</code>  <strong>-at 2</strong><br />
+<code>spec-set-FEATURE-FULLY_IMPLEMENTED</code>  <strong>-at 2</strong><br />
+<code>spec-set-FEATURE-OBSOLET</code>   <strong>-at 2</strong><br />
+<code>spec-set-FEATURE-DEADLINE</code>  <strong>&lsquo;2014-12-24&rsquo; -at 2</strong><br />
+<code>spec-set-FEATURE-ESTIMATEDHOURS</code>  <strong>3 -at 2</strong></p>
+
+<p><code>spec-set-NONGOAL-RESPONSIBLE</code> <strong>&lsquo;Peter Pan&rsquo; -at 2</strong><br />
+<code>spec-set-NONGOAL-PLANNING</code>   <strong>-at 2</strong><br />
+<code>spec-set-NONGOAL-APPROVED</code>   <strong>-at 2</strong><br />
+<code>spec-set-NONGOAL-PARTLY_IMPLEMENTED</code>  <strong>-at 2</strong><br />
+<code>spec-set-NONGOAL-FULLY_IMPLEMENTED</code>   <strong>-at 2</strong><br />
+<code>spec-set-NONGOAL-OBSOLET</code>   <strong>-at 2</strong><br />
+<code>spec-set-NONGOAL-DEADLINE</code>  <strong>&lsquo;2014-12-24&rsquo; -at 2</strong><br />
+<code>spec-set-NONGOAL-ESTIMATEDHOURS</code>  <strong>3 -at 2</strong></p>
+
+<p><code>spec-set-UNDECIDED-RESPONSIBLE</code>  <strong>&lsquo;Peter Pan&rsquo; -at 2</strong><br />
+<code>spec-set-UNDECIDED-PLANNING</code>   <strong>-at 2</strong><br />
+<code>spec-set-UNDECIDED-APPROVED</code>   <strong>-at 2</strong><br />
+<code>spec-set-UNDECIDED-PARTLY_IMPLEMENTED</code>   <strong>-at 2</strong><br />
+<code>spec-set-UNDECIDED-FULLY_IMPLEMENTED</code>   <strong>-at 2</strong><br />
+<code>spec-set-UNDECIDED-OBSOLET</code>   <strong>-at 2</strong><br />
+<code>spec-set-UNDECIDED-DEADLINE</code>  <strong>&lsquo;2014-12-24&rsquo; -at 2</strong><br />
+<code>spec-set-UNDECIDED-ESTIMATEDHOURS</code>  <strong>3 -at 2</strong></p>
+
 <h1>SPEC_END</h1>
 
 		</div>

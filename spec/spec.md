@@ -835,4 +835,278 @@ If you want to change a datum you will have to pass the name:
 
 
 
+******
+
+RESPONSIBLE `mra`  
+STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-13`  
+DEADLINE `2013-11-13` ESTIMATEDHOURS `1`  
+
+### shortcuts
+
+To use the `bash` / `zsh` shortcuts, copy the `aliases.sh`
+into your home directory
+
+    cp aliases.sh ~/.speccer_aliases.sh
+
+and write the following into your `.bashrc`
+
+    . ~/.speccer_aliases.sh
+
+Then you will have access to the following shortcuts
+(in bold is an example input to put after the alias).
+
+#### General
+`spec-create`   
+`spec-validate`  
+`spec-save`   
+
+#### Markdown export
+`spec-markdown`   
+`spec-markdown-doc`   
+`spec-markdown-approve`   
+`spec-markdown-discuss`   
+`spec-markdown-implement`   
+`spec-markdown-clean`   
+
+#### HTML export
+`spec-html`   
+`spec-html-doc`   
+`spec-html-approve`   
+`spec-html-discuss`   
+`spec-html-implement`   
+`spec-html-clean`   
+
+#### Spec property getters
+`spec-REQUESTEDBY`   
+`spec-RELATED`   
+`spec-TRANSLATIONS`   
+`spec-SUPERSEDEDBY`   
+`spec-RESOURCES`   
+`spec-PARENT`   
+`spec-COMPANY`   
+`spec-PROJECT`   
+`spec-PERSONS`   
+`spec-TITLE`   
+`spec-URL`   
+`spec-LANGUAGE`   
+`spec-DATEFORMAT`   
+`spec-APPROVED`   
+
+#### Spec property unsetters
+`spec-REQUESTEDBY-uset`   
+`spec-RELATED-uset`   
+`spec-TRANSLATIONS-uset`   
+`spec-SUPERSEDEDBY-uset`   
+`spec-RESOURCES-uset`   
+`spec-PARENT-uset`   
+`spec-PERSONS-uset`   
+
+#### Spec property setters
+`spec-REQUESTEDBY-set` **Jim**  
+`spec-RELATED-set` **'{"other": "http://other.com/spec"}'**  
+`spec-TRANSLATIONS-set`  **'{"de_DE": "http://de.other.com/spec"}'**  
+`spec-SUPERSEDEDBY-set` **'{"v2": "http://other.com/v2/spec"}'**  
+`spec-RESOURCES-set` **'{"ER diagramm": "http://other.com/er.png"}'**  
+`spec-PARENT-set` **'http://other.com/parent-spec'**  
+`spec-COMPANY-set` **acme**  
+`spec-PROJECT-set` **'my project'**  
+`spec-TITLE-set` **'great spec'**  
+`spec-URL-set` **'http://greatspec.com/spec'**  
+`spec-LANGUAGE-set` **en_US**  
+`spec-DATEFORMAT-set` **YYYY-MM-DD**  
+`spec-APPROVED-set`  **true**  
+`spec-PERSONS-set`  **'{"PP": "Paul Panther <paul@panther.com>"}'**  
+
+#### Add Sections
+`spec-add-SCENARIO`  **new.md**  
+`spec-add-CONTRADICTION`  **new.md**  
+`spec-add-DEFINITION` **new.md**  
+`spec-add-FEATURE` **new.md**  
+`spec-add-NONGOAL`  **new.md**  
+`spec-add-UNDECIDED` **new.md**  
+
+#### Show Sections
+`spec-OVERVIEW`   
+`spec-SCENARIO-at` **2**  
+`spec-CONTRADICTION-at` **5**  
+`spec-DEFINITION-at` **20**  
+`spec-FEATURE-at` **1**  
+`spec-NONGOAL-at`  **2**  
+`spec-UNDECIDED-at`  **5**  
+
+#### Show Sections with comments and meta
+`spec-OVERVIEW-full`  
+`spec-SCENARIO-full-at` **2**  
+`spec-CONTRADICTION-full-at` **2**  
+`spec-DEFINITION-full-at` **5**  
+`spec-FEATURE-full-at` **2**  
+`spec-NONGOAL-full-at`  **7**  
+`spec-UNDECIDED-full-at` **2**  
+
+#### Get list of Paragraphs for all section
+`spec-ls`  
+
+#### Get list of Paragraphs for a section
+`spec-ls-SCENARIO`   
+`spec-ls-CONTRADICTION`   
+`spec-ls-DEFINITION`   
+`spec-ls-FEATURE`   
+`spec-ls-NONGOAL`   
+`spec-ls-UNDECIDED`   
+
+#### Get Comments of Paragraphs for a section
+`spec-comment-OVERVIEW`   
+`spec-comment-SCENARIO-at`  **2**  
+`spec-comment-CONTRADICTION-at`  **2**  
+`spec-comment-DEFINITION-at`  **2**  
+`spec-comment-FEATURE-at`  **2**  
+`spec-comment-NONGOAL-at`  **2**  
+`spec-comment-UNDECIDED-at` **2**  
+
+#### Set Comment of Paragraph for a section
+`spec-comment-OVERVIEW-set`  **new.md**  
+`spec-comment-SCENARIO-set`  **new.md -at 2**  
+`spec-comment-CONTRADICTION-set`  **new.md -at 2**  
+`spec-comment-DEFINITION-set`  **new.md -at 2**  
+`spec-comment-FEATURE-set`  **new.md -at 2**  
+`spec-comment-NONGOAL-set`  **new.md -at 2**  
+`spec-comment-UNDECIDED-set`  **new.md -at 2**  
+
+#### Replace Sections
+`spec-set-OVERVIEW`  **new.md**  
+`spec-set-SCENARIO`  **new.md -at 2**  
+`spec-set-CONTRADICTION` **new.md -at 2**  
+`spec-set-DEFINITION` **new.md -at 2**  
+`spec-set-FEATURE` **new.md -at 2**  
+`spec-set-NONGOAL` **new.md -at 2**  
+`spec-set-UNDECIDED` **new.md -at 2**  
+
+#### Move Sections
+`spec-mv-SCENARIO-at`  **2 -to 5**  
+`spec-mv-CONTRADICTION-at` **2 -to 5**  
+`spec-mv-DEFINITION-at` **2 -to 5**  
+`spec-mv-FEATURE-at` **2 -to 5**  
+`spec-mv-NONGOAL-at` **2 -to 5**  
+`spec-mv-UNDECIDED-at` **2 -to 5**  
+
+#### Remove Sections
+`spec-rm-SCENARIO-at` **2**  
+`spec-rm-CONTRADICTION-at` **2**  
+`spec-rm-DEFINITION-at` **2**  
+`spec-rm-FEATURE-at` **2**  
+`spec-rm-NONGOAL-at` **2**  
+`spec-rm-UNDECIDED-at`  **2**  
+
+#### Get Meta Data of Overview / Spec
+`spec-RESPONSIBLE`  
+`spec-STATE`  
+`spec-DEADLINE`  
+`spec-LASTUPDATE`  
+`spec-ESTIMATEDHOURS`  
+
+#### Get Meta Data of Section
+`spec-SCENARIO-RESPONSIBLE-at`  **2**  
+`spec-SCENARIO-STATE-at`  **2**  
+`spec-SCENARIO-DEADLINE-at`  **2**  
+`spec-SCENARIO-LASTUPDATE-at`  **2**  
+`spec-SCENARIO-ESTIMATEDHOURS-at`  **2**  
+
+`spec-CONTRADICTION-RESPONSIBLE-at`  **2**  
+`spec-CONTRADICTION-STATE-at`  **2**  
+`spec-CONTRADICTION-DEADLINE-at`  **2**  
+`spec-CONTRADICTION-LASTUPDATE-at`  **2**  
+`spec-CONTRADICTION-ESTIMATEDHOURS-at`  **2**  
+
+`spec-DEFINITION-RESPONSIBLE-at`  **2**  
+`spec-DEFINITION-STATE-at`  **2**  
+`spec-DEFINITION-DEADLINE-at`  **2**  
+`spec-DEFINITION-LASTUPDATE-at`  **2**  
+`spec-DEFINITION-ESTIMATEDHOURS-at`  **2**  
+
+`spec-FEATURE-RESPONSIBLE-at`  **2**  
+`spec-FEATURE-STATE-at`  **2**  
+`spec-FEATURE-DEADLINE-at`  **2**  
+`spec-FEATURE-LASTUPDATE-at`  **2**  
+`spec-FEATURE-ESTIMATEDHOURS-at`  **2**  
+
+`spec-NONGOAL-RESPONSIBLE-at`  **2**  
+`spec-NONGOAL-STATE-at`  **2**  
+`spec-NONGOAL-DEADLINE-at`   **2**  
+`spec-NONGOAL-LASTUPDATE-at`  **2**  
+`spec-NONGOAL-ESTIMATEDHOURS-at`  **2**  
+
+`spec-UNDECIDED-RESPONSIBLE-at`  **2**  
+`spec-UNDECIDED-STATE-at`  **2**  
+`spec-UNDECIDED-DEADLINE-at`  **2**  
+`spec-UNDECIDED-LASTUPDATE-at`  **2**  
+`spec-UNDECIDED-ESTIMATEDHOURS-at` **2**  
+
+#### Set Meta Data of Overview / Spec
+`spec-set-RESPONSIBLE` **'Peter Pan'**  
+`spec-set-PLANNING`  
+`spec-set-APPROVED`  
+`spec-set-PARTLY_IMPLEMENTED`  
+`spec-set-FULLY_IMPLEMENTED`   
+`spec-set-OBSOLET`  
+`spec-set-DEADLINE`  **'2014-12-24'**  
+`spec-set-ESTIMATEDHOURS`  **12**  
+
+#### Set Meta Data of Section
+
+`spec-set-SCENARIO-RESPONSIBLE`   **'Peter Pan' -at 2**    
+`spec-set-SCENARIO-PLANNING`  **-at 2**  
+`spec-set-SCENARIO-APPROVED`   **-at 2**  
+`spec-set-SCENARIO-PARTLY_IMPLEMENTED`   **-at 2**  
+`spec-set-SCENARIO-FULLY_IMPLEMENTED`   **-at 2**  
+`spec-set-SCENARIO-OBSOLET`   **-at 2**  
+`spec-set-SCENARIO-DEADLINE`   **'2014-12-24' -at 2**  
+`spec-set-SCENARIO-ESTIMATEDHOURS`  **12 -at 2**  
+
+`spec-set-CONTRADICTION-RESPONSIBLE`  **'Peter Pan' -at 2**    
+`spec-set-CONTRADICTION-PLANNING`   **-at 2**  
+`spec-set-CONTRADICTION-APPROVED`   **-at 2**  
+`spec-set-CONTRADICTION-PARTLY_IMPLEMENTED`   **-at 2**  
+`spec-set-CONTRADICTION-FULLY_IMPLEMENTED`   **-at 2**  
+`spec-set-CONTRADICTION-OBSOLET`   **-at 2**  
+`spec-set-CONTRADICTION-DEADLINE`  **'2014-12-24' -at 2**  
+`spec-set-CONTRADICTION-ESTIMATEDHOURS`  **3 -at 2**  
+
+`spec-set-DEFINITION-RESPONSIBLE` **'Peter Pan' -at 2**    
+`spec-set-DEFINITION-PLANNING`   **-at 2**  
+`spec-set-DEFINITION-APPROVED`   **-at 2**  
+`spec-set-DEFINITION-PARTLY_IMPLEMENTED`   **-at 2**  
+`spec-set-DEFINITION-FULLY_IMPLEMENTED`   **-at 2**  
+`spec-set-DEFINITION-OBSOLET`   **-at 2**  
+`spec-set-DEFINITION-DEADLINE`  **'2014-12-24' -at 2**  
+`spec-set-DEFINITION-ESTIMATEDHOURS`  **3 -at 2**  
+
+`spec-set-FEATURE-RESPONSIBLE`  **'Peter Pan' -at 2**    
+`spec-set-FEATURE-PLANNING`  **-at 2**  
+`spec-set-FEATURE-APPROVED`  **-at 2**  
+`spec-set-FEATURE-PARTLY_IMPLEMENTED`  **-at 2**  
+`spec-set-FEATURE-FULLY_IMPLEMENTED`  **-at 2**  
+`spec-set-FEATURE-OBSOLET`   **-at 2**  
+`spec-set-FEATURE-DEADLINE`  **'2014-12-24' -at 2**  
+`spec-set-FEATURE-ESTIMATEDHOURS`  **3 -at 2**  
+
+`spec-set-NONGOAL-RESPONSIBLE` **'Peter Pan' -at 2**    
+`spec-set-NONGOAL-PLANNING`   **-at 2**  
+`spec-set-NONGOAL-APPROVED`   **-at 2**  
+`spec-set-NONGOAL-PARTLY_IMPLEMENTED`  **-at 2**  
+`spec-set-NONGOAL-FULLY_IMPLEMENTED`   **-at 2**  
+`spec-set-NONGOAL-OBSOLET`   **-at 2**  
+`spec-set-NONGOAL-DEADLINE`  **'2014-12-24' -at 2**  
+`spec-set-NONGOAL-ESTIMATEDHOURS`  **3 -at 2**  
+
+`spec-set-UNDECIDED-RESPONSIBLE`  **'Peter Pan' -at 2**    
+`spec-set-UNDECIDED-PLANNING`   **-at 2**  
+`spec-set-UNDECIDED-APPROVED`   **-at 2**  
+`spec-set-UNDECIDED-PARTLY_IMPLEMENTED`   **-at 2**  
+`spec-set-UNDECIDED-FULLY_IMPLEMENTED`   **-at 2**  
+`spec-set-UNDECIDED-OBSOLET`   **-at 2**  
+`spec-set-UNDECIDED-DEADLINE`  **'2014-12-24' -at 2**  
+`spec-set-UNDECIDED-ESTIMATEDHOURS`  **3 -at 2**  
+
+
+
 # SPEC_END

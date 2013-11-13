@@ -198,7 +198,6 @@ alias spec-set-SCENARIO-DEADLINE='speccer -cmd meta -sec SCENARIOS -name DEADLIN
 alias spec-set-SCENARIO-ESTIMATEDHOURS='speccer -cmd meta -sec SCENARIOS -name ESTIMATEDHOURS -set';
 
 alias spec-set-CONTRADICTION-RESPONSIBLE='speccer -cmd meta -sec CONTRADICTIONS -name RESPONSIBLE -set';
-alias spec-set-CONTRADICTION-STATE='speccer -cmd meta -sec CONTRADICTIONS -name STATE -set';
 alias spec-set-CONTRADICTION-PLANNING='speccer -cmd meta -sec CONTRADICTIONS -name STATE -set PLANNING';
 alias spec-set-CONTRADICTION-APPROVED='speccer -cmd meta -sec CONTRADICTIONS -name STATE -set APPROVED';
 alias spec-set-CONTRADICTION-PARTLY_IMPLEMENTED='speccer -cmd meta -sec CONTRADICTIONS -name STATE -set PARTLY_IMPLEMENTED';
@@ -208,7 +207,6 @@ alias spec-set-CONTRADICTION-DEADLINE='speccer -cmd meta -sec CONTRADICTIONS -na
 alias spec-set-CONTRADICTION-ESTIMATEDHOURS='speccer -cmd meta -sec CONTRADICTIONS -name ESTIMATEDHOURS -set';
 
 alias spec-set-DEFINITION-RESPONSIBLE='speccer -cmd meta -sec DEFINITIONS -name RESPONSIBLE -set';
-alias spec-set-DEFINITION-STATE='speccer -cmd meta -sec DEFINITIONS -name STATE -set';
 alias spec-set-DEFINITION-PLANNING='speccer -cmd meta -sec DEFINITIONS -name STATE -set PLANNING';
 alias spec-set-DEFINITION-APPROVED='speccer -cmd meta -sec DEFINITIONS -name STATE -set APPROVED';
 alias spec-set-DEFINITION-PARTLY_IMPLEMENTED='speccer -cmd meta -sec DEFINITIONS -name STATE -set PARTLY_IMPLEMENTED';
@@ -218,7 +216,6 @@ alias spec-set-DEFINITION-DEADLINE='speccer -cmd meta -sec DEFINITIONS -name DEA
 alias spec-set-DEFINITION-ESTIMATEDHOURS='speccer -cmd meta -sec DEFINITIONS -name ESTIMATEDHOURS -set';
 
 alias spec-set-FEATURE-RESPONSIBLE='speccer -cmd meta -sec FEATURES -name RESPONSIBLE -set';
-alias spec-set-FEATURE-STATE='speccer -cmd meta -sec FEATURES -name STATE -set';
 alias spec-set-FEATURE-PLANNING='speccer -cmd meta -sec FEATURES -name STATE -set PLANNING';
 alias spec-set-FEATURE-APPROVED='speccer -cmd meta -sec FEATURES -name STATE -set APPROVED';
 alias spec-set-FEATURE-PARTLY_IMPLEMENTED='speccer -cmd meta -sec FEATURES -name STATE -set PARTLY_IMPLEMENTED';
@@ -228,7 +225,6 @@ alias spec-set-FEATURE-DEADLINE='speccer -cmd meta -sec FEATURES -name DEADLINE 
 alias spec-set-FEATURE-ESTIMATEDHOURS='speccer -cmd meta -sec FEATURES -name ESTIMATEDHOURS -set';
 
 alias spec-set-NONGOAL-RESPONSIBLE='speccer -cmd meta -sec NONGOALS -name RESPONSIBLE -set';
-alias spec-set-NONGOAL-STATE='speccer -cmd meta -sec NONGOALS -name STATE -set';
 alias spec-set-NONGOAL-PLANNING='speccer -cmd meta -sec NONGOALS -name STATE -set PLANNING';
 alias spec-set-NONGOAL-APPROVED='speccer -cmd meta -sec NONGOALS -name STATE -set APPROVED';
 alias spec-set-NONGOAL-PARTLY_IMPLEMENTED='speccer -cmd meta -sec NONGOALS -name STATE -set PARTLY_IMPLEMENTED';
@@ -238,7 +234,6 @@ alias spec-set-NONGOAL-DEADLINE='speccer -cmd meta -sec NONGOALS -name DEADLINE 
 alias spec-set-NONGOAL-ESTIMATEDHOURS='speccer -cmd meta -sec NONGOALS -name ESTIMATEDHOURS -set';
 
 alias spec-set-UNDECIDED-RESPONSIBLE='speccer -cmd meta -sec UNDECIDED -name RESPONSIBLE -set';
-alias spec-set-UNDECIDED-STATE='speccer -cmd meta -sec UNDECIDED -name STATE -set';
 alias spec-set-UNDECIDED-PLANNING='speccer -cmd meta -sec UNDECIDED -name STATE -set PLANNING';
 alias spec-set-UNDECIDED-APPROVED='speccer -cmd meta -sec UNDECIDED -name STATE -set APPROVED';
 alias spec-set-UNDECIDED-PARTLY_IMPLEMENTED='speccer -cmd meta -sec UNDECIDED -name STATE -set PARTLY_IMPLEMENTED';

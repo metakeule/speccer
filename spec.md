@@ -1,9 +1,9 @@
 # speccer - a CLI tool for specs  
-[HTML](http://github.com/metakeule/speccer/spec.html)  
-[Text (Markdown)](http://github.com/metakeule/speccer/spec.md)  
-[JSON](http://github.com/metakeule/speccer/spec.js)  
+[HTML](http://rawgithub.com/metakeule/speccer/master/spec.html)  
+[Text (Markdown)](http://rawgithub.com/metakeule/speccer/master/spec.md)  
+[JSON](http://rawgithub.com/metakeule/speccer/master/spec.js)  
 
-PARENT <http://github.com/metakeule/speclib/spec.html>  
+PARENT <[speclib](http://rawgithub.com/metakeule/speclib/master/spec)>  
 
 PROJECT `speclib`  
 COMPANY `Know GmbH`  
@@ -19,7 +19,7 @@ REQUESTED_BY
 ## OVERVIEW
 
 RESPONSIBLE `mra`  
-STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
+STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-13`  
 DEADLINE `2013-11-11` ESTIMATEDHOURS `0`  
 
 *speccer* is a CLI tool for dealing with specs.
@@ -28,7 +28,7 @@ It is a frontend to the speclib.
 
 ## SCENARIOS
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -39,7 +39,7 @@ starting point with `speccer`.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -51,7 +51,7 @@ He wants to add them without hassle.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -63,7 +63,7 @@ editor.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -74,7 +74,7 @@ Gill wants to change specifications with a script.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -86,7 +86,7 @@ from different places.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -98,7 +98,7 @@ be able to mail them as markdown.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -109,7 +109,7 @@ wants the unneccessary informations to be filtered.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -121,7 +121,7 @@ to be implemented.
 
 ## NONGOALS
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -132,7 +132,7 @@ However such a project could also be external and be built upon speccer.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -145,7 +145,7 @@ via json files.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -157,7 +157,7 @@ specs or make backups by a backup tool.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -169,7 +169,7 @@ to your favourite editor and reimport them when you are finished.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -181,7 +181,7 @@ plain text or markdown, it is not hard to merge by hand.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -192,7 +192,7 @@ copy the json files yourself and then edit the copy.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -207,7 +207,7 @@ around `speccer` or the `speclib`.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -225,7 +225,7 @@ Also it is possible to have comments of arbitrary length.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -244,7 +244,7 @@ which may each have their own state of consense and comments.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -260,7 +260,7 @@ be changed.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -271,7 +271,7 @@ and flexible to have own templates and copy them.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -284,7 +284,7 @@ PDFs.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -305,7 +305,7 @@ specs of the translation in the TRANSLATIONS section of the specs.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -322,7 +322,7 @@ More time tracking functionality is not part of this project.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -338,7 +338,7 @@ In the alias you could also set defaults for responsibles etc.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `APPROVED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -394,7 +394,7 @@ See the linefeed paragraph
 
 ## DEFINITIONS
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -402,7 +402,7 @@ DEADLINE `2013-11-12` ESTIMATEDHOURS `1`
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -414,7 +414,7 @@ property (like `STATE` with the command `meta`).
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -463,7 +463,7 @@ There are currently:
 
 ## FEATURES
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -491,7 +491,7 @@ properties. You can s validate a spec to see them:
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -505,7 +505,7 @@ It it returns nothing your spec is valid.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -519,7 +519,7 @@ Go into a folder that contains your spec and run
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -539,7 +539,7 @@ You might also pass the usage option to filter out some data, e.g.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -559,7 +559,7 @@ You might also pass the usage option to filter out some data, e.g.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -577,7 +577,7 @@ all written in high caps and defined in `speclib`.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -595,7 +595,7 @@ all written in high caps and defined in `speclib`.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -619,7 +619,7 @@ be unset:
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -636,7 +636,7 @@ The available sections are defined in the `speclib`.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -655,7 +655,7 @@ the paragraph.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -678,7 +678,7 @@ SCENARIOS section.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -712,7 +712,7 @@ So you may want to change them too.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -755,7 +755,7 @@ to the content of the file `temp.md`.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -778,7 +778,7 @@ to move the 3rd paragraph in the SCENARIOS section to be the first.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -801,7 +801,7 @@ to remove the 3rd paragraph in the SCENARIOS section.
 
 ******
 
-RESPONSIBLE `benny`  
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 

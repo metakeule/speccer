@@ -480,10 +480,36 @@ There are currently:
   - OBSOLET
 
 
+******
+
+
+## DEFINITION 4 Current Spec
+
+RESPONSIBLE `mra`  
+STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-13`  
+DEADLINE `2013-11-13` ESTIMATEDHOURS `1`  
+
+
+The current spec is the spec that is loaded from a special file
+in the current directory (`pwd`).
+
+If the `-language` option is set, the spec is loaded from the file
+`spec_[language].json`, e.g.
+
+    spec_en_US.json
+
+Otherwise it is looking for any files matching the regular expression
+
+    spec*.json
+
+If there is just one file matching, the spec is loaded from this file.
+Otherwise an error is thrown mentioning that the language option should
+probably be set.
+
 ## FEATURE 1 create a new spec
 
 RESPONSIBLE `mra`  
-STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
+STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-13`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
 Go into a folder that should contain your spec and run
@@ -495,14 +521,17 @@ as `spec.md` (Markdown) and `spec.html` (HTML).
 
 If the `-language` parameter is set (to e.g. `en_US`) it creates
 the following files instead:
+
 - `spec_en_US.json`
 - `spec_en_US.md`
 - `spec_en_US.html`
 
 Be aware that the new spec is not valid since there are missing
-properties. You can s validate a spec to see them:
+properties. You can validate a spec to see them:
 
     speccer -cmd validate
+
+
 
 
 
@@ -657,10 +686,12 @@ Put the title of the paragraph in the first line
 and the body in the next lines.
 Then run
 
-    speccer -cmd add -sec SCENARIOS -resp 'Your Name' -set new.md
+    speccer -cmd add -sec SCENARIO -resp 'Your Name' -set new.md
 
-to add title and body to the SCENARIOS sections.
+to add title and body to the SCENARIO sections.
 The available sections are defined in the `speclib`.
+
+
 
 
 
@@ -671,18 +702,20 @@ The available sections are defined in the `speclib`.
 ## FEATURE 10 show list of paragraphs of a section
 
 RESPONSIBLE `mra`  
-STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
+STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-13`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
 Go into a folder that contains your spec and run
 
-    speccer -cmd positions -sec SCENARIOS
+    speccer -cmd positions -sec SCENARIO
 
-to see a list of all paragraphs of the SCENARIOS section.
+to see a list of all paragraphs of the SCENARIO section.
 Each paragraph has the first line printed preceeded by 
 a number indicating the position of the paragraph inside
 the section. This position can be used to print or change
 the paragraph.
+
+
 
 
 ******
@@ -697,27 +730,29 @@ DEADLINE `2013-11-12` ESTIMATEDHOURS `1`
 Go into a folder that contains your spec.
 You will need to know the position of the paragraph
 you want to see. Therefor you might want to first 
-print all positions of the section (here SCENARIOS) 
+print all positions of the section (here SCENARIO) 
 with
 
-    speccer -cmd positions -sec SCENARIOS
+    speccer -cmd positions -sec SCENARIO
 
 then you can run
 
-    speccer -cmd text -sec SCENARIOS -at 3
+    speccer -cmd text -sec SCENARIO -at 3
 
 to see the text for the 3rd paragraph in the
-SCENARIOS section.
+SCENARIO section.
 
 If you want to include comments and meta data, run
 
-    speccer -cmd text -sec SCENARIOS -at 3 -with-comments -with-meta
+    speccer -cmd text -sec SCENARIO -at 3 -with-comments -with-meta
+
+
 
 
 ******
 
 
-## FEATURE 12 change content of a paragraphs of a section
+## FEATURE 12 change content of a paragraph of a section
 
 RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-13`  
@@ -726,25 +761,27 @@ DEADLINE `2013-11-12` ESTIMATEDHOURS `1`
 Go into a folder that contains your spec.
 You will need to know the position of the paragraph
 you want to see. Therefor you might want to first 
-print all positions of the section (here SCENARIOS) 
+print all positions of the section (here SCENARIO) 
 with
 
-    speccer -cmd positions -sec SCENARIOS
+    speccer -cmd positions -sec SCENARIO
 
 then you can run
 
-    speccer -cmd text -sec SCENARIOS -at 3 > temp.md
+    speccer -cmd text -sec SCENARIO -at 3 > temp.md
 
 to save the current text and comments for the 3rd paragraph in the
-SCENARIOS section to the file `temp.md`.
+SCENARIO section to the file `temp.md`.
 
 Now fire up your editor to change the content. Then run
 
-    speccer -cmd text -sec SCENARIOS -at 3 -set temp.md
+    speccer -cmd text -sec SCENARIO -at 3 -set temp.md
 
-to set the text of the 3rd paragraph in the SCENARIOS section.
+to set the text of the 3rd paragraph in the SCENARIO section.
 
 The comments and meta data (including the title) of the 3rd paragraph are not modified by this operation. So you may want to change them too.
+
+
 
 
 
@@ -756,23 +793,23 @@ The comments and meta data (including the title) of the 3rd paragraph are not mo
 ## FEATURE 13 see, add and change comment to a paragraph of a section
 
 RESPONSIBLE `mra`  
-STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
+STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-13`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
 Go into a folder that contains your spec.
 You will need to know the position of the paragraph
 you want to see. Therefor you might want to first 
-print all positions of the section (here SCENARIOS) 
+print all positions of the section (here SCENARIO) 
 with
 
-    speccer -cmd positions -sec SCENARIOS
+    speccer -cmd positions -sec SCENARIO
 
 then you can run
 
-    speccer -cmd comment -sec SCENARIOS -at 3
+    speccer -cmd comment -sec SCENARIO -at 3
 
 to see the current comments for the 3rd paragraph in the
-SCENARIOS section.
+SCENARIO section.
 
 Now if the author of your comment already made a comment to 
 this paragraph and if you want to append to this old comment,
@@ -780,7 +817,7 @@ you first have to save the old one.
 
 To do this, run 
 
-    speccer -cmd comment -sec SCENARIOS -at 3 -author Jim > temp.md
+    speccer -cmd comment -sec SCENARIO -at 3 -author Jim > temp.md
 
 to save the comment of `Jim` to the file `temp.md`. Then you can edit this
 file. If you just want to remove the old comment or if there was no
@@ -788,10 +825,12 @@ comment you may simply start with an empty file `temp.md`.
 
 After you edited the file, run 
 
-    speccer -cmd comment -sec SCENARIOS -at 3 -author Jim -set temp.md
+    speccer -cmd comment -sec SCENARIO -at 3 -author Jim -set temp.md
 
-to set the comment of `Jim` on the 3rd paragraph of the SCENARIOS section
+to set the comment of `Jim` on the 3rd paragraph of the SCENARIO section
 to the content of the file `temp.md`.
+
+
 
 
 ******
@@ -800,22 +839,24 @@ to the content of the file `temp.md`.
 ## FEATURE 14 move a paragraph of a section
 
 RESPONSIBLE `mra`  
-STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
+STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-13`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
 Go into a folder that contains your spec.
 You will need to know the position of the paragraph
 you want to move. Therefor you might want to first 
-print all positions of the section (here SCENARIOS) 
+print all positions of the section (here SCENARIO) 
 with
 
-    speccer -cmd positions -sec SCENARIOS
+    speccer -cmd positions -sec SCENARIO
 
 then you can run
 
-    speccer -cmd move -sec SCENARIOS -at 3 -to 1
+    speccer -cmd move -sec SCENARIO -at 3 -to 1
 
-to move the 3rd paragraph in the SCENARIOS section to be the first.
+to move the 3rd paragraph in the SCENARIO section to be the first.
+
+
 
 
 ******
@@ -824,22 +865,24 @@ to move the 3rd paragraph in the SCENARIOS section to be the first.
 ## FEATURE 15 delete a paragraph of a section
 
 RESPONSIBLE `mra`  
-STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
+STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-13`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
 Go into a folder that contains your spec.
 You will need to know the position of the paragraph
 you want to delete. Therefor you might want to first 
-print all positions of the section (here SCENARIOS) 
+print all positions of the section (here SCENARIO) 
 with
 
-    speccer -cmd positions -sec SCENARIOS
+    speccer -cmd positions -sec SCENARIO
 
 then you can run
 
-    speccer -cmd rm -sec SCENARIOS -at 3
+    speccer -cmd rm -sec SCENARIO -at 3
 
-to remove the 3rd paragraph in the SCENARIOS section.
+to remove the 3rd paragraph in the SCENARIO section.
+
+
 
 
 ******
@@ -848,26 +891,28 @@ to remove the 3rd paragraph in the SCENARIOS section.
 ## FEATURE 16 see and change meta data of a paragraph of a section
 
 RESPONSIBLE `mra`  
-STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
+STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-13`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
 Go into a folder that contains your spec.
 You will need to know the position of the paragraph
 you want to see the meta data. Therefor you might want to first 
-print all positions of the section (here SCENARIOS) 
+print all positions of the section (here SCENARIO) 
 with
 
-    speccer -cmd positions -sec SCENARIOS
+    speccer -cmd positions -sec SCENARIO
 
 then you can run
 
-    speccer -cmd meta -sec SCENARIOS -at 3
+    speccer -cmd meta -sec SCENARIO -at 3
 
-to see all meta data of the 3rd paragraph in the SCENARIOS section.
+to see all meta data of the 3rd paragraph in the SCENARIO section.
 
 If you want to change a datum you will have to pass the name:
 
-    speccer -cmd meta -sec SCENARIOS -at 3 -name RESPONSIBLE -set Jim
+    speccer -cmd meta -sec SCENARIO -at 3 -name RESPONSIBLE -set Jim
+
+
 
 
 

@@ -68,15 +68,25 @@
         "State": "FULLY_IMPLEMENTED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
+      },
+      {
+        "Responsible": "mra",
+        "Title": "Current Spec",
+        "Text": "\nThe current spec is the spec that is loaded from a special file\nin the current directory (`pwd`).\n\nIf the `-language` option is set, the spec is loaded from the file\n`spec_[language].json`, e.g.\n\n    spec_en_US.json\n\nOtherwise it is looking for any files matching the regular expression\n\n    spec*.json\n\nIf there is just one file matching, the spec is loaded from this file.\nOtherwise an error is thrown mentioning that the language option should\nprobably be set.",
+        "Comments": {},
+        "LastUpdate": "2013-11-13",
+        "State": "FULLY_IMPLEMENTED",
+        "Deadline": "2013-11-13",
+        "EstimatedHours": 1
       }
     ],
     "FEATURE": [
       {
         "Responsible": "mra",
         "Title": "create a new spec",
-        "Text": "Go into a folder that should contain your spec and run\n\n    speccer -cmd create\n\nCreates a file `spec.json` in the current folder and exports it\nas `spec.md` (Markdown) and `spec.html` (HTML).\n\nIf the `-language` parameter is set (to e.g. `en_US`) it creates\nthe following files instead:\n- `spec_en_US.json`\n- `spec_en_US.md`\n- `spec_en_US.html`\n\nBe aware that the new spec is not valid since there are missing\nproperties. You can s validate a spec to see them:\n\n    speccer -cmd validate\n\n",
+        "Text": "Go into a folder that should contain your spec and run\n\n    speccer -cmd create\n\nCreates a file `spec.json` in the current folder and exports it\nas `spec.md` (Markdown) and `spec.html` (HTML).\n\nIf the `-language` parameter is set (to e.g. `en_US`) it creates\nthe following files instead:\n\n- `spec_en_US.json`\n- `spec_en_US.md`\n- `spec_en_US.html`\n\nBe aware that the new spec is not valid since there are missing\nproperties. You can validate a spec to see them:\n\n    speccer -cmd validate\n\n\n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-13",
         "State": "FULLY_IMPLEMENTED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
@@ -154,7 +164,7 @@
       {
         "Responsible": "mra",
         "Title": "add markdown text to a section",
-        "Text": "Go into a folder that contains your spec and write your text\ninto a file, let's say `new.md`.\n\nPut the title of the paragraph in the first line \nand the body in the next lines.\nThen run\n\n    speccer -cmd add -sec SCENARIOS -resp 'Your Name' -set new.md\n\nto add title and body to the SCENARIOS sections.\nThe available sections are defined in the `speclib`.\n\n\n",
+        "Text": "Go into a folder that contains your spec and write your text\ninto a file, let's say `new.md`.\n\nPut the title of the paragraph in the first line \nand the body in the next lines.\nThen run\n\n    speccer -cmd add -sec SCENARIO -resp 'Your Name' -set new.md\n\nto add title and body to the SCENARIO sections.\nThe available sections are defined in the `speclib`.\n\n\n\n\n",
         "Comments": {},
         "LastUpdate": "2013-11-13",
         "State": "FULLY_IMPLEMENTED",
@@ -164,17 +174,7 @@
       {
         "Responsible": "mra",
         "Title": "show list of paragraphs of a section",
-        "Text": "Go into a folder that contains your spec and run\n\n    speccer -cmd positions -sec SCENARIOS\n\nto see a list of all paragraphs of the SCENARIOS section.\nEach paragraph has the first line printed preceeded by \na number indicating the position of the paragraph inside\nthe section. This position can be used to print or change\nthe paragraph.\n",
-        "Comments": {},
-        "LastUpdate": "2013-11-12",
-        "State": "FULLY_IMPLEMENTED",
-        "Deadline": "2013-11-12",
-        "EstimatedHours": 1
-      },
-      {
-        "Responsible": "mra",
-        "Title": "show content of a paragraphs of a section",
-        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see. Therefor you might want to first \nprint all positions of the section (here SCENARIOS) \nwith\n\n    speccer -cmd positions -sec SCENARIOS\n\nthen you can run\n\n    speccer -cmd text -sec SCENARIOS -at 3\n\nto see the text for the 3rd paragraph in the\nSCENARIOS section.\n\nIf you want to include comments and meta data, run\n\n    speccer -cmd text -sec SCENARIOS -at 3 -with-comments -with-meta\n",
+        "Text": "Go into a folder that contains your spec and run\n\n    speccer -cmd positions -sec SCENARIO\n\nto see a list of all paragraphs of the SCENARIO section.\nEach paragraph has the first line printed preceeded by \na number indicating the position of the paragraph inside\nthe section. This position can be used to print or change\nthe paragraph.\n\n\n",
         "Comments": {},
         "LastUpdate": "2013-11-13",
         "State": "FULLY_IMPLEMENTED",
@@ -183,8 +183,18 @@
       },
       {
         "Responsible": "mra",
-        "Title": "change content of a paragraphs of a section",
-        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see. Therefor you might want to first \nprint all positions of the section (here SCENARIOS) \nwith\n\n    speccer -cmd positions -sec SCENARIOS\n\nthen you can run\n\n    speccer -cmd text -sec SCENARIOS -at 3 \u003e temp.md\n\nto save the current text and comments for the 3rd paragraph in the\nSCENARIOS section to the file `temp.md`.\n\nNow fire up your editor to change the content. Then run\n\n    speccer -cmd text -sec SCENARIOS -at 3 -set temp.md\n\nto set the text of the 3rd paragraph in the SCENARIOS section.\n\nThe comments and meta data (including the title) of the 3rd paragraph are not modified by this operation. So you may want to change them too.\n\n\n\n",
+        "Title": "show content of a paragraphs of a section",
+        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see. Therefor you might want to first \nprint all positions of the section (here SCENARIO) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd text -sec SCENARIO -at 3\n\nto see the text for the 3rd paragraph in the\nSCENARIO section.\n\nIf you want to include comments and meta data, run\n\n    speccer -cmd text -sec SCENARIO -at 3 -with-comments -with-meta\n\n\n",
+        "Comments": {},
+        "LastUpdate": "2013-11-13",
+        "State": "FULLY_IMPLEMENTED",
+        "Deadline": "2013-11-12",
+        "EstimatedHours": 1
+      },
+      {
+        "Responsible": "mra",
+        "Title": "change content of a paragraph of a section",
+        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see. Therefor you might want to first \nprint all positions of the section (here SCENARIO) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd text -sec SCENARIO -at 3 \u003e temp.md\n\nto save the current text and comments for the 3rd paragraph in the\nSCENARIO section to the file `temp.md`.\n\nNow fire up your editor to change the content. Then run\n\n    speccer -cmd text -sec SCENARIO -at 3 -set temp.md\n\nto set the text of the 3rd paragraph in the SCENARIO section.\n\nThe comments and meta data (including the title) of the 3rd paragraph are not modified by this operation. So you may want to change them too.\n\n\n\n\n\n",
         "Comments": {},
         "LastUpdate": "2013-11-13",
         "State": "FULLY_IMPLEMENTED",
@@ -194,9 +204,9 @@
       {
         "Responsible": "mra",
         "Title": "see, add and change comment to a paragraph of a section",
-        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see. Therefor you might want to first \nprint all positions of the section (here SCENARIOS) \nwith\n\n    speccer -cmd positions -sec SCENARIOS\n\nthen you can run\n\n    speccer -cmd comment -sec SCENARIOS -at 3\n\nto see the current comments for the 3rd paragraph in the\nSCENARIOS section.\n\nNow if the author of your comment already made a comment to \nthis paragraph and if you want to append to this old comment,\nyou first have to save the old one.\n\nTo do this, run \n\n    speccer -cmd comment -sec SCENARIOS -at 3 -author Jim \u003e temp.md\n\nto save the comment of `Jim` to the file `temp.md`. Then you can edit this\nfile. If you just want to remove the old comment or if there was no\ncomment you may simply start with an empty file `temp.md`.\n\nAfter you edited the file, run \n\n    speccer -cmd comment -sec SCENARIOS -at 3 -author Jim -set temp.md\n\nto set the comment of `Jim` on the 3rd paragraph of the SCENARIOS section\nto the content of the file `temp.md`.\n",
+        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see. Therefor you might want to first \nprint all positions of the section (here SCENARIO) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd comment -sec SCENARIO -at 3\n\nto see the current comments for the 3rd paragraph in the\nSCENARIO section.\n\nNow if the author of your comment already made a comment to \nthis paragraph and if you want to append to this old comment,\nyou first have to save the old one.\n\nTo do this, run \n\n    speccer -cmd comment -sec SCENARIO -at 3 -author Jim \u003e temp.md\n\nto save the comment of `Jim` to the file `temp.md`. Then you can edit this\nfile. If you just want to remove the old comment or if there was no\ncomment you may simply start with an empty file `temp.md`.\n\nAfter you edited the file, run \n\n    speccer -cmd comment -sec SCENARIO -at 3 -author Jim -set temp.md\n\nto set the comment of `Jim` on the 3rd paragraph of the SCENARIO section\nto the content of the file `temp.md`.\n\n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-13",
         "State": "FULLY_IMPLEMENTED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
@@ -204,9 +214,9 @@
       {
         "Responsible": "mra",
         "Title": "move a paragraph of a section",
-        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to move. Therefor you might want to first \nprint all positions of the section (here SCENARIOS) \nwith\n\n    speccer -cmd positions -sec SCENARIOS\n\nthen you can run\n\n    speccer -cmd move -sec SCENARIOS -at 3 -to 1\n\nto move the 3rd paragraph in the SCENARIOS section to be the first.\n",
+        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to move. Therefor you might want to first \nprint all positions of the section (here SCENARIO) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd move -sec SCENARIO -at 3 -to 1\n\nto move the 3rd paragraph in the SCENARIO section to be the first.\n\n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-13",
         "State": "FULLY_IMPLEMENTED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
@@ -214,9 +224,9 @@
       {
         "Responsible": "mra",
         "Title": "delete a paragraph of a section",
-        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to delete. Therefor you might want to first \nprint all positions of the section (here SCENARIOS) \nwith\n\n    speccer -cmd positions -sec SCENARIOS\n\nthen you can run\n\n    speccer -cmd rm -sec SCENARIOS -at 3\n\nto remove the 3rd paragraph in the SCENARIOS section.\n",
+        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to delete. Therefor you might want to first \nprint all positions of the section (here SCENARIO) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd rm -sec SCENARIO -at 3\n\nto remove the 3rd paragraph in the SCENARIO section.\n\n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-13",
         "State": "FULLY_IMPLEMENTED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
@@ -224,9 +234,9 @@
       {
         "Responsible": "mra",
         "Title": "see and change meta data of a paragraph of a section",
-        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see the meta data. Therefor you might want to first \nprint all positions of the section (here SCENARIOS) \nwith\n\n    speccer -cmd positions -sec SCENARIOS\n\nthen you can run\n\n    speccer -cmd meta -sec SCENARIOS -at 3\n\nto see all meta data of the 3rd paragraph in the SCENARIOS section.\n\nIf you want to change a datum you will have to pass the name:\n\n    speccer -cmd meta -sec SCENARIOS -at 3 -name RESPONSIBLE -set Jim\n\n\n",
+        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see the meta data. Therefor you might want to first \nprint all positions of the section (here SCENARIO) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd meta -sec SCENARIO -at 3\n\nto see all meta data of the 3rd paragraph in the SCENARIO section.\n\nIf you want to change a datum you will have to pass the name:\n\n    speccer -cmd meta -sec SCENARIO -at 3 -name RESPONSIBLE -set Jim\n\n\n\n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-13",
         "State": "FULLY_IMPLEMENTED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1

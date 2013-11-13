@@ -250,6 +250,28 @@ property (like <code>STATE</code> with the command <code>meta</code>).</p>
 </ul></li>
 </ul>
 
+<hr />
+
+<h2>DEFINITION 4 Current Spec</h2>
+
+<p>The current spec is the spec that is loaded from a special file
+in the current directory (<code>pwd</code>).</p>
+
+<p>If the <code>-language</code> option is set, the spec is loaded from the file
+<code>spec_[language].json</code>, e.g.</p>
+
+<pre><code>spec_en_US.json
+</code></pre>
+
+<p>Otherwise it is looking for any files matching the regular expression</p>
+
+<pre><code>spec*.json
+</code></pre>
+
+<p>If there is just one file matching, the spec is loaded from this file.
+Otherwise an error is thrown mentioning that the language option should
+probably be set.</p>
+
 <h2>FEATURE 1 create a new spec</h2>
 
 <p>Go into a folder that should contain your spec and run</p>
@@ -261,13 +283,16 @@ property (like <code>STATE</code> with the command <code>meta</code>).</p>
 as <code>spec.md</code> (Markdown) and <code>spec.html</code> (HTML).</p>
 
 <p>If the <code>-language</code> parameter is set (to e.g. <code>en_US</code>) it creates
-the following files instead:
-- <code>spec_en_US.json</code>
-- <code>spec_en_US.md</code>
-- <code>spec_en_US.html</code></p>
+the following files instead:</p>
+
+<ul>
+<li><code>spec_en_US.json</code></li>
+<li><code>spec_en_US.md</code></li>
+<li><code>spec_en_US.html</code></li>
+</ul>
 
 <p>Be aware that the new spec is not valid since there are missing
-properties. You can s validate a spec to see them:</p>
+properties. You can validate a spec to see them:</p>
 
 <pre><code>speccer -cmd validate
 </code></pre>
@@ -377,10 +402,10 @@ into a file, let&rsquo;s say <code>new.md</code>.</p>
 and the body in the next lines.
 Then run</p>
 
-<pre><code>speccer -cmd add -sec SCENARIOS -resp 'Your Name' -set new.md
+<pre><code>speccer -cmd add -sec SCENARIO -resp 'Your Name' -set new.md
 </code></pre>
 
-<p>to add title and body to the SCENARIOS sections.
+<p>to add title and body to the SCENARIO sections.
 The available sections are defined in the <code>speclib</code>.</p>
 
 <hr />
@@ -389,10 +414,10 @@ The available sections are defined in the <code>speclib</code>.</p>
 
 <p>Go into a folder that contains your spec and run</p>
 
-<pre><code>speccer -cmd positions -sec SCENARIOS
+<pre><code>speccer -cmd positions -sec SCENARIO
 </code></pre>
 
-<p>to see a list of all paragraphs of the SCENARIOS section.
+<p>to see a list of all paragraphs of the SCENARIO section.
 Each paragraph has the first line printed preceeded by
 a number indicating the position of the paragraph inside
 the section. This position can be used to print or change
@@ -405,52 +430,52 @@ the paragraph.</p>
 <p>Go into a folder that contains your spec.
 You will need to know the position of the paragraph
 you want to see. Therefor you might want to first
-print all positions of the section (here SCENARIOS)
+print all positions of the section (here SCENARIO)
 with</p>
 
-<pre><code>speccer -cmd positions -sec SCENARIOS
+<pre><code>speccer -cmd positions -sec SCENARIO
 </code></pre>
 
 <p>then you can run</p>
 
-<pre><code>speccer -cmd text -sec SCENARIOS -at 3
+<pre><code>speccer -cmd text -sec SCENARIO -at 3
 </code></pre>
 
 <p>to see the text for the 3rd paragraph in the
-SCENARIOS section.</p>
+SCENARIO section.</p>
 
 <p>If you want to include comments and meta data, run</p>
 
-<pre><code>speccer -cmd text -sec SCENARIOS -at 3 -with-comments -with-meta
+<pre><code>speccer -cmd text -sec SCENARIO -at 3 -with-comments -with-meta
 </code></pre>
 
 <hr />
 
-<h2>FEATURE 12 change content of a paragraphs of a section</h2>
+<h2>FEATURE 12 change content of a paragraph of a section</h2>
 
 <p>Go into a folder that contains your spec.
 You will need to know the position of the paragraph
 you want to see. Therefor you might want to first
-print all positions of the section (here SCENARIOS)
+print all positions of the section (here SCENARIO)
 with</p>
 
-<pre><code>speccer -cmd positions -sec SCENARIOS
+<pre><code>speccer -cmd positions -sec SCENARIO
 </code></pre>
 
 <p>then you can run</p>
 
-<pre><code>speccer -cmd text -sec SCENARIOS -at 3 &gt; temp.md
+<pre><code>speccer -cmd text -sec SCENARIO -at 3 &gt; temp.md
 </code></pre>
 
 <p>to save the current text and comments for the 3rd paragraph in the
-SCENARIOS section to the file <code>temp.md</code>.</p>
+SCENARIO section to the file <code>temp.md</code>.</p>
 
 <p>Now fire up your editor to change the content. Then run</p>
 
-<pre><code>speccer -cmd text -sec SCENARIOS -at 3 -set temp.md
+<pre><code>speccer -cmd text -sec SCENARIO -at 3 -set temp.md
 </code></pre>
 
-<p>to set the text of the 3rd paragraph in the SCENARIOS section.</p>
+<p>to set the text of the 3rd paragraph in the SCENARIO section.</p>
 
 <p>The comments and meta data (including the title) of the 3rd paragraph are not modified by this operation. So you may want to change them too.</p>
 
@@ -461,19 +486,19 @@ SCENARIOS section to the file <code>temp.md</code>.</p>
 <p>Go into a folder that contains your spec.
 You will need to know the position of the paragraph
 you want to see. Therefor you might want to first
-print all positions of the section (here SCENARIOS)
+print all positions of the section (here SCENARIO)
 with</p>
 
-<pre><code>speccer -cmd positions -sec SCENARIOS
+<pre><code>speccer -cmd positions -sec SCENARIO
 </code></pre>
 
 <p>then you can run</p>
 
-<pre><code>speccer -cmd comment -sec SCENARIOS -at 3
+<pre><code>speccer -cmd comment -sec SCENARIO -at 3
 </code></pre>
 
 <p>to see the current comments for the 3rd paragraph in the
-SCENARIOS section.</p>
+SCENARIO section.</p>
 
 <p>Now if the author of your comment already made a comment to
 this paragraph and if you want to append to this old comment,
@@ -481,7 +506,7 @@ you first have to save the old one.</p>
 
 <p>To do this, run</p>
 
-<pre><code>speccer -cmd comment -sec SCENARIOS -at 3 -author Jim &gt; temp.md
+<pre><code>speccer -cmd comment -sec SCENARIO -at 3 -author Jim &gt; temp.md
 </code></pre>
 
 <p>to save the comment of <code>Jim</code> to the file <code>temp.md</code>. Then you can edit this
@@ -490,10 +515,10 @@ comment you may simply start with an empty file <code>temp.md</code>.</p>
 
 <p>After you edited the file, run</p>
 
-<pre><code>speccer -cmd comment -sec SCENARIOS -at 3 -author Jim -set temp.md
+<pre><code>speccer -cmd comment -sec SCENARIO -at 3 -author Jim -set temp.md
 </code></pre>
 
-<p>to set the comment of <code>Jim</code> on the 3rd paragraph of the SCENARIOS section
+<p>to set the comment of <code>Jim</code> on the 3rd paragraph of the SCENARIO section
 to the content of the file <code>temp.md</code>.</p>
 
 <hr />
@@ -503,18 +528,18 @@ to the content of the file <code>temp.md</code>.</p>
 <p>Go into a folder that contains your spec.
 You will need to know the position of the paragraph
 you want to move. Therefor you might want to first
-print all positions of the section (here SCENARIOS)
+print all positions of the section (here SCENARIO)
 with</p>
 
-<pre><code>speccer -cmd positions -sec SCENARIOS
+<pre><code>speccer -cmd positions -sec SCENARIO
 </code></pre>
 
 <p>then you can run</p>
 
-<pre><code>speccer -cmd move -sec SCENARIOS -at 3 -to 1
+<pre><code>speccer -cmd move -sec SCENARIO -at 3 -to 1
 </code></pre>
 
-<p>to move the 3rd paragraph in the SCENARIOS section to be the first.</p>
+<p>to move the 3rd paragraph in the SCENARIO section to be the first.</p>
 
 <hr />
 
@@ -523,18 +548,18 @@ with</p>
 <p>Go into a folder that contains your spec.
 You will need to know the position of the paragraph
 you want to delete. Therefor you might want to first
-print all positions of the section (here SCENARIOS)
+print all positions of the section (here SCENARIO)
 with</p>
 
-<pre><code>speccer -cmd positions -sec SCENARIOS
+<pre><code>speccer -cmd positions -sec SCENARIO
 </code></pre>
 
 <p>then you can run</p>
 
-<pre><code>speccer -cmd rm -sec SCENARIOS -at 3
+<pre><code>speccer -cmd rm -sec SCENARIO -at 3
 </code></pre>
 
-<p>to remove the 3rd paragraph in the SCENARIOS section.</p>
+<p>to remove the 3rd paragraph in the SCENARIO section.</p>
 
 <hr />
 
@@ -543,22 +568,22 @@ with</p>
 <p>Go into a folder that contains your spec.
 You will need to know the position of the paragraph
 you want to see the meta data. Therefor you might want to first
-print all positions of the section (here SCENARIOS)
+print all positions of the section (here SCENARIO)
 with</p>
 
-<pre><code>speccer -cmd positions -sec SCENARIOS
+<pre><code>speccer -cmd positions -sec SCENARIO
 </code></pre>
 
 <p>then you can run</p>
 
-<pre><code>speccer -cmd meta -sec SCENARIOS -at 3
+<pre><code>speccer -cmd meta -sec SCENARIO -at 3
 </code></pre>
 
-<p>to see all meta data of the 3rd paragraph in the SCENARIOS section.</p>
+<p>to see all meta data of the 3rd paragraph in the SCENARIO section.</p>
 
 <p>If you want to change a datum you will have to pass the name:</p>
 
-<pre><code>speccer -cmd meta -sec SCENARIOS -at 3 -name RESPONSIBLE -set Jim
+<pre><code>speccer -cmd meta -sec SCENARIO -at 3 -name RESPONSIBLE -set Jim
 </code></pre>
 
 <hr />

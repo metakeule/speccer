@@ -1,0 +1,587 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>speccer - a CLI tool for specs | Know GmbH</title>
+		<style>
+.spec-project,
+.spec-company,
+.spec-responsible,
+.spec-state,
+.spec-lastupdate,
+.spec-deadline,
+.spec-estimated-hours {
+	overflow: hidden;
+	width: 500px;
+}
+
+.spec-project p,
+.spec-company p,
+.spec-responsible p,
+.spec-state p,
+.spec-lastupdate p,
+.spec-deadline p,
+.spec-estimated-hours p {
+	display: inline-block;
+	margin-left: 12px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	background-color: gray;
+	padding-left: 4px;
+	padding-right: 4px;
+	float: right;
+	text-align: right;
+}
+
+.spec-paragraph {
+	padding: 20px;
+	margin-bottom: 10px;
+	border: 2px solid black;
+}
+
+.spec-state-planning {
+	border-color: red;
+}
+
+.spec-state-approved {
+	border-color: blue;
+}
+
+.spec-state-fully_implemented {
+	border-color: green;
+}
+
+.spec-state-partly_implemented {
+	border-color: yellow;
+}
+
+.spec-section {
+	border: 2px dashed black;
+	padding: 15px;
+	padding-bottom: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.spec-comments {
+	margin-left: 40px;
+	margin-right: 30px;
+	padding: 5px;
+	border: 1px dotted green;
+}
+
+.spec-comment-author {
+	background-color: gray;
+	color: white;
+	text-transform: uppercase;
+}
+
+.spec-comment {
+	border: 2px dotted cyan ;
+	margin-bottom: 15px;
+}
+
+code {
+	background-color: #c0c0c0;
+	padding-left: 4px;
+	padding-right: 4px;
+	font-weight: bold;
+}
+
+blockquote {
+	border: 1px dotted red;
+	padding: 10px;
+	padding-top: 2px;
+	padding-bottom: 5px;
+}
+
+#main {
+	width: 600px;
+}
+
+.spec-end {
+	display: none;
+}
+
+.filters {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+}
+
+.filters li {
+	width: 120px;
+	float: left;
+	margin-right: 10px;
+	color: red;
+}
+
+.filters li.show {
+	color: green;
+}
+</style>
+	</head>
+	<body>
+		<div id="main">
+		<h1>speccer - a CLI tool for specs</h1>
+
+<p><a href="http://rawgithub.com/metakeule/speccer/master/spec.html">HTML</a><br />
+<a href="http://rawgithub.com/metakeule/speccer/master/spec.md">Text (Markdown)</a><br />
+<a href="http://rawgithub.com/metakeule/speccer/master/spec.json">JSON</a></p>
+
+<p>PARENT <a href="http://rawgithub.com/metakeule/speclib/master/spec.html">http://rawgithub.com/metakeule/speclib/master/spec.html</a></p>
+
+<p>PROJECT <code>speclib</code><br />
+COMPANY <code>Know GmbH</code></p>
+
+<p>PERSONS</p>
+
+<ul>
+<li><code>Marc René Arns &lt;linux@marcrenearns.de&gt;</code> (mra)<br /></li>
+</ul>
+
+<p>REQUESTED_BY</p>
+
+<ul>
+<li>mra<br /></li>
+</ul>
+
+<h2>OVERVIEW</h2>
+
+<p><em>speccer</em> is a CLI tool for dealing with specs.
+It is a frontend to the speclib.</p>
+
+<h2>SCENARIOS</h2>
+
+<h3>Create Specification</h3>
+
+<p>Mike wants to create a specification. He gets a clean
+starting point with <code>speccer</code>.</p>
+
+<hr />
+
+<h3>Add comments</h3>
+
+<p>Mike receives comments for his specification.
+He wants to add them without hassle.</p>
+
+<hr />
+
+<h3>See and update specification</h3>
+
+<p>Mike wants to update his specification with is
+editor.</p>
+
+<hr />
+
+<h3>Script</h3>
+
+<p>Gill wants to change specifications with a script.</p>
+
+<hr />
+
+<h3>Import and export</h3>
+
+<p>Gill wants to read import and export specifications
+from different places.</p>
+
+<hr />
+
+<h3>View as HTML and markdown</h3>
+
+<p>Sue wants to read the specifications in HTML and
+be able to mail them as markdown.</p>
+
+<hr />
+
+<h3>Filter for documentation</h3>
+
+<p>Peter wants to create a documentation from the spec and
+wants the unneccessary informations to be filtered.</p>
+
+<hr />
+
+<h3>Filter for implementation</h3>
+
+<p>Anne wants to implement parts of the specification.
+She just wants to read the parts that are ready
+to be implemented.</p>
+
+<h2>DEFINITIONS</h2>
+
+<h3>All definitions of the <code>speclib</code> apply</h3>
+
+<hr />
+
+<h3>-name</h3>
+
+<p>The parameter passed via <code>-name</code> is the name of a spec property (like
+<code>TRANSLATIONS</code> with the command <code>property</code>) or the name of a paragraph
+property (like <code>STATE</code> with the command <code>meta</code>).</p>
+
+<hr />
+
+<h3>-usage</h3>
+
+<p>The parameter passed via <code>-usage</code> is the name of a filter provided by
+<code>speccer</code> for typical usage scenarios.</p>
+
+<p>There are currently:</p>
+
+<ul>
+<li><strong>documentation</strong> filters
+
+<ul>
+<li>META</li>
+<li>COMMENTS</li>
+<li>NONGOALS</li>
+<li>CONTRADICTIONS</li>
+<li>UNDECIDED</li>
+<li>SPEC_END</li>
+<li>RESOURCES</li>
+<li>PLANNING</li>
+<li>APPROVED</li>
+<li>PARTLY_IMPLEMENTED</li>
+<li>OBSOLET</li>
+</ul></li>
+<li><strong>approval</strong> filters
+
+<ul>
+<li>META</li>
+<li>COMMENTS</li>
+<li>CONTRADICTIONS</li>
+<li>UNDECIDED</li>
+<li>SPEC_END</li>
+<li>RESOURCES</li>
+<li>PLANNING</li>
+<li>OBSOLET</li>
+</ul></li>
+<li><strong>discussion</strong> filters
+
+<ul>
+<li>OVERVIEW</li>
+<li>APPROVED</li>
+<li>PARTLY_IMPLEMENTED</li>
+<li>OBSOLET</li>
+<li>SPEC_END</li>
+</ul></li>
+<li><strong>implementation</strong> filters
+
+<ul>
+<li>UNDECIDED</li>
+<li>PLANNING</li>
+<li>FULLY_IMPLEMENTED</li>
+<li>OBSOLET</li>
+</ul></li>
+</ul>
+
+<h2>FEATURES</h2>
+
+<h3>create a new spec</h3>
+
+<p>Go into a folder that should contain your spec and run</p>
+
+<pre><code>speccer -cmd create
+</code></pre>
+
+<p>Creates a file <code>spec.json</code> in the current folder and exports it
+as <code>spec.md</code> (Markdown) and <code>spec.html</code> (HTML).</p>
+
+<p>If the <code>-language</code> parameter is set (to e.g. <code>en_US</code>) it creates
+the following files instead:
+- <code>spec_en_US.json</code>
+- <code>spec_en_US.md</code>
+- <code>spec_en_US.html</code></p>
+
+<p>Be aware that the new spec is not valid since there are missing
+properties. You can s validate a spec to see them:</p>
+
+<pre><code>speccer -cmd validate
+</code></pre>
+
+<hr />
+
+<h3>validate a spec</h3>
+
+<p>Go into a folder that contains your spec and run</p>
+
+<pre><code>speccer -cmd validate
+</code></pre>
+
+<p>It it returns nothing your spec is valid.</p>
+
+<hr />
+
+<h3>recreate HTML and markdown export based on current spec.json</h3>
+
+<p>Go into a folder that contains your spec and run</p>
+
+<pre><code>speccer -cmd save
+</code></pre>
+
+<hr />
+
+<h3>export markdown to stdout without overwriting json.md</h3>
+
+<p>Go into a folder that contains your spec and run</p>
+
+<pre><code>speccer -cmd markdown
+</code></pre>
+
+<p>You might also pass the usage option to filter out some data, e.g.</p>
+
+<pre><code>speccer -cmd markdown -usage &quot;documentation&quot;
+</code></pre>
+
+<hr />
+
+<h3>export HTML to stdout without overwriting json.html</h3>
+
+<p>Go into a folder that contains your spec and run</p>
+
+<pre><code>speccer -cmd html
+</code></pre>
+
+<p>You might also pass the usage option to filter out some data, e.g.</p>
+
+<pre><code>speccer -cmd html -usage &quot;documentation&quot;
+</code></pre>
+
+<hr />
+
+<h3>print property of spec</h3>
+
+<p>Go into a folder that contains your spec and run</p>
+
+<pre><code>speccer -cmd property -name COMPANY
+</code></pre>
+
+<p>to print the COMPANY property. The properties are
+all written in high caps and defined in <code>speclib</code>.</p>
+
+<hr />
+
+<h3>set property of spec</h3>
+
+<p>Go into a folder that contains your spec and run</p>
+
+<pre><code>speccer -cmd property -name COMPANY -set acme
+</code></pre>
+
+<p>to set the <code>COMPANY</code> property to <code>acme</code>. The properties are
+all written in high caps and defined in <code>speclib</code>.</p>
+
+<hr />
+
+<h3>unset property of spec</h3>
+
+<p>Go into a folder that contains your spec and run</p>
+
+<pre><code>speccer -cmd property -name PARENT -uset
+</code></pre>
+
+<p>to unset the <code>PARENT</code> property. Only the following properties can
+be unset:</p>
+
+<ul>
+<li>REQUESTEDBY</li>
+<li>RELATED</li>
+<li>TRANSLATIONS</li>
+<li>SUPERSEDEDBY</li>
+<li>RESOURCES</li>
+<li>PARENT</li>
+<li>PERSONS</li>
+</ul>
+
+<hr />
+
+<h3>add markdown text to a section</h3>
+
+<p>Go into a folder that contains your spec and write your text
+into a file, let&rsquo;s say <code>new.md</code> and then run</p>
+
+<pre><code>speccer -cmd add -sec SCENARIOS -resp 'Your Name' -set new.md
+</code></pre>
+
+<p>to add the content of the file to the SCENARIOS sections.
+The available sections are defined in the <code>speclib</code>.</p>
+
+<hr />
+
+<h3>show list of paragraphs of a section</h3>
+
+<p>Go into a folder that contains your spec and run</p>
+
+<pre><code>speccer -cmd positions -sec SCENARIOS
+</code></pre>
+
+<p>to see a list of all paragraphs of the SCENARIOS section.
+Each paragraph has the first line printed preceeded by
+a number indicating the position of the paragraph inside
+the section. This position can be used to print or change
+the paragraph.</p>
+
+<hr />
+
+<h3>show content of a paragraphs of a section</h3>
+
+<p>Go into a folder that contains your spec.
+You will need to know the position of the paragraph
+you want to see. Therefor you might want to first
+print all positions of the section (here SCENARIOS)
+with</p>
+
+<pre><code>speccer -cmd positions -sec SCENARIOS
+</code></pre>
+
+<p>then you can run</p>
+
+<pre><code>speccer -cmd text -sec SCENARIOS -at 3
+</code></pre>
+
+<p>to see the text and comments for the 3rd paragraph in the
+SCENARIOS section.</p>
+
+<hr />
+
+<h3>change content of a paragraphs of a section</h3>
+
+<p>Go into a folder that contains your spec.
+You will need to know the position of the paragraph
+you want to see. Therefor you might want to first
+print all positions of the section (here SCENARIOS)
+with</p>
+
+<pre><code>speccer -cmd positions -sec SCENARIOS
+</code></pre>
+
+<p>then you can run</p>
+
+<pre><code>speccer -cmd text -sec SCENARIOS -at 3 &gt; temp.md
+</code></pre>
+
+<p>to save the current text and comments for the 3rd paragraph in the
+SCENARIOS section to the file <code>temp.md</code>.</p>
+
+<p>Now fire up your editor to change the content. Please don&rsquo;t forget to
+remove the comments at the end or you will have duplicates.</p>
+
+<p>Then run</p>
+
+<pre><code>speccer -cmd text -sec SCENARIOS -at 3 -set temp.md
+</code></pre>
+
+<p>to set the text of the 3rd paragraph in the SCENARIOS section.
+The comments to the 3rd paragraph are not modified by this.
+So you may want to change them too.</p>
+
+<hr />
+
+<h3>see, add and change comment to a paragraph of a section</h3>
+
+<p>Go into a folder that contains your spec.
+You will need to know the position of the paragraph
+you want to see. Therefor you might want to first
+print all positions of the section (here SCENARIOS)
+with</p>
+
+<pre><code>speccer -cmd positions -sec SCENARIOS
+</code></pre>
+
+<p>then you can run</p>
+
+<pre><code>speccer -cmd comment -sec SCENARIOS -at 3
+</code></pre>
+
+<p>to see the current comments for the 3rd paragraph in the
+SCENARIOS section.</p>
+
+<p>Now if the author of your comment already made a comment to
+this paragraph and if you want to append to this old comment,
+you first have to save the old one.</p>
+
+<p>To do this, run</p>
+
+<pre><code>speccer -cmd comment -sec SCENARIOS -at 3 -author Jim &gt; temp.md
+</code></pre>
+
+<p>to save the comment of <code>Jim</code> to the file <code>temp.md</code>. Then you can edit this
+file. If you just want to remove the old comment or if there was no
+comment you may simply start with an empty file <code>temp.md</code>.</p>
+
+<p>After you edited the file, run</p>
+
+<pre><code>speccer -cmd comment -sec SCENARIOS -at 3 -author Jim -set temp.md
+</code></pre>
+
+<p>to set the comment of <code>Jim</code> on the 3rd paragraph of the SCENARIOS section
+to the content of the file <code>temp.md</code>.</p>
+
+<hr />
+
+<h3>move a paragraph of a section</h3>
+
+<p>Go into a folder that contains your spec.
+You will need to know the position of the paragraph
+you want to move. Therefor you might want to first
+print all positions of the section (here SCENARIOS)
+with</p>
+
+<pre><code>speccer -cmd positions -sec SCENARIOS
+</code></pre>
+
+<p>then you can run</p>
+
+<pre><code>speccer -cmd move -sec SCENARIOS -at 3 -to 1
+</code></pre>
+
+<p>to move the 3rd paragraph in the SCENARIOS section to be the first.</p>
+
+<hr />
+
+<h3>delete a paragraph of a section</h3>
+
+<p>Go into a folder that contains your spec.
+You will need to know the position of the paragraph
+you want to delete. Therefor you might want to first
+print all positions of the section (here SCENARIOS)
+with</p>
+
+<pre><code>speccer -cmd positions -sec SCENARIOS
+</code></pre>
+
+<p>then you can run</p>
+
+<pre><code>speccer -cmd rm -sec SCENARIOS -at 3
+</code></pre>
+
+<p>to remove the 3rd paragraph in the SCENARIOS section.</p>
+
+<hr />
+
+<h3>see and change meta data of a paragraph of a section</h3>
+
+<p>Go into a folder that contains your spec.
+You will need to know the position of the paragraph
+you want to see the meta data. Therefor you might want to first
+print all positions of the section (here SCENARIOS)
+with</p>
+
+<pre><code>speccer -cmd positions -sec SCENARIOS
+</code></pre>
+
+<p>then you can run</p>
+
+<pre><code>speccer -cmd meta -sec SCENARIOS -at 3
+</code></pre>
+
+<p>to see all meta data of the 3rd paragraph in the SCENARIOS section.</p>
+
+<p>If you want to change a datum you will have to pass the name:</p>
+
+<pre><code>speccer -cmd meta -sec SCENARIOS -at 3 -name RESPONSIBLE -set Jim
+</code></pre>
+
+		</div>
+	</body>
+</html>

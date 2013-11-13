@@ -24,6 +24,8 @@ func (s *speccer) initFlags() {
 	flag.StringVar(&s.Args.Usage, "usage", "", "filters for typical use cases as 'documentation', 'approval', 'discussion', 'implementation'")
 	flag.StringVar(&s.Args.Filter, "filter", "", "filter to filter out things from html or markdown")
 	flag.StringVar(&s.Args.CMD, "cmd", "", "command that should be run")
+	flag.BoolVar(&s.Args.IncludeComments, "with-comments", false, "include comments in paragraph output")
+	flag.BoolVar(&s.Args.IncludeMeta, "with-meta", false, "include meta information in paragraph output")
 }
 
 func (s *speccer) initSections() {

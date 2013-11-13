@@ -125,11 +125,11 @@ blockquote {
 		<div id="main">
 		<h1>speccer - a CLI tool for specs</h1>
 
-<p><a href="http://rawgithub.com/metakeule/speccer/master/spec.html">HTML</a><br />
-<a href="http://rawgithub.com/metakeule/speccer/master/spec.md">Text (Markdown)</a><br />
-<a href="http://rawgithub.com/metakeule/speccer/master/spec.json">JSON</a></p>
+<p><a href="http://rawgithub.com/metakeule/speccer/master/spec/spec.html">HTML</a><br />
+<a href="http://rawgithub.com/metakeule/speccer/master/spec/spec.md">Text (Markdown)</a><br />
+<a href="http://rawgithub.com/metakeule/speccer/master/spec/spec.json">JSON</a></p>
 
-<p>PARENT <a href="http://rawgithub.com/metakeule/speclib/master/spec.html">http://rawgithub.com/metakeule/speclib/master/spec.html</a></p>
+<p>PARENT <a href="http://rawgithub.com/metakeule/speclib/master/spec/spec.html">http://rawgithub.com/metakeule/speclib/master/spec/spec.html</a></p>
 
 <p>PROJECT <code>speclib</code><br />
 COMPANY <code>Know GmbH</code></p>
@@ -152,8 +152,9 @@ COMPANY <code>Know GmbH</code></p>
 STATE <code>FULLY_IMPLEMENTED</code> LASTUPDATE <code>2013-11-13</code><br />
 DEADLINE <code>2013-11-11</code> ESTIMATEDHOURS <code>0</code></p>
 
-<p><em>speccer</em> is a CLI tool for dealing with specs.
-It is a frontend to the speclib.</p>
+<p><a href="https://github.com/metakeule/speccer"><em>speccer</em></a> is a CLI tool for dealing with specs.</p>
+
+<p>It is a frontend to the <a href="https://github.com/metakeule/speclib">speclib</a>.</p>
 
 <h2>SCENARIOS</h2>
 
@@ -538,10 +539,6 @@ property (like <code>STATE</code> with the command <code>meta</code>).</p>
 STATE <code>FULLY_IMPLEMENTED</code> LASTUPDATE <code>2013-11-13</code><br />
 DEADLINE <code>2013-11-12</code> ESTIMATEDHOURS <code>1</code></p>
 
-<p>RESPONSIBLE <code>mra</code><br />
-STATE <code>FULLY_IMPLEMENTED</code> LASTUPDATE <code>2013-11-12</code><br />
-DEADLINE <code>2013-11-12</code> ESTIMATEDHOURS <code>1</code></p>
-
 <h3>-usage</h3>
 
 <p>The parameter passed via <code>-usage</code> is the name of a filter provided by
@@ -786,7 +783,7 @@ the paragraph.</p>
 <hr />
 
 <p>RESPONSIBLE <code>mra</code><br />
-STATE <code>FULLY_IMPLEMENTED</code> LASTUPDATE <code>2013-11-12</code><br />
+STATE <code>FULLY_IMPLEMENTED</code> LASTUPDATE <code>2013-11-13</code><br />
 DEADLINE <code>2013-11-12</code> ESTIMATEDHOURS <code>1</code></p>
 
 <h3>show content of a paragraphs of a section</h3>
@@ -805,13 +802,18 @@ with</p>
 <pre><code>speccer -cmd text -sec SCENARIOS -at 3
 </code></pre>
 
-<p>to see the text and comments for the 3rd paragraph in the
+<p>to see the text for the 3rd paragraph in the
 SCENARIOS section.</p>
+
+<p>If you want to include comments and meta data, run</p>
+
+<pre><code>speccer -cmd text -sec SCENARIOS -at 3 -with-comments -with-meta
+</code></pre>
 
 <hr />
 
 <p>RESPONSIBLE <code>mra</code><br />
-STATE <code>FULLY_IMPLEMENTED</code> LASTUPDATE <code>2013-11-12</code><br />
+STATE <code>FULLY_IMPLEMENTED</code> LASTUPDATE <code>2013-11-13</code><br />
 DEADLINE <code>2013-11-12</code> ESTIMATEDHOURS <code>1</code></p>
 
 <h3>change content of a paragraphs of a section</h3>
@@ -833,17 +835,15 @@ with</p>
 <p>to save the current text and comments for the 3rd paragraph in the
 SCENARIOS section to the file <code>temp.md</code>.</p>
 
-<p>Now fire up your editor to change the content. Please don&rsquo;t forget to
-remove the comments at the end or you will have duplicates.</p>
-
-<p>Then run</p>
+<p>Now fire up your editor to change the content. Then run</p>
 
 <pre><code>speccer -cmd text -sec SCENARIOS -at 3 -set temp.md
 </code></pre>
 
-<p>to set the text of the 3rd paragraph in the SCENARIOS section.
-The comments to the 3rd paragraph are not modified by this.
-So you may want to change them too.</p>
+<p>to set the text of the 3rd paragraph in the SCENARIOS section.</p>
+
+<p>The comments and meta data of the 3rd paragraph are not modified
+by this operation. So you may want to change them too.</p>
 
 <hr />
 

@@ -75,6 +75,14 @@ alias spec-FEATURE-at='speccer -cmd text -sec FEATURES -at';
 alias spec-NONGOAL-at='speccer -cmd text -sec NONGOALS -at';
 alias spec-UNDECIDED-at='speccer -cmd text -sec UNDECIDED -at';
 
+alias spec-OVERVIEW-full='speccer -cmd text -sec OVERVIEW -with-comments -with-meta';
+alias spec-SCENARIO-full-at='speccer -cmd text -sec SCENARIOS -with-comments -with-meta -at';
+alias spec-CONTRADICTION-full-at='speccer -cmd text -sec CONTRADICTIONS -with-comments -with-meta -at';
+alias spec-DEFINITION-full-at='speccer -cmd text -sec DEFINITIONS -with-comments -with-meta -at';
+alias spec-FEATURE-full-at='speccer -cmd text -sec FEATURES -with-comments -with-meta -at';
+alias spec-NONGOAL-full-at='speccer -cmd text -sec NONGOALS -with-comments -with-meta -at';
+alias spec-UNDECIDED-full-at='speccer -cmd text -sec UNDECIDED -with-comments -with-meta -at';
+
 # Get list of Paragraphs for a section
 alias spec-ls='speccer -cmd positions';
 alias spec-ls-SCENARIO='speccer -cmd positions -sec SCENARIOS';

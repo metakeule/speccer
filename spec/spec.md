@@ -1,9 +1,9 @@
 # speccer - a CLI tool for specs  
-[HTML](http://rawgithub.com/metakeule/speccer/master/spec.html)  
-[Text (Markdown)](http://rawgithub.com/metakeule/speccer/master/spec.md)  
-[JSON](http://rawgithub.com/metakeule/speccer/master/spec.json)  
+[HTML](http://rawgithub.com/metakeule/speccer/master/spec/spec.html)  
+[Text (Markdown)](http://rawgithub.com/metakeule/speccer/master/spec/spec.md)  
+[JSON](http://rawgithub.com/metakeule/speccer/master/spec/spec.json)  
 
-PARENT <http://rawgithub.com/metakeule/speclib/master/spec.html>  
+PARENT <http://rawgithub.com/metakeule/speclib/master/spec/spec.html>  
 
 PROJECT `speclib`  
 COMPANY `Know GmbH`  
@@ -22,8 +22,11 @@ RESPONSIBLE `mra`
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-13`  
 DEADLINE `2013-11-11` ESTIMATEDHOURS `0`  
 
-*speccer* is a CLI tool for dealing with specs.
-It is a frontend to the speclib.
+[*speccer*](https://github.com/metakeule/speccer) is a CLI tool for dealing with specs.
+
+It is a frontend to the [speclib](https://github.com/metakeule/speclib).
+
+
 
 
 ## SCENARIOS
@@ -418,10 +421,6 @@ RESPONSIBLE `mra`
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-13`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
-RESPONSIBLE `mra`  
-STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
-DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
-
 ### -usage
 
 The parameter passed via `-usage` is the name of a filter provided by
@@ -462,10 +461,6 @@ There are currently:
   - PLANNING
   - FULLY_IMPLEMENTED
   - OBSOLET
-
-
-
-
 
 
 ## FEATURES
@@ -663,7 +658,7 @@ the paragraph.
 ******
 
 RESPONSIBLE `mra`  
-STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
+STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-13`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
 ### show content of a paragraphs of a section
@@ -680,13 +675,18 @@ then you can run
 
     speccer -cmd text -sec SCENARIOS -at 3
 
-to see the text and comments for the 3rd paragraph in the
+to see the text for the 3rd paragraph in the
 SCENARIOS section.
+
+If you want to include comments and meta data, run
+
+    speccer -cmd text -sec SCENARIOS -at 3 -with-comments -with-meta
+
 
 ******
 
 RESPONSIBLE `mra`  
-STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
+STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-13`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
 ### change content of a paragraphs of a section
@@ -706,16 +706,16 @@ then you can run
 to save the current text and comments for the 3rd paragraph in the
 SCENARIOS section to the file `temp.md`.
 
-Now fire up your editor to change the content. Please don't forget to
-remove the comments at the end or you will have duplicates.
-
-Then run
+Now fire up your editor to change the content. Then run
 
     speccer -cmd text -sec SCENARIOS -at 3 -set temp.md
 
 to set the text of the 3rd paragraph in the SCENARIOS section.
-The comments to the 3rd paragraph are not modified by this.
-So you may want to change them too.
+
+The comments and meta data of the 3rd paragraph are not modified 
+by this operation. So you may want to change them too.
+
+
 
 ******
 

@@ -1,6 +1,6 @@
 {
   "Responsible": "mra",
-  "Text": "*speccer* is a CLI tool for dealing with specs.\nIt is a frontend to the speclib.\n",
+  "Text": "[*speccer*](https://github.com/metakeule/speccer) is a CLI tool for dealing with specs.\n\nIt is a frontend to the [speclib](https://github.com/metakeule/speclib).\n\n\n",
   "Comments": {},
   "LastUpdate": "2013-11-13",
   "State": "FULLY_IMPLEMENTED",
@@ -9,7 +9,7 @@
   "Company": "Know GmbH",
   "Project": "speclib",
   "Title": "speccer - a CLI tool for specs",
-  "URL": "http://rawgithub.com/metakeule/speccer/master/spec",
+  "URL": "http://rawgithub.com/metakeule/speccer/master/spec/spec",
   "Language": "en_EN",
   "DateFormat": "YYYY-MM-DD",
   "RequestedBy": [
@@ -22,7 +22,7 @@
   "Persons": {
     "mra": "Marc René Arns \u003clinux@marcrenearns.de\u003e"
   },
-  "Parent": "http://rawgithub.com/metakeule/speclib/master/spec.html",
+  "Parent": "http://rawgithub.com/metakeule/speclib/master/spec/spec.html",
   "Sections": {
     "CONTRADICTIONS": [
       {
@@ -58,7 +58,7 @@
       },
       {
         "Responsible": "mra",
-        "Text": "RESPONSIBLE `mra`  \nSTATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  \nDEADLINE `2013-11-12` ESTIMATEDHOURS `1`  \n\n### -usage\n\nThe parameter passed via `-usage` is the name of a filter provided by\n`speccer` for typical usage scenarios.\n\nThere are currently:\n\n- **documentation** filters \n  - PROPERTIES\n  - META\n  - COMMENTS\n  - NONGOALS\n  - CONTRADICTIONS\n  - UNDECIDED\n  - SPEC_END\n  - RESOURCES\n  - PLANNING\n  - APPROVED\n  - PARTLY_IMPLEMENTED\n  - OBSOLET\n- **approval** filters\n  - META\n  - COMMENTS\n  - CONTRADICTIONS\n  - UNDECIDED\n  - SPEC_END\n  - RESOURCES\n  - PLANNING\n  - OBSOLET\n- **discussion** filters\n  - OVERVIEW\n  - APPROVED\n  - PARTLY_IMPLEMENTED\n  - OBSOLET\n  - SPEC_END\n- **implementation** filters\n  - UNDECIDED\n  - PLANNING\n  - FULLY_IMPLEMENTED\n  - OBSOLET\n\n\n\n\n",
+        "Text": "### -usage\n\nThe parameter passed via `-usage` is the name of a filter provided by\n`speccer` for typical usage scenarios.\n\nThere are currently:\n\n- **documentation** filters \n  - PROPERTIES\n  - META\n  - COMMENTS\n  - NONGOALS\n  - CONTRADICTIONS\n  - UNDECIDED\n  - SPEC_END\n  - RESOURCES\n  - PLANNING\n  - APPROVED\n  - PARTLY_IMPLEMENTED\n  - OBSOLET\n- **approval** filters\n  - META\n  - COMMENTS\n  - CONTRADICTIONS\n  - UNDECIDED\n  - SPEC_END\n  - RESOURCES\n  - PLANNING\n  - OBSOLET\n- **discussion** filters\n  - OVERVIEW\n  - APPROVED\n  - PARTLY_IMPLEMENTED\n  - OBSOLET\n  - SPEC_END\n- **implementation** filters\n  - UNDECIDED\n  - PLANNING\n  - FULLY_IMPLEMENTED\n  - OBSOLET\n",
         "Comments": {},
         "LastUpdate": "2013-11-13",
         "State": "FULLY_IMPLEMENTED",
@@ -159,18 +159,18 @@
       },
       {
         "Responsible": "mra",
-        "Text": "### show content of a paragraphs of a section\n\nGo into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see. Therefor you might want to first \nprint all positions of the section (here SCENARIOS) \nwith\n\n    speccer -cmd positions -sec SCENARIOS\n\nthen you can run\n\n    speccer -cmd text -sec SCENARIOS -at 3\n\nto see the text and comments for the 3rd paragraph in the\nSCENARIOS section.",
+        "Text": "### show content of a paragraphs of a section\n\nGo into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see. Therefor you might want to first \nprint all positions of the section (here SCENARIOS) \nwith\n\n    speccer -cmd positions -sec SCENARIOS\n\nthen you can run\n\n    speccer -cmd text -sec SCENARIOS -at 3\n\nto see the text for the 3rd paragraph in the\nSCENARIOS section.\n\nIf you want to include comments and meta data, run\n\n    speccer -cmd text -sec SCENARIOS -at 3 -with-comments -with-meta\n",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-13",
         "State": "FULLY_IMPLEMENTED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
       },
       {
         "Responsible": "mra",
-        "Text": "### change content of a paragraphs of a section\n\nGo into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see. Therefor you might want to first \nprint all positions of the section (here SCENARIOS) \nwith\n\n    speccer -cmd positions -sec SCENARIOS\n\nthen you can run\n\n    speccer -cmd text -sec SCENARIOS -at 3 \u003e temp.md\n\nto save the current text and comments for the 3rd paragraph in the\nSCENARIOS section to the file `temp.md`.\n\nNow fire up your editor to change the content. Please don't forget to\nremove the comments at the end or you will have duplicates.\n\nThen run\n\n    speccer -cmd text -sec SCENARIOS -at 3 -set temp.md\n\nto set the text of the 3rd paragraph in the SCENARIOS section.\nThe comments to the 3rd paragraph are not modified by this.\nSo you may want to change them too.",
+        "Text": "### change content of a paragraphs of a section\n\nGo into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see. Therefor you might want to first \nprint all positions of the section (here SCENARIOS) \nwith\n\n    speccer -cmd positions -sec SCENARIOS\n\nthen you can run\n\n    speccer -cmd text -sec SCENARIOS -at 3 \u003e temp.md\n\nto save the current text and comments for the 3rd paragraph in the\nSCENARIOS section to the file `temp.md`.\n\nNow fire up your editor to change the content. Then run\n\n    speccer -cmd text -sec SCENARIOS -at 3 -set temp.md\n\nto set the text of the 3rd paragraph in the SCENARIOS section.\n\nThe comments and meta data of the 3rd paragraph are not modified \nby this operation. So you may want to change them too.\n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-13",
         "State": "FULLY_IMPLEMENTED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1

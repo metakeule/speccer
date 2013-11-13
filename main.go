@@ -23,6 +23,8 @@ type args struct {
 	Filter           string
 	CMD              string
 	Usage            string
+	IncludeComments  bool
+	IncludeMeta      bool
 }
 
 type speccer struct {

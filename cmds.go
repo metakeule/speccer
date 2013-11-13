@@ -169,7 +169,16 @@ func (s *speccer) textCMD() error {
 		s.Paragraph.Update()
 		return nil
 	}
-	fmt.Println(s.Paragraph.Markdown(nil))
+	filter := &speclib.Filter{}
+	filter.META = true
+	if s.Args.IncludeMeta {
+		filter.META = false
+	}
+	filter.COMMENTS = true
+	if s.Args.IncludeComments {
+		filter.COMMENTS = false
+	}
+	fmt.Println(s.Paragraph.Markdown(filter))
 	return nil
 }
 

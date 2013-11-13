@@ -3,7 +3,7 @@
 [Text (Markdown)](http://rawgithub.com/metakeule/speccer/master/spec.md)  
 [JSON](http://rawgithub.com/metakeule/speccer/master/spec.json)  
 
-PARENT <http://rawgithub.com/metakeule/speclib/master/spec>  
+PARENT <http://rawgithub.com/metakeule/speclib/master/spec.html>  
 
 PROJECT `speclib`  
 COMPANY `Know GmbH`  

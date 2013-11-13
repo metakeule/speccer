@@ -46,7 +46,8 @@ func (s *speccer) runCMD() error {
 func (s *speccer) createCMD() error {
 	s.shouldSave = true
 	if s.Args.Language == "" {
-		return fmt.Errorf("no language set")
+		s.Args.Language = "en_US"
+		//	return fmt.Errorf("no language set")
 	}
 	s.Spec = speclib.New("YYYY-MM-DD", s.Args.Language, "")
 	return nil

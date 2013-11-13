@@ -47,6 +47,14 @@ var Speccer = &speccer{
 	Args:     &args{},
 }
 
+func (s *speccer) setJsonFileToCreate() {
+	if s.Args.Language != "" {
+		s.File = filepath.Join(s.PWD, "spec_"+s.Args.Language+".json")
+	} else {
+		s.File = filepath.Join(s.PWD, "spec.json")
+	}
+}
+
 func (s *speccer) findJsonFile() error {
 	if s.Args.Language != "" {
 		s.File = filepath.Join(s.PWD, "spec_"+s.Args.Language+".json")

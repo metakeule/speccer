@@ -56,9 +56,14 @@ func (s *speccer) init() (err error) {
 	if s.Args.TargetPosition > -1 {
 		s.Args.TargetPosition--
 	}
-	err = s.findJsonFile()
 
+	/*
+		if s.Args.CMD == "create" && s.Args.Language == "" {
+			s.Args.Language = "en_US"
+		}
+	*/
 	if s.Args.CMD != "create" {
+		err = s.findJsonFile()
 		if err != nil {
 			return
 		}
@@ -67,6 +72,8 @@ func (s *speccer) init() (err error) {
 		if err != nil {
 			return
 		}
+	} else {
+		s.setJsonFileToCreate()
 	}
 	err = s.setFilter()
 	if err != nil {

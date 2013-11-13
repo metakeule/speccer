@@ -415,6 +415,10 @@ property (like `STATE` with the command `meta`).
 ******
 
 RESPONSIBLE `mra`  
+STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-13`  
+DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
+
+RESPONSIBLE `mra`  
 STATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  
 DEADLINE `2013-11-12` ESTIMATEDHOURS `1`  
 
@@ -426,6 +430,7 @@ The parameter passed via `-usage` is the name of a filter provided by
 There are currently:
 
 - **documentation** filters 
+  - PROPERTIES
   - META
   - COMMENTS
   - NONGOALS
@@ -457,6 +462,8 @@ There are currently:
   - PLANNING
   - FULLY_IMPLEMENTED
   - OBSOLET
+
+
 
 
 

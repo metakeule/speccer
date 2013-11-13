@@ -58,9 +58,9 @@
       },
       {
         "Responsible": "mra",
-        "Text": "### -usage\n\nThe parameter passed via `-usage` is the name of a filter provided by\n`speccer` for typical usage scenarios.\n\nThere are currently:\n\n- **documentation** filters \n  - META\n  - COMMENTS\n  - NONGOALS\n  - CONTRADICTIONS\n  - UNDECIDED\n  - SPEC_END\n  - RESOURCES\n  - PLANNING\n  - APPROVED\n  - PARTLY_IMPLEMENTED\n  - OBSOLET\n- **approval** filters\n  - META\n  - COMMENTS\n  - CONTRADICTIONS\n  - UNDECIDED\n  - SPEC_END\n  - RESOURCES\n  - PLANNING\n  - OBSOLET\n- **discussion** filters\n  - OVERVIEW\n  - APPROVED\n  - PARTLY_IMPLEMENTED\n  - OBSOLET\n  - SPEC_END\n- **implementation** filters\n  - UNDECIDED\n  - PLANNING\n  - FULLY_IMPLEMENTED\n  - OBSOLET\n\n\n",
+        "Text": "RESPONSIBLE `mra`  \nSTATE `FULLY_IMPLEMENTED` LASTUPDATE `2013-11-12`  \nDEADLINE `2013-11-12` ESTIMATEDHOURS `1`  \n\n### -usage\n\nThe parameter passed via `-usage` is the name of a filter provided by\n`speccer` for typical usage scenarios.\n\nThere are currently:\n\n- **documentation** filters \n  - PROPERTIES\n  - META\n  - COMMENTS\n  - NONGOALS\n  - CONTRADICTIONS\n  - UNDECIDED\n  - SPEC_END\n  - RESOURCES\n  - PLANNING\n  - APPROVED\n  - PARTLY_IMPLEMENTED\n  - OBSOLET\n- **approval** filters\n  - META\n  - COMMENTS\n  - CONTRADICTIONS\n  - UNDECIDED\n  - SPEC_END\n  - RESOURCES\n  - PLANNING\n  - OBSOLET\n- **discussion** filters\n  - OVERVIEW\n  - APPROVED\n  - PARTLY_IMPLEMENTED\n  - OBSOLET\n  - SPEC_END\n- **implementation** filters\n  - UNDECIDED\n  - PLANNING\n  - FULLY_IMPLEMENTED\n  - OBSOLET\n\n\n\n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-13",
         "State": "FULLY_IMPLEMENTED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1

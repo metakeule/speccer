@@ -95,6 +95,7 @@ func (s *speccer) setFilter() error {
 	}
 	switch s.Args.Usage {
 	case "documentation":
+		s.Filter.PROPERTIES = true
 		s.Filter.META = true
 		s.Filter.COMMENTS = true
 		s.Filter.NONGOALS = true

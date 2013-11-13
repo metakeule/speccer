@@ -28,6 +28,12 @@ func (s *speccer) runCMD() error {
 		return s.textCMD()
 	case "meta":
 		return s.metaCMD()
+	case "add-multi":
+		return s.addMultiCMD()
+	case "comment-multi":
+		return s.commentMultiCMD()
+	case "pack":
+		return s.packCMD()
 	case "add":
 		return s.addCMD()
 	case "rm":
@@ -280,6 +286,14 @@ func (s *speccer) commentCMD() error {
 		s.shouldPrint = s.Paragraph.CommentsMarkdown()
 	}
 	return nil
+}
+
+func (s *speccer) commentsForParagraph() {
+	var buffer bytes.Buffer
+	for author, comment := range s.Paragraph {
+		pre := "***\n"
+		fmt.Fprintf(&buffer, "%s%s  \n\n%s\n", pre, author, comment)
+	}
 }
 
 func (s *speccer) moveCMD() error {

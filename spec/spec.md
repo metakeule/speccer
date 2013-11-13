@@ -1204,4 +1204,90 @@ Then you will have access to the following shortcuts
 
 
 
+******
+
+
+## FEATURE 18 adding multiple paragraphs to a section in one go
+
+RESPONSIBLE `benny`  
+STATE `PLANNING` LASTUPDATE `2013-11-13`  
+DEADLINE `2013-11-13` ESTIMATEDHOURS `1`  
+
+Go into a folder that contains your spec.
+
+Create a new file (e.g. `new.md`) and write your paragraphs
+into this file.
+
+Each paragraph should hold its title inside its first line
+and should end with a line containing `***`.
+
+Then run
+
+    speccer -cmd add-multi -sec SCENARIO -resp Jim -set new.md
+
+to add multiple paragraphs to the SCENARIO section as defined in
+`new.md` with all having the responsible set to Jim.
+
+
+
+******
+
+
+## FEATURE 19 setting multiple comments to a paragraph in one go
+
+RESPONSIBLE `benny`  
+STATE `PLANNING` LASTUPDATE `2013-11-13`  
+DEADLINE `2013-11-13` ESTIMATEDHOURS `1`  
+
+Go into a folder that contains your spec.
+
+Create a new file (e.g. `new.md`) and write the comments
+into this file.
+
+Each comment should hold its author inside the first line
+and should end with a line containing `***`
+
+You will need to know the position of the paragraph
+you want to set the comments to. Therefor you might want to first 
+print all positions of the section (here SCENARIO) 
+with
+
+    speccer -cmd positions -sec SCENARIO
+
+then you can run
+
+    speccer -cmd comment-multi -sec SCENARIO -at 3 -set new.md
+
+to set multiple comments to the 3rd paragraph of the SCENARIO section as defined in `new.md`.
+
+    
+
+******
+
+
+## FEATURE 20 packing multiple paragraphs to one single paragraph
+
+RESPONSIBLE `benny`  
+STATE `PLANNING` LASTUPDATE `2013-11-13`  
+DEADLINE `2013-11-13` ESTIMATEDHOURS `1`  
+
+Go into a folder that contains your spec.
+
+You will need to know the positions of the paragraph you want
+to pack. Therefor you might want to first 
+print all positions of the section (here SCENARIO) 
+with
+
+    speccer -cmd positions -sec SCENARIO
+
+then you can run
+
+    speccer -cmd pack -sec SCENARIO -packing '[3,4,5]' -resp Jim -title 'all together'
+
+to pack the paragraphs no 3,4 and 5 of the SCENARIO section into a
+new paragraph with the title 'all together' and the responsible 'Jim'.
+The previous titles are inserted as subheadings and the previous paragraphs
+are deleted.
+
+
 # SPEC_END

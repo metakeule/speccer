@@ -250,6 +250,36 @@
         "State": "FULLY_IMPLEMENTED",
         "Deadline": "2013-11-13",
         "EstimatedHours": 1
+      },
+      {
+        "Responsible": "benny",
+        "Title": "adding multiple paragraphs to a section in one go",
+        "Text": "Go into a folder that contains your spec.\n\nCreate a new file (e.g. `new.md`) and write your paragraphs\ninto this file.\n\nEach paragraph should hold its title inside its first line\nand should end with a line containing `***`.\n\nThen run\n\n    speccer -cmd add-multi -sec SCENARIO -resp Jim -set new.md\n\nto add multiple paragraphs to the SCENARIO section as defined in\n`new.md` with all having the responsible set to Jim.\n\n",
+        "Comments": {},
+        "LastUpdate": "2013-11-13",
+        "State": "PLANNING",
+        "Deadline": "2013-11-13",
+        "EstimatedHours": 1
+      },
+      {
+        "Responsible": "benny",
+        "Title": "setting multiple comments to a paragraph in one go",
+        "Text": "Go into a folder that contains your spec.\n\nCreate a new file (e.g. `new.md`) and write the comments\ninto this file.\n\nEach comment should hold its author inside the first line\nand should end with a line containing `***`\n\nYou will need to know the position of the paragraph\nyou want to set the comments to. Therefor you might want to first \nprint all positions of the section (here SCENARIO) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd comment-multi -sec SCENARIO -at 3 -set new.md\n\nto set multiple comments to the 3rd paragraph of the SCENARIO section as defined in `new.md`.\n\n    ",
+        "Comments": {},
+        "LastUpdate": "2013-11-13",
+        "State": "PLANNING",
+        "Deadline": "2013-11-13",
+        "EstimatedHours": 1
+      },
+      {
+        "Responsible": "benny",
+        "Title": "packing multiple paragraphs to one single paragraph",
+        "Text": "Go into a folder that contains your spec.\n\nYou will need to know the positions of the paragraph you want\nto pack. Therefor you might want to first \nprint all positions of the section (here SCENARIO) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd pack -sec SCENARIO -packing '[3,4,5]' -resp Jim -title 'all together'\n\nto pack the paragraphs no 3,4 and 5 of the SCENARIO section into a\nnew paragraph with the title 'all together' and the responsible 'Jim'.\nThe previous titles are inserted as subheadings and the previous paragraphs\nare deleted.\n",
+        "Comments": {},
+        "LastUpdate": "2013-11-13",
+        "State": "PLANNING",
+        "Deadline": "2013-11-13",
+        "EstimatedHours": 1
       }
     ],
     "NONGOAL": [

@@ -1,7 +1,7 @@
 # speccer - a CLI tool for specs  
-[HTML](http://rawgithub.com/metakeule/speccer/master/spec/spec.html)  
-[Text (Markdown)](http://rawgithub.com/metakeule/speccer/master/spec/spec.md)  
-[JSON](http://rawgithub.com/metakeule/speccer/master/spec/spec.json)  
+[HTML](http://metakeule.github.io/speccer/spec/spec.html)  
+[Text (Markdown)](http://metakeule.github.io/speccer/spec/spec.md)  
+[JSON](http://metakeule.github.io/speccer/spec/spec.json)  
 
 PARENT <http://rawgithub.com/metakeule/speclib/master/spec/spec.html>  
 

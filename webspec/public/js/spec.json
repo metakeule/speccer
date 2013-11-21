@@ -1,28 +1,48 @@
 {
-  "Responsible": "mra",
-  "Title": "speccer - a CLI tool for specs",
-  "Text": "[*speccer*](https://github.com/metakeule/speccer) is a CLI tool for dealing with specs.\n\nIt is a frontend to the [speclib](https://github.com/metakeule/speclib).\n\n\n",
-  "Comments": {},
-  "LastUpdate": "2013-11-13",
-  "State": "FULLY_IMPLEMENTED",
-  "Deadline": "2013-11-11",
-  "EstimatedHours": 0,
-  "Company": "Know GmbH",
-  "Project": "speclib",
-  "URL": "http://metakeule.github.io/speccer/spec/spec",
-  "Language": "en_EN",
-  "DateFormat": "YYYY-MM-DD",
-  "RequestedBy": [
-    "mra"
-  ],
-  "Related": {},
-  "Translations": {},
-  "SupersededBy": {},
-  "Resources": null,
-  "Persons": {
-    "mra": "Marc René Arns \u003clinux@marcrenearns.de\u003e"
+  "OVERVIEW": {
+    "Responsible": "mra",
+    "Title": "speccer - a CLI tool for specs123",
+    "Text": "[*speccer*](https://github.com/metakeule/speccer) is a CLI tool for dealing with specs.\n\nIt is a frontend to the [speclib](https://github.com/metakeule/speclib).\n123",
+    "Comments": {},
+    "LastUpdate": "2013-11-13",
+    "State": "FULLY_IMPLEMENTED",
+    "Deadline": "2013-11-11",
+    "EstimatedHours": 20
   },
-  "Parent": "http://metakeule.github.io/speclib/spec/spec.html",
+  "INFO": {
+    "Company": "Know GmbH",
+    "Project": "speclib",
+    "URL": "http://metakeule.github.io/speccer/spec/spec12",
+    "Language": "en_EN12",
+    "DateFormat": "YYYY-MM-DD",
+    "RequestedBy": [
+      "me",
+      "others"
+    ],
+    "Related": {
+      "anderes": "was anderes"
+    },
+    "Translations": {
+      "de_AT": "erste übersetzung auch in Österreich",
+      "de_DE": "erste übersetzung"
+    },
+    "SupersededBy": {
+      "ganz neue version": "sdsf",
+      "neue version": "sdffsf"
+    },
+    "Resources": {
+      "a": "dsdfdfsd",
+      "b": "ddfsfds",
+      "c": "dsfdf"
+    },
+    "Persons": {
+      "benny": "dfsfd",
+      "ich": "add",
+      "mra": "Marc René Arns \u003clinux@marcrenearns.de\u003e"
+    },
+    "Parent": "http://metakeule.github.io/speclib/spec/spec.html12",
+    "Approved": false
+  },
   "Sections": {
     "CONTRADICTION": [
       {
@@ -477,7 +497,7 @@
       },
       {
         "Responsible": "mra",
-        "Title": "Script",
+        "Title": "Script244",
         "Text": "Gill wants to change specifications with a script.\n",
         "Comments": {},
         "LastUpdate": "2013-11-12",
@@ -524,22 +544,31 @@
         "State": "FULLY_IMPLEMENTED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
+      },
+      {
+        "Responsible": "",
+        "Title": "brand new scenario",
+        "Text": "here the brand new text",
+        "Comments": {},
+        "LastUpdate": "",
+        "State": "PLANNING",
+        "Deadline": "",
+        "EstimatedHours": 0
       }
     ],
     "UNDECIDED": [
       {
         "Responsible": "mra",
         "Title": "It is not really clear how the linefeed is",
-        "Text": "exported in markdown and json.\nSee the linefeed paragraph",
+        "Text": "exported in markdown and json.\nSee the linefeed paragraph340",
         "Comments": {
           "mra": "No longer an issue. Every import and export replaces\nto `\\n` only. Editors should be able to handle it, \notherwise other tools would be needed to convert\nbefore editing."
         },
         "LastUpdate": "2013-11-12",
         "State": "OBSOLET",
         "Deadline": "2013-11-11",
-        "EstimatedHours": 1
+        "EstimatedHours": 10
       }
     ]
-  },
-  "Approved": false
+  }
 }

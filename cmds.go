@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/metakeule/speclib"
 	"io/ioutil"
+	"regexp"
 	"strings"
 )
 
@@ -219,6 +220,8 @@ func (s *speccer) metaCMD() error {
 	return nil
 }
 
+var hashMatch = regexp.MustCompile(`^(#+\s)$`)
+
 func (s *speccer) addCMD() error {
 	s.shouldSave = true
 	if s.Args.Section == "" {
@@ -238,19 +241,97 @@ func (s *speccer) addCMD() error {
 		return err
 	}
 	all = speclib.NormalizeLineFeeds(all)
-	sep := strings.Index(all, "\n")
+	return s.addParagraph(all)
+}
+
+func (s *speccer) saveCMD() error {
+	s.shouldSave = true
+	return nil
+}
+
+func (s *speccer) addParagraph(def string) error {
+	sep := strings.Index(def, "\n")
 	if sep == -1 {
 		return fmt.Errorf("can't find linefeed")
 	}
-	title := all[:sep]
-	text := all[sep+1:]
+	title := def[:sep]
+	title = hashMatch.ReplaceAllString(title, "")
+	title = "## " + title
+	text := def[sep+1:]
+	text = speclib.NormalizeLineFeeds(text)
+	text = strings.Trim(text, "\n")
 	p := s.Spec.NewParagraph(s.Args.Responsible, title, text)
 	s.Spec.AddParagraph(speclib.SectionObj[s.Args.Section], p)
 	return nil
 }
 
-func (s *speccer) saveCMD() error {
+func (s *speccer) addComment(c string) error {
+	sep := strings.Index(c, "\n")
+	if sep == -1 {
+		return fmt.Errorf("can't find linefeed")
+	}
+	author := c[:sep]
+	text := c[sep+1:]
+	text = speclib.NormalizeLineFeeds(text)
+	text = strings.Trim(text, "\n")
+	s.Paragraph.SetComment(author, text)
+	return nil
+}
+
+func (s *speccer) addMultiCMD() error {
 	s.shouldSave = true
+	if s.Args.Section == "" {
+		return fmt.Errorf("no section given")
+	}
+	if s.Args.Section == "OVERVIEW" {
+		return fmt.Errorf("can't add to OVERVIEW, try spec text instead")
+	}
+	if s.Args.Responsible == "" {
+		return fmt.Errorf("no responsible given")
+	}
+	if s.Args.Set == "" {
+		return fmt.Errorf("no set given")
+	}
+	all, err := s.readSetFile()
+	if err != nil {
+		return err
+	}
+	all = speclib.NormalizeLineFeeds(all)
+	pDefs := strings.Split(all, "\n***")
+	for _, pdef := range pDefs {
+		e := s.addParagraph(pdef)
+		if e != nil {
+			return e
+		}
+	}
+	return nil
+}
+
+func (s *speccer) packCMD() error {
+	return nil
+}
+
+func (s *speccer) commentMultiCMD() error {
+	err := s.setParagraph()
+	if err != nil {
+		return err
+	}
+
+	if s.Args.Set != "" {
+		return fmt.Errorf("no set given")
+	}
+	text, e := s.readSetFile()
+	if e != nil {
+		return e
+	}
+	text = speclib.NormalizeLineFeeds(text)
+	cs := strings.Split(text, "\n***")
+	for _, c := range cs {
+		e := s.addComment(c)
+		if e != nil {
+			return e
+		}
+	}
 	return nil
 }
 
@@ -283,17 +364,23 @@ func (s *speccer) commentCMD() error {
 	if s.Args.Author != "" {
 		s.shouldPrint = s.Paragraph.Comments[s.Args.Author]
 	} else {
-		s.shouldPrint = s.Paragraph.CommentsMarkdown()
+		s.shouldPrint = s.commentsForParagraph()
 	}
 	return nil
 }
 
-func (s *speccer) commentsForParagraph() {
+func (s *speccer) commentsForParagraph() string {
 	var buffer bytes.Buffer
-	for author, comment := range s.Paragraph {
+	var first = true
+	for author, comment := range s.Paragraph.Comments {
 		pre := "***\n"
+		if first {
+			pre = ""
+			first = false
+		}
 		fmt.Fprintf(&buffer, "%s%s  \n\n%s\n", pre, author, comment)
 	}
+	return buffer.String()
 }
 
 func (s *speccer) moveCMD() error {

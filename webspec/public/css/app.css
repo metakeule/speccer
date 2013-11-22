@@ -1,3 +1,77 @@
-body {
+html, body {
 /*	background-color: yellow; */
+	min-height: 101%;
 }
+
+@keyframes myfirst
+{
+0% {
+	line-height:0;
+	opacity:0;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+25% {
+	line-height:3;
+	 opacity:1;
+	 padding: 15px;
+	margin-bottom: 20px;
+}
+100% {
+	line-height:0;
+	opacity:0;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+0% {
+	line-height:0;
+	opacity:0;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+25% {
+	line-height:3;
+	opacity:1;
+	padding: 15px;
+	margin-bottom: 20px;
+}
+100% {
+	line-height:0;
+	opacity:0;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+}
+}
+
+.alert-success {
+ 	line-height:0;
+	opacity:0;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+}
+
+.alert-success.ng-hide {
+ 	line-height:3;
+	opacity:1;
+	padding: 15px;
+	margin-bottom: 20px;
+}
+ 
+.alert-success.ng-hide-remove {	
+	display:block!important;
+	animation: myfirst 2s;
+	-webkit-animation: myfirst 2s; /* Safari and Chrome */
+ }
+
+ .CodeMirror pre {
+ 	font-size: 12px!important;
+ }

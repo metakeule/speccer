@@ -17,29 +17,47 @@ import (
 
 func dropDownSection(section string) *goh4.Element {
 	return LI(
-		CLASS("dropdown"),
-		AHref("#", ID(section+"-drop"),
-			CLASS("dropdown-toggle"),
-			ATTR("data-toggle", "dropdown"), section,
-			B(CLASS("caret")),
-		),
-		UL(CLASS("dropdown-menu"), ATTR("role", "menu", "aria-labelledby", section+"-drop"),
-			LI(
-				A(
-					ATTR("data-toggle", "tab"),
-					ng.Href("#section"),
-					"new",
-					ng.Click("newContent('"+section+"')")),
+		// paragraphs
+		A(
+			ID(section+"-menu"),
+			ATTR("data-toggle", "tab"),
+			ng.Href("#section"),
+			section,
+			ng.Click("setParagraphs('"+section+"')")),
+		/*
+			CLASS("dropdown"),
+			AHref("#", ID(section+"-drop"),
+				CLASS("dropdown-toggle"),
+				ATTR("data-toggle", "dropdown"), section,
+				B(CLASS("caret")),
 			),
-			LI(
-				ng.Repeat("s", "Sections['"+section+"']"),
-				A(
-					ATTR("data-toggle", "tab"),
-					ng.Href("#section"),
-					"{{s.Title}}",
-					ng.Click("setContent('"+section+"')")),
+			UL(CLASS("dropdown-menu"), ATTR("role", "menu", "aria-labelledby", section+"-drop"),
+				LI(
+					A(
+						ATTR("data-toggle", "tab"),
+						ng.Href("#section"),
+						"new",
+						ng.Click("newContent('"+section+"')")),
+				),
+				LI(
+					ng.Repeat("s", "Sections['"+section+"']"),
+					A(
+						ATTR("data-toggle", "tab"),
+						ng.Href("#section"),
+						ng.Hide("isFiltered(s.State)"),
+						"{{s.Title}}",
+						ng.Click("setContent('"+section+"')")),
+				),
 			),
-		),
+		*/
+
+		/*
+					<ul class="nav nav-pills">
+			  <li class="active"><a href="#">Home</a></li>
+			  <li><a href="#">Profile</a></li>
+			  <li><a href="#">Messages</a></li>
+			</ul>
+		*/
 	)
 }
 
@@ -162,6 +180,8 @@ func contentInfo() *goh4.Element {
 		ID("info"), ATTR("role", "form"), CLASS("tab-pane"),
 		BR(),
 		FORM(
+			ID("info-form"),
+			ATTR("name", "infoform"),
 			CLASS("form-inline"),
 			ng.Submit("saveInfo()"),
 			DIV(CLASS("row"),
@@ -183,13 +203,14 @@ func contentInfo() *goh4.Element {
 			mapList("SupersededBy", "Name", "URL"),
 			mapList("Resources", "Name", "URL"),
 			mapList("Persons", "Short", "Full"),
-
-			DIV(CLASS("row"),
-				BR(),
-				DIV(CLASS("form-group"), CLASS("col-xs-6"),
-					BUTTON(ATTR("type", "submit"), CLASS("btn"), CLASS("btn-primary"), "Save"),
+			/*
+				DIV(CLASS("row"),
+					BR(),
+					DIV(CLASS("form-group"), CLASS("col-xs-6"),
+						BUTTON(ATTR("type", "submit"), CLASS("btn"), CLASS("btn-primary"), "Save"),
+					),
 				),
-			),
+			*/
 		),
 	)
 }
@@ -199,11 +220,14 @@ func contentSection() *goh4.Element {
 		ID("section"), ATTR("role", "form"), CLASS("tab-pane"),
 		BR(),
 		FORM(
+			ID("section-form"),
+			ATTR("name", "sectionform"),
 			CLASS("form-inline"),
 			ng.Submit("saveSection()"),
 			DIV(CLASS("row"),
 				input("paragraph.Title", "Title", 6),
-				input("paragraph.Responsible", "Responsible", 6),
+				selectbox("paragraph.Responsible", "Responsible", 3, "persons"),
+				//input("paragraph.Responsible", "Responsible", 6),
 				//input("paragraph.State", "State", 2),
 				selectbox("paragraph.State", "State", 3, "states"),
 				static("LastUpdate", 3, HTML("{{paragraph.LastUpdate}}")),
@@ -264,16 +288,20 @@ func contentSection() *goh4.Element {
 				CLASS("row"),
 				//goh4.Style{"clear", "both"},
 				BR(),
-				input("CommentAuthor", "Author", 4, ng.Blur("saveComment()")),
-				textarea("CommentText", "Comment", 12, 4, ng.Change("saveComment()")),
+				//input("CommentAuthor", "Author", 4, ng.Blur("saveComment()")),
+				selectbox("CommentAuthor", "Author", 4, "persons", ng.Change("setCommentForAuthor()")),
+				textarea("CommentText", "Comment", 8, 4, ng.Change("saveComment()")),
 			),
 			DIV(CLASS("row"),
 				BR(),
+				/*
+					DIV(CLASS("form-group"), CLASS("col-xs-6"),
+						BUTTON(ATTR("type", "submit"), CLASS("btn"), CLASS("btn-primary"), "Save"),
+					),
+				*/
 				DIV(CLASS("form-group"), CLASS("col-xs-6"),
-					BUTTON(ATTR("type", "submit"), CLASS("btn"), CLASS("btn-primary"), "Save"),
-				),
-				DIV(CLASS("form-group"), CLASS("col-xs-6"),
-					A(goh4.Style{"float", "right"},
+					A(
+						// goh4.Style{"float", "right"},
 						ng.Hide("sectionIndex == -1"),
 						ng.Click("deleteSection()"),
 						"delete", CLASS("btn"), CLASS("btn-danger")),
@@ -283,6 +311,7 @@ func contentSection() *goh4.Element {
 	)
 }
 
+/*
 func saveAll(rw http.ResponseWriter, req *http.Request) {
 	b, err := ioutil.ReadAll(req.Body)
 	if err != nil {
@@ -300,7 +329,7 @@ func saveAll(rw http.ResponseWriter, req *http.Request) {
 	Save()
 	rw.Write([]byte("ok"))
 }
-
+*/
 func saveInfo(rw http.ResponseWriter, req *http.Request) {
 	b, err := ioutil.ReadAll(req.Body)
 	if err != nil {
@@ -317,6 +346,50 @@ func saveInfo(rw http.ResponseWriter, req *http.Request) {
 		return
 	}
 	spec.INFO = i
+	// fmt.Printf("%#v\n", i)
+	Save()
+	rw.Write([]byte("ok"))
+}
+
+func validate(rw http.ResponseWriter, req *http.Request) {
+	err := spec.Validate(true)
+	if err != nil {
+		fmt.Fprintf(rw, "Error: %s\n", err.Error())
+		return
+	}
+	rw.Write([]byte("ok"))
+}
+
+// /moveParagraph?section='+$scope.currentSection+"&from="+from+"&to="+to
+func moveParagraph(rw http.ResponseWriter, req *http.Request) {
+	sec := req.URL.Query().Get("section")
+
+	if sec == "" {
+		rw.WriteHeader(400)
+		rw.Write([]byte("section missing"))
+		return
+	}
+	from, e := strconv.Atoi(req.URL.Query().Get("from"))
+	if e != nil {
+		rw.WriteHeader(400)
+		rw.Write([]byte(e.Error()))
+		return
+	}
+
+	to, e := strconv.Atoi(req.URL.Query().Get("to"))
+	if e != nil {
+		rw.WriteHeader(400)
+		rw.Write([]byte(e.Error()))
+		return
+	}
+
+	err := spec.MoveParagraph(speclib.SectionObj[sec], from, to)
+	if err != nil {
+		rw.WriteHeader(400)
+		rw.Write([]byte(err.Error()))
+		return
+	}
+	spec.Update()
 	Save()
 	rw.Write([]byte("ok"))
 }
@@ -351,6 +424,7 @@ func saveSection(rw http.ResponseWriter, req *http.Request) {
 		return
 	}
 	p.Spec = spec
+	p.Update()
 
 	if pos == -1 {
 		if p.Comments == nil {
@@ -366,6 +440,7 @@ func saveSection(rw http.ResponseWriter, req *http.Request) {
 		rw.Write([]byte("ok"))
 		return
 	}
+	//fmt.Printf("sec: %s pos: %d  %#v\n", sec, pos, p)
 	spec.Sections[sec][pos] = p
 	Save()
 	rw.Write([]byte("ok"))
@@ -405,10 +480,16 @@ var layout = HTML5(
 		CssHref("/css/bootstrap.css"),
 		CssHref("/css/app.css"),
 		CssHref("/codemirror-3.19/lib/codemirror.css"),
+		//CssHref("/codemirror-3.19/theme/monokai.css"),
+		//CssHref("/codemirror-3.19/theme/xq-light.css"),
+		//CssHref("/codemirror-3.19/theme/eclipse.css"),
+		//CssHref("/codemirror-3.19/theme/elegant.css"),
+		CssHref("/css/codemirror-webspec.theme.css"),
 		JsSrc("/js/jquery-1.10.2.min.js"),
 		JsSrc("/codemirror-3.19/lib/codemirror.js"),
 		JsSrc("/codemirror-3.19/mode/markdown/markdown.js"),
 		JsSrc("/angular-1.2.1/angular.min.js"),
+		JsSrc("/angular-1.2.1/angular-animate.min.js"),
 		JsSrc("/angular-1.2.1/angular-route.min.js"),
 		//JsSrc("/js/ui-codemirror.js"),
 		JsSrc("/js/markdown.min.js"),
@@ -420,31 +501,157 @@ var layout = HTML5(
 		ATTR("ng-controller", "Spec"),
 		DIV(CLASS("container"),
 
-			H1("SPECS"),
-			FORM(
-				CLASS("form-inline"),
-				ng.Submit("saveAll()"),
-				DIV(CLASS("form-group"), CLASS("col-xs-6"),
-					BUTTON(ATTR("type", "submit"), CLASS("btn"), CLASS("btn-primary"), "Save"),
+			DIV(CLASS("row"),
+				DIV(CLASS("col-xs-1"),
+					H4("SPEC"),
+				),
+				DIV(CLASS("col-xs-2"),
+					DIV(
+						CLASS("form-group"),
+						BR(),
+						SELECT(ng.Model("filteredPerson"),
+							CLASS("form-control"),
+							// select as label for (key , value) in object
+							// countResponsibles
+							//ID("filteredPerson"), ATTR("ng-options", "countResponsibles[v] for v in personFilter"),
+							//
+							ID("filteredPerson"), ATTR("ng-options", "key as key + ' (' + value + ')' for (key , value) in countResponsibles"),
+						),
+					),
+				),
+				DIV(CLASS("col-xs-9"),
+					CLASS("btn-group"),
+					BR(),
+					//ATTR("data-toggle", "buttons"),
+					//FORM(
+					// ['PLANNING', 'APPROVED', 'PARTLY_IMPLEMENTED', 'FULLY_IMPLEMENTED', 'OBSOLET' ];
+					LABEL(CLASS("btn"), CLASS("btn-warning"),
+						ng.Click("forcestore()"),
+						"Save",
+					),
+					//LABEL(CLASS("btn"), ng.Class("filter.PLANNING ? 'active btn-danger' : 'btn-success'"),
+					LABEL(CLASS("btn"), ng.Class("filterClass('PLANNING')"),
+						InputCheckbox("filter-PLANNING", ng.Model("filter.PLANNING"), goh4.Style{"display", "none"},
+							ng.Click("setFilter()"),
+						),
+						"{{count.PLANNING}} PLANNING",
+					),
+
+					//LABEL(CLASS("btn"), ng.Class("filter.APPROVED ? 'active btn-danger' : 'btn-success'"),
+					LABEL(CLASS("btn"), ng.Class("filterClass('APPROVED')"),
+						InputCheckbox("filter-APPROVED", ng.Model("filter.APPROVED"), goh4.Style{"display", "none"},
+							ng.Click("setFilter()"),
+						),
+						"{{count.APPROVED}} APPROVED",
+					),
+
+					//LABEL(CLASS("btn"), ng.Class("filter.PARTLY_IMPLEMENTED ? 'active btn-danger' : 'btn-success'"),
+					LABEL(CLASS("btn"), ng.Class("filterClass('PARTLY_IMPLEMENTED')"),
+						InputCheckbox("filter-PARTLY_IMPLEMENTED", ng.Model("filter.PARTLY_IMPLEMENTED"), goh4.Style{"display", "none"},
+							ng.Click("setFilter()"),
+						),
+						"{{count.PARTLY_IMPLEMENTED}} PARTLY_IMPLEMENTED",
+					),
+
+					//LABEL(CLASS("btn"), ng.Class("filter.FULLY_IMPLEMENTED ? 'active btn-danger' : 'btn-success'"),
+					LABEL(CLASS("btn"), ng.Class("filterClass('FULLY_IMPLEMENTED')"),
+						InputCheckbox("filter-FULLY_IMPLEMENTED", ng.Model("filter.FULLY_IMPLEMENTED"), goh4.Style{"display", "none"},
+							ng.Click("setFilter()"),
+						),
+						"{{count.FULLY_IMPLEMENTED}} FULLY_IMPLEMENTED",
+					),
+
+					// LABEL(CLASS("btn"), ng.Class("filter.OBSOLET ? 'active btn-danger' : 'btn-success'"),
+					LABEL(CLASS("btn"), ng.Class("filterClass('OBSOLET')"),
+						InputCheckbox("filter-OBSOLET", ng.Model("filter.OBSOLET"), goh4.Style{"display", "none"},
+							ng.Click("setFilter()"),
+						),
+						"{{count.OBSOLET}} OBSOLET",
+					),
 				),
 			),
+			/*
+							<div class="btn-group" data-toggle="buttons">
+				  <label class="btn btn-primary">
+				    <input type="checkbox"> Option 1
+				  </label>
+				  <label class="btn btn-primary">
+				    <input type="checkbox"> Option 2
+				  </label>
+				  <label class="btn btn-primary">
+				    <input type="checkbox"> Option 3
+				  </label>
+				</div>
+			*/
+
+			//BUTTON(CLASS("btn"), CLASS("btn-info"), ng.Click("setFilter(s)"), ng.Repeat("s", "states"), "{{s}}"),
+			// ng-animate="'animate'"
+			DIV(ID("ok-message"), CLASS("alert"), CLASS("alert-success"), ng.Show("ok_message"), "{{ok_message}}"),
+			DIV(ID("fail-message"), CLASS("alert"), CLASS("alert-danger"), ng.Show("fail_message"), "{{fail_message}}"),
+			/*
+				FORM(
+					CLASS("form-inline"),
+					ng.Submit("saveAll()"),
+					DIV(CLASS("form-group"), CLASS("col-xs-6"),
+						BUTTON(ATTR("type", "submit"), CLASS("btn"), CLASS("btn-primary"), "Save"),
+					),
+				),
+			*/
 			UL(CLASS("nav"), CLASS("nav-tabs"),
-				LI(AHref("#info", ATTR("data-toggle", "tab"), "INFO")),
-				LI(A(ng.Href("#section"), ATTR("data-toggle", "tab"), "OVERVIEW"), ng.Click("setContent('OVERVIEW')")),
+				LI(A(ng.Href("#info"), ng.Click("unsetCurrentSection()"), ATTR("data-toggle", "tab"), "INFO")),
+				LI(A(ng.Href("#section"), ATTR("data-toggle", "tab"), "OVERVIEW"), ng.Click("setParagraphs('OVERVIEW')")),
 				dropDownSection("SCENARIO"),
 				dropDownSection("NONGOAL"),
 				dropDownSection("UNDECIDED"),
 				dropDownSection("DEFINITION"),
 				dropDownSection("CONTRADICTION"),
 				dropDownSection("FEATURE"),
+				LI(A(ng.Href("#validation"), ATTR("data-toggle", "tab"), "Validate"), ng.Click("validate()")),
 			),
 
-			DIV(ID("ok-message"), CLASS("alert"), CLASS("alert-success"), ng.Show("ok_message"), "{{ok_message}}"),
-			DIV(ID("fail-message"), CLASS("alert"), CLASS("alert-danger"), ng.Show("fail_message"), "{{fail_message}}"),
-
-			DIV(CLASS("tab-content"),
-				contentInfo(),
-				contentSection(),
+			DIV(CLASS("row"),
+				DIV(CLASS("col-xs-3"),
+					BR(),
+					UL(CLASS("nav"), CLASS("nav-pills"), CLASS("nav-stacked"),
+						/*
+							handleDropped($index)
+						*/
+						ATTR("droppable", "droppable", "bin", "paragraphBin"),
+						goh4.Style{"padding-bottom", "30px"},
+						LI(
+							A(
+								ATTR("data-toggle", "tab"),
+								ng.Href("#section"),
+								"new",
+								ng.Show("(currentSection && currentSection != 'OVERVIEW')"),
+								ng.Href("#section"),
+								ng.Click("newPara()")),
+						),
+						LI(
+							ng.Repeat("p", "paragraphs"),
+							ID("{{$index}}"),
+							//draggable item="item"
+							ATTR("draggable", "draggable", "item", "$index", "drop", "handleDropped"),
+							//ng.Class("$index == sectionIndex ? 'ng-activated' : ''"),
+							A(
+								ATTR("data-toggle", "tab"),
+								ng.Href("#section"),
+								ng.Hide("isFiltered(p.State, p.Responsible)"),
+								"{{p.Title}}",
+								ng.Click("setPara()")),
+						),
+					),
+				),
+				DIV(CLASS("col-xs-9"),
+					DIV(CLASS("tab-content"),
+						contentInfo(),
+						contentSection(),
+						DIV(ID("validation"), CLASS("tab-pane"),
+							H4("Validation Response"),
+							PRE("{{validationMessage}}"),
+						),
+					),
+				),
 			),
 		),
 	),
@@ -497,6 +704,7 @@ func specHandler(rw http.ResponseWriter, req *http.Request) {
 var spec = &speclib.Spec{Sections: map[string][]speclib.Paragraph{}}
 
 func Save() {
+	spec.Update()
 	err := ioutil.WriteFile(os.Args[1], []byte(spec.Json()), 0644)
 	if err != nil {
 		fmt.Printf("Error: %s\n", err.Error())
@@ -521,9 +729,11 @@ func main() {
 	http.Handle("/", layout)
 	http.HandleFunc("/spec.json", specHandler)
 	http.HandleFunc("/saveSection", saveSection)
-	http.HandleFunc("/saveAll", saveAll)
+	//	http.HandleFunc("/saveAll", saveAll)
+	http.HandleFunc("/moveParagraph", moveParagraph)
 	http.HandleFunc("/saveInfo", saveInfo)
 	http.HandleFunc("/deleteSection", deleteSection)
+	http.HandleFunc("/validate", validate)
 	http.Handle("/css/", fileserver)
 	http.Handle("/js/", fileserver)
 	http.Handle("/img/", fileserver)

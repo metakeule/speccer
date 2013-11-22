@@ -1,0 +1,32 @@
+.cm-s-webspec span.cm-meta {color: #FF1717;}
+.cm-s-webspec span.cm-keyword { line-height: 1em; font-weight: bold; color: #7F0055; } 
+.cm-s-webspec span.cm-atom {color: #219;}
+.cm-s-webspec span.cm-number {color: #164;}
+.cm-s-webspec span.cm-def {color: #00f;}
+.cm-s-webspec span.cm-variable {color: #0020C0;;}
+.cm-s-webspec span.cm-variable-2 {color: #0010C0;}
+.cm-s-webspec span.cm-variable-3 {color: #0000C0;}
+.cm-s-webspec span.cm-property {color: black;}
+.cm-s-webspec span.cm-operator {color: black;}
+.cm-s-webspec span.cm-comment {color: #3F7F5F;}
+.cm-s-webspec span.cm-string {color: #2A00FF;}
+.cm-s-webspec span.cm-string-2 {color: #f50;}
+.cm-s-webspec span.cm-qualifier {color: #555;}
+.cm-s-webspec span.cm-builtin {color: #30a;}
+.cm-s-webspec span.cm-bracket {color: #cc7;}
+.cm-s-webspec span.cm-tag {color: #170;}
+.cm-s-webspec span.cm-attribute {color: #00c;}
+/* .cm-s-webspec span.cm-link {color: #219;} */
+.cm-s-webspec span.cm-link {color: green;}
+.cm-s-webspec span.cm-header {color: blue;}
+.cm-s-webspec span.cm-error {color: #f00;}
+
+.cm-s-webspec .CodeMirror-activeline-background {background: #e8f2ff !important;}
+.cm-s-webspec .CodeMirror-matchingbracket {outline:1px solid grey; color:red !important;}
+
+.cm-s-webspec .cm-quote {color: #090;}
+.cm-s-webspec .cm-hr {color: #999;}
+
+.cm-s-webspec .cm-trailing-space-new-line:after {
+	content: "↵";
+}

@@ -1,58 +1,44 @@
 {
   "OVERVIEW": {
     "Responsible": "mra",
-    "Title": "speccer - a CLI tool for specs123",
-    "Text": "[*speccer*](https://github.com/metakeule/speccer) is a CLI tool for dealing with specs.\n\nIt is a frontend to the [speclib](https://github.com/metakeule/speclib).\n123",
+    "Title": "speccer - a CLI tool for specs",
+    "Text": "[*speccer*](https://github.com/metakeule/speccer) is a CLI tool for \ndealing with specs.\n\nIt is a frontend to the [speclib](https://github.com/metakeule/speclib).\n",
     "Comments": {},
-    "LastUpdate": "2013-11-13",
-    "State": "FULLY_IMPLEMENTED",
+    "LastUpdate": "2013-11-22",
+    "State": "APPROVED",
     "Deadline": "2013-11-11",
     "EstimatedHours": 20
   },
   "INFO": {
     "Company": "Know GmbH",
     "Project": "speclib",
-    "URL": "http://metakeule.github.io/speccer/spec/spec12",
-    "Language": "en_EN12",
+    "URL": "http://metakeule.github.io/speccer/spec/spec",
+    "Language": "en_US",
     "DateFormat": "YYYY-MM-DD",
     "RequestedBy": [
-      "me",
-      "others"
+      "mra"
     ],
-    "Related": {
-      "anderes": "was anderes"
-    },
-    "Translations": {
-      "de_AT": "erste übersetzung auch in Österreich",
-      "de_DE": "erste übersetzung"
-    },
-    "SupersededBy": {
-      "ganz neue version": "sdsf",
-      "neue version": "sdffsf"
-    },
-    "Resources": {
-      "a": "dsdfdfsd",
-      "b": "ddfsfds",
-      "c": "dsfdf"
-    },
+    "Related": {},
+    "Translations": {},
+    "SupersededBy": {},
+    "Resources": {},
     "Persons": {
-      "benny": "dfsfd",
-      "ich": "add",
-      "mra": "Marc René Arns \u003clinux@marcrenearns.de\u003e"
+      "mra": "Marc René Arns \u003clinux@marcrenearns.de\u003e",
+      "nad": "nadja poetschki"
     },
-    "Parent": "http://metakeule.github.io/speclib/spec/spec.html12",
-    "Approved": false
+    "Parent": "http://metakeule.github.io/speclib/spec/spec.html",
+    "Approved": true
   },
   "Sections": {
     "CONTRADICTION": [
       {
         "Responsible": "mra",
         "Title": "Rights Management vs responsible",
-        "Text": "Rights Management is a Non Goal but on the other hand we have\npersons responsible for paragraphs. \n\nIf anyone may edit any paragraph, then the responsibility\nmust constantly change (and is worthless) or it is false.\n",
+        "Text": "**Rights Management** is a **Non Goal** but on the other hand we \nhave persons responsible for paragraphs.\n\nIf anyone may edit any paragraph, then the responsibility\nmust constantly change (and is worthless) or it is false.\n",
         "Comments": {
           "mra": "Yes the responsability should change often in order to request feedback.\nIf multiple persons work on a spec, the spec is considered teamwork\nand the people should work together.\n\nOnly one person is responsible for each paragraph at a single point in\ntime. This could be enforced by external tools as well as rights management\nif necessary. Although with version control it should not be necessary."
         },
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-22",
         "State": "OBSOLET",
         "Deadline": "2013-11-11",
         "EstimatedHours": 1
@@ -61,20 +47,10 @@
     "DEFINITION": [
       {
         "Responsible": "mra",
-        "Title": "All definitions of the `speclib` apply",
-        "Text": "",
-        "Comments": {},
-        "LastUpdate": "2013-11-12",
-        "State": "FULLY_IMPLEMENTED",
-        "Deadline": "2013-11-12",
-        "EstimatedHours": 1
-      },
-      {
-        "Responsible": "mra",
         "Title": "-name",
-        "Text": "The parameter passed via `-name` is the name of a spec property (like\n`TRANSLATIONS` with the command `property`) or the name of a paragraph\nproperty (like `STATE` with the command `meta`).",
+        "Text": "The parameter passed via `-name` is the name of a spec property (like\n`TRANSLATIONS` with the command `property`) or the name of a paragraph\nproperty (like `STATE` with the command `meta`).\n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-22",
         "State": "FULLY_IMPLEMENTED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
@@ -126,7 +102,7 @@
         "Title": "recreate HTML and markdown export based on current spec.json",
         "Text": "Go into a folder that contains your spec and run\n\n    speccer -cmd save\n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-22",
         "State": "FULLY_IMPLEMENTED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
@@ -154,7 +130,7 @@
       {
         "Responsible": "mra",
         "Title": "print property of spec",
-        "Text": "Go into a folder that contains your spec and run\n\n    speccer -cmd property -name COMPANY\n\nto print the COMPANY property. The properties are \nall written in high caps and defined in `speclib`.\n\n\n",
+        "Text": "Go into a folder that contains your spec and run\n\n    speccer -cmd property -name COMPANY\n\nto print the `COMPANY` property. The properties are \nall written in high caps and defined in `speclib`.\n\n\n",
         "Comments": {},
         "LastUpdate": "2013-11-12",
         "State": "FULLY_IMPLEMENTED",
@@ -176,7 +152,7 @@
         "Title": "unset property of spec",
         "Text": "Go into a folder that contains your spec and run\n\n    speccer -cmd property -name PARENT -uset\n\nto unset the `PARENT` property. Only the following properties can\nbe unset:\n\n- REQUESTEDBY\n- RELATED\n- TRANSLATIONS\n- SUPERSEDEDBY\n- RESOURCES\n- PARENT\n- PERSONS\n",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-22",
         "State": "FULLY_IMPLEMENTED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
@@ -184,7 +160,7 @@
       {
         "Responsible": "mra",
         "Title": "add markdown text to a section",
-        "Text": "Go into a folder that contains your spec and write your text\ninto a file, let's say `new.md`.\n\nPut the title of the paragraph in the first line \nand the body in the next lines.\nThen run\n\n    speccer -cmd add -sec SCENARIO -resp 'Your Name' -set new.md\n\nto add title and body to the SCENARIO sections.\nThe available sections are defined in the `speclib`.\n\n\n\n\n",
+        "Text": "Go into a folder that contains your spec and write your text\ninto a file, let's say `new.md`.\n\nPut the title of the paragraph in the first line \nand the body in the next lines.\nThen run\n\n    speccer -cmd add -sec SCENARIO -resp 'Your Name' -set new.md\n\nto add title and body to the `SCENARIO` section.\nThe available sections are defined in the `speclib`.\n\n\n\n\n",
         "Comments": {},
         "LastUpdate": "2013-11-13",
         "State": "FULLY_IMPLEMENTED",
@@ -194,9 +170,9 @@
       {
         "Responsible": "mra",
         "Title": "show list of paragraphs of a section",
-        "Text": "Go into a folder that contains your spec and run\n\n    speccer -cmd positions -sec SCENARIO\n\nto see a list of all paragraphs of the SCENARIO section.\nEach paragraph has the first line printed preceeded by \na number indicating the position of the paragraph inside\nthe section. This position can be used to print or change\nthe paragraph.\n\n\n",
+        "Text": "Go into a folder that contains your spec and run\n\n    speccer -cmd positions -sec SCENARIO\n\nto see a list of all paragraphs of the `SCENARIO` section.\n\nEach paragraph has the title printed preceeded by \na number indicating the position of the paragraph inside\nthe section. This position can be used to print or change\nthe paragraph.\n\n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-13",
+        "LastUpdate": "2013-11-22",
         "State": "FULLY_IMPLEMENTED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
@@ -204,7 +180,7 @@
       {
         "Responsible": "mra",
         "Title": "show content of a paragraphs of a section",
-        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see. Therefor you might want to first \nprint all positions of the section (here SCENARIO) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd text -sec SCENARIO -at 3\n\nto see the text for the 3rd paragraph in the\nSCENARIO section.\n\nIf you want to include comments and meta data, run\n\n    speccer -cmd text -sec SCENARIO -at 3 -with-comments -with-meta\n\n\n",
+        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see. Therefor you might want to first \nprint all positions of the section (here `SCENARIO`) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd text -sec SCENARIO -at 3\n\nto see the text for the 3rd paragraph in the\n`SCENARIO` section.\n\nIf you want to include comments and meta data, run\n\n    speccer -cmd text -sec SCENARIO -at 3 -with-comments -with-meta\n\n\n",
         "Comments": {},
         "LastUpdate": "2013-11-13",
         "State": "FULLY_IMPLEMENTED",
@@ -214,7 +190,7 @@
       {
         "Responsible": "mra",
         "Title": "change content of a paragraph of a section",
-        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see. Therefor you might want to first \nprint all positions of the section (here SCENARIO) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd text -sec SCENARIO -at 3 \u003e temp.md\n\nto save the current text and comments for the 3rd paragraph in the\nSCENARIO section to the file `temp.md`.\n\nNow fire up your editor to change the content. Then run\n\n    speccer -cmd text -sec SCENARIO -at 3 -set temp.md\n\nto set the text of the 3rd paragraph in the SCENARIO section.\n\nThe comments and meta data (including the title) of the 3rd paragraph are not modified by this operation. So you may want to change them too.\n\n\n\n\n\n",
+        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see. Therefor you might want to first \nprint all positions of the section (here `SCENARIO`) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd text -sec SCENARIO -at 3 \u003e temp.md\n\nto save the current text and comments for the 3rd paragraph in the\n`SCENARIO` section to the file `temp.md`.\n\nNow fire up your editor to change the content. Then run\n\n    speccer -cmd text -sec SCENARIO -at 3 -set temp.md\n\nto set the text of the 3rd paragraph in the `SCENARIO` section.\n\nThe comments and meta data (including the title) of the \n3rd paragraph are not modified by this operation. \nSo you may want to change them too.\n\n\n\n\n\n",
         "Comments": {},
         "LastUpdate": "2013-11-13",
         "State": "FULLY_IMPLEMENTED",
@@ -224,7 +200,7 @@
       {
         "Responsible": "mra",
         "Title": "see, add and change comment to a paragraph of a section",
-        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see. Therefor you might want to first \nprint all positions of the section (here SCENARIO) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd comment -sec SCENARIO -at 3\n\nto see the current comments for the 3rd paragraph in the\nSCENARIO section.\n\nNow if the author of your comment already made a comment to \nthis paragraph and if you want to append to this old comment,\nyou first have to save the old one.\n\nTo do this, run \n\n    speccer -cmd comment -sec SCENARIO -at 3 -author Jim \u003e temp.md\n\nto save the comment of `Jim` to the file `temp.md`. Then you can edit this\nfile. If you just want to remove the old comment or if there was no\ncomment you may simply start with an empty file `temp.md`.\n\nAfter you edited the file, run \n\n    speccer -cmd comment -sec SCENARIO -at 3 -author Jim -set temp.md\n\nto set the comment of `Jim` on the 3rd paragraph of the SCENARIO section\nto the content of the file `temp.md`.\n\n\n",
+        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see. Therefor you might want to first \nprint all positions of the section (here `SCENARIO`) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd comment -sec SCENARIO -at 3\n\nto see the current comments for the 3rd paragraph in the\n`SCENARIO` section.\n\nNow if the author of your comment already made a comment to \nthis paragraph and if you want to append to this old comment,\nyou first have to save the old one.\n\nTo do this, run \n\n    speccer -cmd comment -sec SCENARIO -at 3 -author Jim \u003e temp.md\n\nto save the comment of `Jim` to the file `temp.md`. Then you can edit this\nfile. If you just want to remove the old comment or if there was no\ncomment you may simply start with an empty file `temp.md`.\n\nAfter you edited the file, run \n\n    speccer -cmd comment -sec SCENARIO -at 3 -author Jim -set temp.md\n\nto set the comment of `Jim` on the 3rd paragraph of the `SCENARIO` section\nto the content of the file `temp.md`.\n\n\n",
         "Comments": {},
         "LastUpdate": "2013-11-13",
         "State": "FULLY_IMPLEMENTED",
@@ -234,7 +210,7 @@
       {
         "Responsible": "mra",
         "Title": "move a paragraph of a section",
-        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to move. Therefor you might want to first \nprint all positions of the section (here SCENARIO) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd move -sec SCENARIO -at 3 -to 1\n\nto move the 3rd paragraph in the SCENARIO section to be the first.\n\n\n",
+        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to move. Therefor you might want to first \nprint all positions of the section (here `SCENARIO`) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd move -sec SCENARIO -at 3 -to 1\n\nto move the 3rd paragraph in the `SCENARIO` section to be the first.\n\n\n",
         "Comments": {},
         "LastUpdate": "2013-11-13",
         "State": "FULLY_IMPLEMENTED",
@@ -244,7 +220,7 @@
       {
         "Responsible": "mra",
         "Title": "delete a paragraph of a section",
-        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to delete. Therefor you might want to first \nprint all positions of the section (here SCENARIO) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd rm -sec SCENARIO -at 3\n\nto remove the 3rd paragraph in the SCENARIO section.\n\n\n",
+        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to delete. Therefor you might want to first \nprint all positions of the section (here `SCENARIO`) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd rm -sec SCENARIO -at 3\n\nto remove the 3rd paragraph in the `SCENARIO` section.\n\n\n",
         "Comments": {},
         "LastUpdate": "2013-11-13",
         "State": "FULLY_IMPLEMENTED",
@@ -254,7 +230,7 @@
       {
         "Responsible": "mra",
         "Title": "see and change meta data of a paragraph of a section",
-        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see the meta data. Therefor you might want to first \nprint all positions of the section (here SCENARIO) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd meta -sec SCENARIO -at 3\n\nto see all meta data of the 3rd paragraph in the SCENARIO section.\n\nIf you want to change a datum you will have to pass the name:\n\n    speccer -cmd meta -sec SCENARIO -at 3 -name RESPONSIBLE -set Jim\n\n\n\n\n",
+        "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see the meta data. Therefor you might want to first \nprint all positions of the section (here `SCENARIO`) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd meta -sec SCENARIO -at 3\n\nto see all meta data of the 3rd paragraph in the `SCENARIO` section.\n\nIf you want to change a datum you will have to pass the name:\n\n    speccer -cmd meta -sec SCENARIO -at 3 -name RESPONSIBLE -set Jim\n\n\n\n\n",
         "Comments": {},
         "LastUpdate": "2013-11-13",
         "State": "FULLY_IMPLEMENTED",
@@ -272,31 +248,61 @@
         "EstimatedHours": 1
       },
       {
-        "Responsible": "benny",
+        "Responsible": "mra",
         "Title": "adding multiple paragraphs to a section in one go",
         "Text": "Go into a folder that contains your spec.\n\nCreate a new file (e.g. `new.md`) and write your paragraphs\ninto this file.\n\nEach paragraph should hold its title inside its first line\nand should end with a line containing `***`.\n\nThen run\n\n    speccer -cmd add-multi -sec SCENARIO -resp Jim -set new.md\n\nto add multiple paragraphs to the SCENARIO section as defined in\n`new.md` with all having the responsible set to Jim.\n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-13",
+        "LastUpdate": "2013-11-22",
         "State": "PLANNING",
         "Deadline": "2013-11-13",
         "EstimatedHours": 1
       },
       {
-        "Responsible": "benny",
+        "Responsible": "mra",
+        "Title": "check if spec is complete",
+        "Text": "since we played with the spec, check, if it \nis still complete\n\n",
+        "Comments": {},
+        "LastUpdate": "2013-11-22",
+        "State": "APPROVED",
+        "Deadline": "",
+        "EstimatedHours": 2
+      },
+      {
+        "Responsible": "mra",
+        "Title": "fix breakage caused by changes in the speclib",
+        "Text": "The `speclib` changed in incompatible ways. This affects also \nthe format of the **json** file.\n\n### TODO\n\n- fix speecer to conform to the new API\n- manually convert the existing `spec.json` of speccer \n  to the new format",
+        "Comments": {},
+        "LastUpdate": "2013-11-22",
+        "State": "APPROVED",
+        "Deadline": "",
+        "EstimatedHours": 2
+      },
+      {
+        "Responsible": "mra",
         "Title": "setting multiple comments to a paragraph in one go",
-        "Text": "Go into a folder that contains your spec.\n\nCreate a new file (e.g. `new.md`) and write the comments\ninto this file.\n\nEach comment should hold its author inside the first line\nand should end with a line containing `***`\n\nYou will need to know the position of the paragraph\nyou want to set the comments to. Therefor you might want to first \nprint all positions of the section (here SCENARIO) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd comment-multi -sec SCENARIO -at 3 -set new.md\n\nto set multiple comments to the 3rd paragraph of the SCENARIO section as defined in `new.md`.\n\n    ",
+        "Text": "Go into a folder that contains your spec.\n\nCreate a new file (e.g. `new.md`) and write the comments\ninto this file.\n\nEach comment should hold its author inside the first line\nand should end with a line containing `***`\n\nYou will need to know the position of the paragraph\nyou want to set the comments to. Therefor you might want to first \nprint all positions of the section (here `SCENARIO`) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd comment-multi -sec SCENARIO -at 3 -set new.md\n\nto set multiple comments to the 3rd paragraph of the `SCENARIO` \nsection as defined in `new.md`.\n\n    ",
         "Comments": {},
-        "LastUpdate": "2013-11-13",
+        "LastUpdate": "2013-11-22",
         "State": "PLANNING",
         "Deadline": "2013-11-13",
         "EstimatedHours": 1
       },
       {
-        "Responsible": "benny",
-        "Title": "packing multiple paragraphs to one single paragraph",
-        "Text": "Go into a folder that contains your spec.\n\nYou will need to know the positions of the paragraph you want\nto pack. Therefor you might want to first \nprint all positions of the section (here SCENARIO) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd pack -sec SCENARIO -packing '[3,4,5]' -resp Jim -title 'all together'\n\nto pack the paragraphs no 3,4 and 5 of the SCENARIO section into a\nnew paragraph with the title 'all together' and the responsible 'Jim'.\nThe previous titles are inserted as subheadings and the previous paragraphs\nare deleted.\n",
+        "Responsible": "mra",
+        "Title": "change states",
+        "Text": "some states make no sense for some sections, e.g.\n\n- `NONGOAL` section can't be \"implemented\" in any \n   meaningful way\n\nIn think the following states should change the name:\n\n- `APPROVED`           =\u003e `AGREED`\n- `PARTLY_IMPLEMENTED` =\u003e `IMPLEMENTING`\n- `FULLY_IMPLEMENTED`  =\u003e `FINISHED`\n\nhuho",
         "Comments": {},
-        "LastUpdate": "2013-11-13",
+        "LastUpdate": "2013-11-22",
+        "State": "APPROVED",
+        "Deadline": "",
+        "EstimatedHours": 3
+      },
+      {
+        "Responsible": "mra",
+        "Title": "packing multiple paragraphs to one single paragraph",
+        "Text": "Go into a folder that contains your spec.\n\nYou will need to know the positions of the paragraph you want\nto pack. Therefor you might want to first \nprint all positions of the section (here `SCENARIO`) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd pack -sec SCENARIO -packing '[3,4,5]' -resp Jim -title 'all together'\n\nto pack the paragraphs no 3,4 and 5 of the `SCENARIO` section into a\nnew paragraph with the title `all together` and the responsible `Jim`.\nThe previous titles are inserted as subheadings and the previous paragraphs\nare deleted.\n",
+        "Comments": {},
+        "LastUpdate": "2013-11-22",
         "State": "PLANNING",
         "Deadline": "2013-11-13",
         "EstimatedHours": 1
@@ -306,9 +312,9 @@
       {
         "Responsible": "mra",
         "Title": "No GUI",
-        "Text": "To have a GUI would be a project on its own.\nHowever such a project could also be external and be built upon speccer.",
+        "Text": "To have a GUI would be a project on its own.\nHowever such a project could also be external and be built upon speccer.\n",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-22",
         "State": "APPROVED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
@@ -316,9 +322,9 @@
       {
         "Responsible": "mra",
         "Title": "No Database",
-        "Text": "`speccer` will operate on plain text json files only.\nThere will be no way to have a database and search.\nA database could however exchange data with `speccer`\nvia json files.",
+        "Text": "`speccer` will operate on plain text json files only.\nThere will be no way to have a database and search.\nA database could however exchange data with `speccer`\nvia json files.\n",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-22",
         "State": "APPROVED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
@@ -326,9 +332,9 @@
       {
         "Responsible": "mra",
         "Title": "No versioning",
-        "Text": "`speccer` will not do any backups or have versions.\nYou are advised to use a version control system to save your\nspecs or make backups by a backup tool.",
+        "Text": "`speccer` will not do any backups or have versions.\nYou are advised to use a version control system to save your\nspecs or make backups by a backup tool.\n",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-22",
         "State": "APPROVED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
@@ -336,9 +342,9 @@
       {
         "Responsible": "mra",
         "Title": "No editing",
-        "Text": "`speccer` will have any functionality of an editor.\nYou may however replace parts of the spec by exporting them\nto your favourite editor and reimport them when you are finished.",
+        "Text": "`speccer` will have any functionality of an editor.\nYou may however replace parts of the spec by exporting them\nto your favourite editor and reimport them when you are finished.\n",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-22",
         "State": "APPROVED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
@@ -348,7 +354,7 @@
         "Title": "No merging of specs",
         "Text": "`speccer` won't provide any mechanism to merge specs.\nSince you can export and import parts of the specs in\nplain text or markdown, it is not hard to merge by hand.",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-22",
         "State": "APPROVED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
@@ -358,7 +364,7 @@
         "Title": "No copying of specs",
         "Text": "`speccer` won't help you copying specs, since you can simply\ncopy the json files yourself and then edit the copy.",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-22",
         "State": "APPROVED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
@@ -368,7 +374,7 @@
         "Title": "No rights management",
         "Text": "`speccer` won't have any rights management baked in. \nYou could manage the viewing and changing rights for\na single spec by the filesystem.\n\nIf you need finer control, you need to write a wrapper\naround `speccer` or the `speclib`.",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-22",
         "State": "APPROVED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
@@ -376,9 +382,9 @@
       {
         "Responsible": "mra",
         "Title": "No multiple comments per author and paragraph",
-        "Text": "With `speclib` (and therefor `speccer` too),\na single author can only have one comment per paragraph.\n\nWe consider this a good thing, since it forces the spec\nto be split up in several paragraphs if they get too many\ncomments. The spec will benefit from it.\n\nAlso it is possible to have comments of arbitrary length.\n",
+        "Text": "With `speclib` (and therefor `speccer` too),\na single author can only have one comment per paragraph.\n\nWe consider this a good thing, since it forces the spec\nto be split up in several paragraphs if they get too many\ncomments. The spec will benefit from it.\n\nAlso it is possible to have comments of arbitrary length.",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-22",
         "State": "APPROVED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
@@ -386,9 +392,9 @@
       {
         "Responsible": "mra",
         "Title": "No 'threads'",
-        "Text": "Again this is a decision by `speclib` and considered a good \nthing. There should not be comments on comments and endless\ndiscussions. Instead the comments should be directed to a \nparagraph and decision should be made soon.\n\nThen the different topics should seperate into the different\nsections like 'UNDECIDED', 'CONTRADICTIONS', 'DEFINITIONS',\n'FEATURES' etc. and there should be multiple paragraphs \nwhich may each have their own state of consense and comments.\n",
+        "Text": "Again this is a decision by `speclib` and considered a good \nthing. There should not be comments on comments and endless\ndiscussions. Instead the comments should be directed to a \nparagraph and decision should be made soon.\n\nThen the different topics should seperate into the different\nsections like `UNDECIDED`, `CONTRADICTIONS`, `DEFINITIONS`,\n`FEATURES` etc. and there should be multiple paragraphs \nwhich may each have their own state of consense and comments.\n",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-22",
         "State": "APPROVED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
@@ -398,7 +404,7 @@
         "Title": "No order of comments",
         "Text": "Again this is a decision by `speclib`.\nSince each author may just have one comment per paragraph, \nthere is no point in have an order for comments.\n\nHowever their is an order of paragraphs and that could \nbe changed.\n",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-22",
         "State": "APPROVED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
@@ -467,10 +473,20 @@
     "SCENARIO": [
       {
         "Responsible": "mra",
-        "Title": "Create Specification",
-        "Text": "Mike wants to create a specification. He gets a clean\nstarting point with `speccer`.",
+        "Title": "Filter for documentation",
+        "Text": "Peter wants to create a documentation from the spec and\nwants the unneccessary informations to be filtered.",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-22",
+        "State": "FULLY_IMPLEMENTED",
+        "Deadline": "2013-11-12",
+        "EstimatedHours": 1
+      },
+      {
+        "Responsible": "mra",
+        "Title": "See and update specification",
+        "Text": "Mike wants to update his specification with is\neditor.",
+        "Comments": {},
+        "LastUpdate": "2013-11-22",
         "State": "FULLY_IMPLEMENTED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
@@ -480,37 +496,27 @@
         "Title": "Add comments",
         "Text": "Mike receives comments for his specification.\nHe wants to add them without hassle.\n",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-22",
         "State": "FULLY_IMPLEMENTED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
       },
       {
         "Responsible": "mra",
-        "Title": "See and update specification",
-        "Text": "Mike wants to update his specification with is\neditor.\n",
+        "Title": "Create Specification",
+        "Text": "Mike wants to create a specification. He gets a clean\nstarting point with `speccer`.",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-22",
         "State": "FULLY_IMPLEMENTED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
       },
       {
         "Responsible": "mra",
-        "Title": "Script244",
-        "Text": "Gill wants to change specifications with a script.\n",
+        "Title": "Script",
+        "Text": "Gill wants to change specifications with a script..\n...",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
-        "State": "FULLY_IMPLEMENTED",
-        "Deadline": "2013-11-12",
-        "EstimatedHours": 1
-      },
-      {
-        "Responsible": "mra",
-        "Title": "Import and export",
-        "Text": "Gill wants to read import and export specifications\nfrom different places.\n",
-        "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-22",
         "State": "FULLY_IMPLEMENTED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
@@ -520,51 +526,41 @@
         "Title": "View as HTML and markdown",
         "Text": "Sue wants to read the specifications in HTML and \nbe able to mail them as markdown.\n",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-22",
         "State": "FULLY_IMPLEMENTED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
       },
       {
         "Responsible": "mra",
-        "Title": "Filter for documentation",
-        "Text": "Peter wants to create a documentation from the spec and\nwants the unneccessary informations to be filtered.",
+        "Title": "Import and export",
+        "Text": "Gill wants to read import and export specifications\nfrom different places.",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-22",
         "State": "FULLY_IMPLEMENTED",
         "Deadline": "2013-11-12",
-        "EstimatedHours": 1
+        "EstimatedHours": 12
       },
       {
         "Responsible": "mra",
         "Title": "Filter for implementation",
         "Text": "Anne wants to implement parts of the specification.\nShe just wants to read the parts that are ready\nto be implemented.",
         "Comments": {},
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-22",
         "State": "FULLY_IMPLEMENTED",
         "Deadline": "2013-11-12",
         "EstimatedHours": 1
-      },
-      {
-        "Responsible": "",
-        "Title": "brand new scenario",
-        "Text": "here the brand new text",
-        "Comments": {},
-        "LastUpdate": "",
-        "State": "PLANNING",
-        "Deadline": "",
-        "EstimatedHours": 0
       }
     ],
     "UNDECIDED": [
       {
         "Responsible": "mra",
-        "Title": "It is not really clear how the linefeed is",
-        "Text": "exported in markdown and json.\nSee the linefeed paragraph340",
+        "Title": "Linefeed export",
+        "Text": "It is not really clear how the linefeed is \nexported in markdown and json.\nSee the linefeed definition in speclib\n\n",
         "Comments": {
-          "mra": "No longer an issue. Every import and export replaces\nto `\\n` only. Editors should be able to handle it, \notherwise other tools would be needed to convert\nbefore editing."
+          "mra": "No longer an issue. Every import and export replaces to `\\n` only. \nEditors should be able to handle it, otherwise other tools would be \nneeded to convert before editing."
         },
-        "LastUpdate": "2013-11-12",
+        "LastUpdate": "2013-11-22",
         "State": "OBSOLET",
         "Deadline": "2013-11-11",
         "EstimatedHours": 10

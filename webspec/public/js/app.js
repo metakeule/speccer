@@ -60,11 +60,13 @@ app.controller('Spec', function($scope, $http, $location) {
   }
   //$scope.planning = false;
   
+  /*
   $scope.setFilter = function() {
     // console.log(state);
     console.log($scope.filter);
     console.log(this);
   }
+  */
   /*
   $scope.loadSection = function(section) {
     $http.get('/spec.json?section='+section).success(function(data) { 
@@ -115,7 +117,7 @@ app.controller('Spec', function($scope, $http, $location) {
       $scope.resetcountResponsibles();
       //console.log($scope.countResponsibles);
 
-      console.log($scope.persons);
+      //console.log($scope.persons);
       //delete $scope.Spec.Sections;
       //console.log($scope.Spec);
       if (callback) {
@@ -175,7 +177,7 @@ $scope.store();
     //$scope[section] = $scope[section+"S"][this.$index];
     $scope.currentSection = section;
     if (section == "OVERVIEW") {
-      console.log("setting OVERVIEW");
+      //console.log("setting OVERVIEW");
       $scope.paragraphs = [];
       $scope.resetCount();
       $scope.setPara();
@@ -183,7 +185,7 @@ $scope.store();
     } else {
       $scope.paragraph = null;
       if ($scope.codeMirrorSet) {
-        console.log("resetting CodeMirror");
+        //console.log("resetting CodeMirror");
         $scope.enableCodeHighlighting("");
         //$('#Text .CodeMirror')[0].CodeMirror.refresh();
         window.setTimeout(refreshText, 100);
@@ -275,7 +277,7 @@ $scope.store();
       var fn = function() {
         $scope.setParagraphs($scope.currentSection);
         $scope.sectionIndex = to;
-        console.log("setting " + $scope.currentSection + " at "+ $scope.sectionIndex );
+        //console.log("setting " + $scope.currentSection + " at "+ $scope.sectionIndex );
         var text = $scope.paragraphs[$scope.sectionIndex].Text;
         $scope.paragraph = $scope.paragraphs[$scope.sectionIndex];
         $scope.enableCodeHighlighting(text);      
@@ -297,7 +299,7 @@ $scope.store();
     //var loc = this.$location;
     //console.log(loc);
     $scope.sectionform.$setPristine();
-    console.log($scope.paragraph);
+    //console.log($scope.paragraph);
     $http.post(url, $scope.paragraph).success(function(data) {
       /*
       if ($scope.sectionIndex == -1) {
@@ -309,7 +311,7 @@ $scope.store();
         var fn = function() {
           $scope.setParagraphs($scope.currentSection);
           if ($scope.currentSection != "OVERVIEW" && $scope.sectionIndex != -1) {
-              console.log("setting " + $scope.currentSection + " at "+ $scope.sectionIndex );
+              //console.log("setting " + $scope.currentSection + " at "+ $scope.sectionIndex );
               var text = $scope.paragraphs[$scope.sectionIndex].Text;
               $scope.paragraph = $scope.paragraphs[$scope.sectionIndex];
               $scope.enableCodeHighlighting(text);
@@ -525,7 +527,7 @@ $scope.store();
   var myCodeMirror;
 
   function refreshText() {
-    console.log("refreshing codemirror");
+    //console.log("refreshing codemirror");
     $('#Text .CodeMirror')[0].CodeMirror.refresh();
     //$scope.codeMirrorSet = true;
   }
@@ -574,7 +576,7 @@ $scope.store();
     if ($scope.currentSection) {
       // console.log("has current section " + $scope.currentSection);
       if ($scope.sectionform.$dirty) {
-        console.log("storing section");
+        //console.log("storing section");
         if (reload) {
           $scope.saveSection(true);
         } else {
@@ -585,7 +587,7 @@ $scope.store();
       }
     } else {
       if ($scope.infoform.$dirty ) {
-        console.log("storing info");
+        //console.log("storing info");
         //$scope.saveAll();
         $scope.saveInfo();
         
@@ -597,11 +599,11 @@ $scope.store();
 
   $scope.forcestore = function() {
     if ($scope.currentSection) {
-      console.log("storing section");
+      //console.log("storing section");
       $scope.saveSection(true);
       //$('#section-form').removeClass("ng-dirty");
     } else {
-      console.log("storing info");
+      //console.log("storing info");
       $scope.saveInfo();
       //$('#info-form').removeClass("ng-dirty");
     }
@@ -610,7 +612,7 @@ $scope.store();
 
   $scope.unsetCurrentSection = function() {
     $scope.store();
-    console.log("unsetting current section");
+    //console.log("unsetting current section");
     $scope.currentSection = null;
     $scope.paragraphs = [];
     $scope.resetCount();
@@ -618,10 +620,10 @@ $scope.store();
   }
 
   $scope.handleDropped = function(item, box, x, y) {
-    console.log(item);
-    console.log(box);
-    console.log(x);
-    console.log(y);
+    //console.log(item);
+    //console.log(box);
+    //console.log(x);
+    //console.log(y);
     var to = 0;
     $(box).children().each(
       function() {
@@ -634,7 +636,7 @@ $scope.store();
     );
     // remove the first item ("new")
     to = to -1;
-    console.log(to);
+  //  console.log(to);
     var from = $(item).attr("id");
     if (from != to) {
       $scope.moveParagraph(from, to);
@@ -762,7 +764,7 @@ app.directive('draggable', function() {
       'dragstart',
       function(e) {
         e.dataTransfer.effectAllowed = 'move';
-        console.log("setting id "+this.id);
+     //   console.log("setting id "+this.id);
         e.dataTransfer.setData('Text', this.id);
         this.classList.add('drag');
         return false;

@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/go-contrib/uuid"
 	"github.com/metakeule/goh4"
 	. "github.com/metakeule/goh4/tag"
 	. "github.com/metakeule/goh4/tag/short"
@@ -225,15 +226,19 @@ func contentSection() *goh4.Element {
 			CLASS("form-inline"),
 			ng.Submit("saveSection()"),
 			DIV(CLASS("row"),
-				input("paragraph.Title", "Title", 6),
-				selectbox("paragraph.Responsible", "Responsible", 3, "persons"),
+				static("Uuid", 5, HTML("{{paragraph.Uuid}}")),
+				input("paragraph.Title", "Title", 7),
+			),
+			DIV(CLASS("row"),
+				BR(),
 				//input("paragraph.Responsible", "Responsible", 6),
 				//input("paragraph.State", "State", 2),
+				selectbox("paragraph.Responsible", "Responsible", 3, "persons"),
 				selectbox("paragraph.State", "State", 3, "states"),
-				static("LastUpdate", 3, HTML("{{paragraph.LastUpdate}}")),
+				static("LastUpdate", 2, HTML("{{paragraph.LastUpdate}}")),
 				//input("paragraph.LastUpdate", "LastUpdate", 2),
-				input("paragraph.Deadline", "Deadline", 3),
-				input("paragraph.EstimatedHours", "EstimatedHours", 3, ATTR("type", "number")),
+				input("paragraph.Deadline", "Deadline", 2),
+				input("paragraph.EstimatedHours", "Est. Hours", 2, ATTR("type", "number")),
 
 				//Responsible
 			),
@@ -424,6 +429,7 @@ func saveSection(rw http.ResponseWriter, req *http.Request) {
 		return
 	}
 	p.Spec = spec
+
 	p.Update()
 
 	if pos == -1 {
@@ -434,6 +440,7 @@ func saveSection(rw http.ResponseWriter, req *http.Request) {
 			//spec.Paragraph = &p
 			spec.OVERVIEW = &p
 		} else {
+			p.Uuid = uuid.NewV4().String()
 			spec.AddParagraph(speclib.SectionObj[sec], &p)
 		}
 		Save()

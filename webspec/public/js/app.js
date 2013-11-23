@@ -27,22 +27,22 @@ app.animation('.alert', function() {
 
 app.controller('Spec', function($scope, $http, $location) {
   $scope.Sections = {};
-  $scope.states = ['PLANNING', 'APPROVED', 'PARTLY_IMPLEMENTED', 'FULLY_IMPLEMENTED', 'OBSOLET' ];
+  $scope.states = ['PLANNING', 'AGREED', 'IMPLEMENTING', 'FINISHED', 'OBSOLET' ];
 
   $scope.filter = {
     "PLANNING": false, 
-    "APPROVED": false,
-    "PARTLY_IMPLEMENTED": false, 
-    "FULLY_IMPLEMENTED": false, 
+    "AGREED": false,
+    "IMPLEMENTING": false, 
+    "FINISHED": false, 
     "OBSOLET": false
   };
 
   $scope.resetCount = function(state) {
     $scope.count = {
       "PLANNING": 0, 
-      "APPROVED": 0,
-      "PARTLY_IMPLEMENTED": 0, 
-      "FULLY_IMPLEMENTED": 0, 
+      "AGREED": 0,
+      "IMPLEMENTING": 0, 
+      "FINISHED": 0, 
       "OBSOLET": 0
     };
   }
@@ -183,13 +183,21 @@ $scope.store();
       $scope.setPara();
       $scope.resetcountResponsibles();
     } else {
+      // $scope.store(true);    
+    //$scope[section] = {};
+      $scope.paragraph = {Comments: {}, Text: ""};
+      $scope.enableCodeHighlighting("");
+      $scope.sectionIndex = -1;
+
       $scope.paragraph = null;
+      /*
       if ($scope.codeMirrorSet) {
         //console.log("resetting CodeMirror");
         $scope.enableCodeHighlighting("");
         //$('#Text .CodeMirror')[0].CodeMirror.refresh();
         window.setTimeout(refreshText, 100);
-      }     
+      } 
+      */    
 
 
       $scope.paragraphs = $scope.Sections[section];
@@ -263,8 +271,28 @@ $scope.store();
 
   $scope.validate = function() {
     $scope.store();
+    $scope.paragraph = null;
+    $scope.currentSection = "";
+    $scope.sectionIndex = -1;
+    $scope.paragraphs = [];
     $http.post("/validate").success(function(data) {
       $scope.validationMessage = data;
+    });
+  }
+
+  $scope.changeParagraphSection = function(position, targetsection) {
+    $scope.store();
+    var url = '/changeParagraphSection?section='+$scope.currentSection+"&position="+position+"&targetsection="+targetsection;
+    $scope.sectionform.$setPristine();
+
+    $http.post(url).success(function(data) {
+      var fn = function() {
+        $scope.setParagraphs($scope.currentSection);        
+      };
+      $scope.loadInfo(fn);
+      $scope.success();      
+    }).error(function(data){
+      $scope.error(data);
     });
   }
 
@@ -276,6 +304,7 @@ $scope.store();
     $http.post(url).success(function(data) {
       var fn = function() {
         $scope.setParagraphs($scope.currentSection);
+        /*
         $scope.sectionIndex = to;
         //console.log("setting " + $scope.currentSection + " at "+ $scope.sectionIndex );
         var text = $scope.paragraphs[$scope.sectionIndex].Text;
@@ -284,7 +313,7 @@ $scope.store();
         $scope.CommentAuthor = "";
         $scope.CommentAuthor = "";
         $scope.CommentText = "";
-        $scope.sectionform.$setPristine();
+        */
       };
       $scope.loadInfo(fn);
       $scope.success();      
@@ -309,8 +338,10 @@ $scope.store();
       
       if (reload) {
         var fn = function() {
+          var oldIndex = $scope.sectionIndex
           $scope.setParagraphs($scope.currentSection);
-          if ($scope.currentSection != "OVERVIEW" && $scope.sectionIndex != -1) {
+          if ($scope.currentSection != "OVERVIEW" && oldIndex != -1) {
+              $scope.sectionIndex = oldIndex;
               //console.log("setting " + $scope.currentSection + " at "+ $scope.sectionIndex );
               var text = $scope.paragraphs[$scope.sectionIndex].Text;
               $scope.paragraph = $scope.paragraphs[$scope.sectionIndex];
@@ -319,6 +350,7 @@ $scope.store();
               $scope.CommentAuthor = "";
               $scope.CommentText = "";
               $scope.sectionform.$setPristine();
+              //$('#paragraph-list li#paragraph-'+$scope.sectionIndex).addClass("active");
           }
         };
 
@@ -509,11 +541,6 @@ $scope.store();
       //$scope.loadSection($scope.currentSection);
       var fn = function() {
         $scope.setParagraphs($scope.currentSection);
-        $scope.enableCodeHighlighting("");
-        $scope.CommentAuthor = "";
-        $scope.CommentAuthor = "";
-        $scope.CommentText = "";
-        $scope.sectionform.$setPristine();
       };
       $scope.loadInfo(fn);
       $scope.success();
@@ -620,28 +647,34 @@ $scope.store();
   }
 
   $scope.handleDropped = function(item, box, x, y) {
-    //console.log(item);
-    //console.log(box);
-    //console.log(x);
-    //console.log(y);
-    var to = 0;
-    $(box).children().each(
-      function() {
-        //console.log($(this).position());
-        var $this = $(this);
-        if (($this.position().top + $(this).height()) < y) {
-          to = $this.attr("id");
-        }
-      }
-    );
-    // remove the first item ("new")
-    to = to -1;
-  //  console.log(to);
+    //console.log(item);    
+    var boxid = $(box).attr('id');
     var from = $(item).attr("id");
-    if (from != to) {
-      $scope.moveParagraph(from, to);
+    if (boxid == 'paragraph-list') {
+      var to = 0;
+      $(box).children().each(
+        function() {
+          //console.log($(this).position());
+          var $this = $(this);
+          if (($this.position().top + $this.height()) < y) {
+            to = $this.attr("id");
+          }
+        }
+      );
+      // remove the first item ("new")
+      to = to -1;
+     // console.log(to);
+      if (from != to) {
+        $scope.moveParagraph(from, to);
+      }
+    } else {
+      var targetSection = $(box).attr('section');
+      if (targetSection != $scope.currentSection) {
+        $scope.changeParagraphSection(from, targetSection);
+      }
+      // console.log(targetSection);
     }
-    //alert('Item ' + item + ' has been dropped to');
+    
   }
 
   $scope.setPara = function() {
@@ -666,6 +699,7 @@ $scope.store();
     //$scope.textchanged = false;
   }
 
+/*
   $scope.newPara = function() {
     $scope.store(true);    
     //$scope[section] = {};
@@ -678,7 +712,7 @@ $scope.store();
     //$scope.cleanupMessages();
     $scope.sectionform.$setPristine();
   }
-
+*/
 /*
   $scope.setContent = function(section) {
     $scope.store();

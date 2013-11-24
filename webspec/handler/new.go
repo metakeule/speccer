@@ -21,7 +21,8 @@ func New(json string) *http.ServeMux {
 		panic(err.Error())
 	}
 	mux := http.NewServeMux()
-	mux.Handle("/", layout)
+	mux.Handle("/", viewLayout())
+	mux.Handle("/admin", adminlayout())
 	mux.HandleFunc("/spec.json", specHandler)
 	mux.HandleFunc("/saveSection", saveSection)
 	mux.HandleFunc("/moveParagraph", moveParagraph)

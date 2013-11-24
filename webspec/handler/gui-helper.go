@@ -11,49 +11,20 @@ import (
 
 func dropDownSection(section string) *goh4.Element {
 	return LI(
-		// paragraphs
 		A(
 			ID(section+"-menu"),
+			// CLASS("btn"),
+			// CLASS("btn-default"),
+			//CLASS("btn-success"),
 			ATTR("data-toggle", "tab"),
 			ATTR("droppable", "droppable"),
 			ATTR("section", section),
 			ng.Href("#section"),
 			section,
+			BR(),
+			SPAN(CLASS("badge"), CLASS("badge-warning"), "{{sectionNumbers['"+section+"']}}"),
+			HTML("&nbsp;"),
 			ng.Click("setParagraphs('"+section+"')")),
-		/*
-			CLASS("dropdown"),
-			AHref("#", ID(section+"-drop"),
-				CLASS("dropdown-toggle"),
-				ATTR("data-toggle", "dropdown"), section,
-				B(CLASS("caret")),
-			),
-			UL(CLASS("dropdown-menu"), ATTR("role", "menu", "aria-labelledby", section+"-drop"),
-				LI(
-					A(
-						ATTR("data-toggle", "tab"),
-						ng.Href("#section"),
-						"new",
-						ng.Click("newContent('"+section+"')")),
-				),
-				LI(
-					ng.Repeat("s", "Sections['"+section+"']"),
-					A(
-						ATTR("data-toggle", "tab"),
-						ng.Href("#section"),
-						ng.Hide("isFiltered(s.State)"),
-						"{{s.Title}}",
-						ng.Click("setContent('"+section+"')")),
-				),
-			),
-		*/
-
-		/*
-					<ul class="nav nav-pills">
-			  <li class="active"><a href="#">Home</a></li>
-			  <li><a href="#">Profile</a></li>
-			  <li><a href="#">Messages</a></li>
-			</ul>
-		*/
 	)
 }
 
@@ -123,6 +94,7 @@ func mapList(model, key, value string) *goh4.Element {
 					ATTR("type", "button"),
 					SPAN(CLASS("glyphicon"), CLASS("glyphicon-pencil")),
 					HTML("&nbsp;"),
+					CLASS("btn-sm"),
 					ng.Click("set"+model+"("+keyD+", "+valD+")"), "{{"+keyD+"}}", CLASS("btn"), CLASS("btn-default"),
 				),
 				BUTTON(
@@ -132,6 +104,7 @@ func mapList(model, key, value string) *goh4.Element {
 					//CLASS("close"),
 					CLASS("btn"),
 					CLASS("btn-danger"),
+					CLASS("btn-sm"),
 					ATTR("type", "button", "aria-hidden", "true"), HTML("&times;")),
 			),
 		),
@@ -156,6 +129,7 @@ func arrayList(model, value string) *goh4.Element {
 					SPAN(CLASS("glyphicon"), CLASS("glyphicon-pencil")),
 					HTML("&nbsp;"),
 					"{{"+valD+"}}", CLASS("btn"), CLASS("btn-default"),
+					CLASS("btn-sm"),
 				),
 				BUTTON(
 					ATTR("type", "button"),
@@ -164,6 +138,7 @@ func arrayList(model, value string) *goh4.Element {
 					//CLASS("close"),
 					CLASS("btn"),
 					CLASS("btn-danger"),
+					CLASS("btn-sm"),
 					ATTR("type", "button", "aria-hidden", "true"), HTML("&times;")),
 			),
 		),
@@ -199,112 +174,189 @@ func contentInfo() *goh4.Element {
 			mapList("SupersededBy", "Name", "URL"),
 			mapList("Resources", "Name", "URL"),
 			mapList("Persons", "Short", "Full"),
-			/*
-				DIV(CLASS("row"),
-					BR(),
-					DIV(CLASS("form-group"), CLASS("col-xs-6"),
-						BUTTON(ATTR("type", "submit"), CLASS("btn"), CLASS("btn-primary"), "Save"),
-					),
-				),
-			*/
 		),
+	)
+}
+
+func infoRow(name, value string) *goh4.Element {
+	return DIV(CLASS("row"),
+		DIV(CLASS("col-xs-2"), H3(name)),
+		DIV(CLASS("col-xs-10"), value),
+	)
+}
+
+func infoArray(name, collection string) *goh4.Element {
+	return DIV(CLASS("row"),
+		DIV(CLASS("col-xs-2"), H3(name)),
+		DIV(CLASS("col-xs-10"),
+			SPAN(
+				ng.Repeat("v", collection),
+				CLASS("btn"), CLASS("btn-default"),
+				goh4.Style{"margin-right", "12px"},
+				"{{v}}"),
+		),
+	)
+}
+
+func infoMap(name, collection string) *goh4.Element {
+	return DIV(CLASS("row"),
+		DIV(CLASS("col-xs-2"), H3(name)),
+		DIV(CLASS("col-xs-10"),
+			DL(CLASS("dl-horizontal"),
+				ng.RepeatKeyVal("k", "v", collection),
+				DT("{{k}}"),
+				DD("{{v}}"),
+			),
+		),
+	)
+}
+
+func contentInfoView() *goh4.Element {
+	return DIV(
+		ID("info"), CLASS("tab-pane"),
+		BR(),
+		infoRow("Company:", "{{INFO.Company}}"),
+		infoRow("Project:", "{{INFO.Project}}"),
+
+		infoRow("URL:", "{{INFO.URL}}"),
+		infoRow("Parent:", "{{INFO.Parent}}"),
+
+		infoRow("Language:", "{{INFO.Language}}"),
+		infoRow("DateFormat:", "{{INFO.DateFormat}}"),
+		infoRow("Approved:", "{{INFO.Approved}}"),
+
+		infoArray("RequestedBy:", "INFO.RequestedBy"),
+		infoMap("Translations", "INFO.Translations"),
+
+		infoMap("Related", "INFO.Related"),
+		infoMap("SupersededBy", "INFO.SupersededBy"),
+		infoMap("Resources", "INFO.Resources"),
+		infoMap("Persons", "INFO.Persons"),
 	)
 }
 
 func contentSection() *goh4.Element {
 	return DIV(
 		ID("section"), ATTR("role", "form"), CLASS("tab-pane"),
-		BR(),
 		FORM(
 			ID("section-form"),
 			ATTR("name", "sectionform"),
 			CLASS("form-inline"),
 			ng.Submit("saveSection()"),
 			DIV(CLASS("row"),
-				static("UUID", 5, HTML("{{paragraph.UUID}}")),
-				input("paragraph.Title", "Title", 7),
-			),
-			DIV(CLASS("row"),
-				BR(),
-				//input("paragraph.Responsible", "Responsible", 6),
-				//input("paragraph.State", "State", 2),
-				selectbox("paragraph.Responsible", "Responsible", 3, "persons"),
-				selectbox("paragraph.State", "State", 3, "states"),
-				static("LastUpdate", 2, HTML("{{paragraph.LastUpdate}}")),
-				//input("paragraph.LastUpdate", "LastUpdate", 2),
-				input("paragraph.Deadline", "Deadline", 2),
-				input("paragraph.EstimatedHours", "Est. Hours", 2, ATTR("type", "number")),
-
-				//Responsible
-			),
-			BR(),
-			DIV(CLASS("row"),
-				DIV(CLASS("form-group"),
-					CLASS("col-xs-7"),
-					LABEL("Text"),
-					DIV(ID("Text"), CLASS("form-control"), goh4.Style{"height", "auto"}),
-				),
-				// ),
-				// DIV(CLASS("row"),
-				DIV(CLASS("form-group"),
-					CLASS("col-xs-5"),
-					LABEL("Preview"),
-					DIV(ID("preview"), CLASS("form-control"), goh4.Style{"height", "300px"}, goh4.Style{"overflow-y", "scroll"}),
-				),
-				//textarea("paragraph.Text", "Text", 12, 6),
-			),
-
-			DIV(
-				CLASS("row"),
-				DIV(CLASS("form-group"), CLASS("col-xs-10"),
-					BR(),
-					LABEL("Comments"),
-					BR(),
-					DIV(CLASS("btn-group"),
-						// SPAN(
-						// goh4.Style{"float", "left"},
-						//goh4.Style{"display", "inline-block"},
-						goh4.Style{"margin-right", "15px"},
-						ng.RepeatKeyVal("author", "comment", "paragraph.Comments"),
-						BUTTON(
-							ATTR("type", "button"),
-							//<span class="glyphicon glyphicon-star"></span>
-							SPAN(CLASS("glyphicon"), CLASS("glyphicon-pencil")),
-							HTML("&nbsp;"),
-							ng.Click("setComment(author, comment)"), "{{author}}", CLASS("btn"), CLASS("btn-default"),
+				DIV(CLASS("col-xs-8"),
+					DIV(CLASS("panel"), CLASS("panel-default"),
+						//DIV(CLASS("panel-heading"), STRONG("UUID: {{paragraph.UUID}}"), ng.If("sectionIndex != -1 || currentSection == 'OVERVIEW'")),
+						DIV(CLASS("panel-heading"),
+							//
+							DIV(
+								CLASS("form-group"),
+								CLASS("col-xs-12"),
+								LabelFor("paragraph.Title", "Title of UUID {{paragraph.UUID}}", ng.If("sectionIndex != -1 || currentSection == 'OVERVIEW'")),
+								LabelFor("paragraph.Title", "new Title", ng.If("sectionIndex == -1 && currentSection != 'OVERVIEW'")),
+								InputText("paragraph.Title", ng.Model("paragraph.Title"),
+									CLASS("form-control"),
+									ID("paragraph.Title")),
+							),
 						),
-						BUTTON(
-							ATTR("type", "button"),
-							goh4.Style{"float", "none"},
-							ng.Click("removeComment(author)"),
-							//CLASS("close"),
-							CLASS("btn"),
-							CLASS("btn-danger"),
-							ATTR("type", "button", "aria-hidden", "true"), HTML("&times;")),
+						//DIV(CLASS("panel-heading"), STRONG("New"), ng.If("sectionIndex == -1 && currentSection != 'OVERVIEW'")),
+						DIV(CLASS("panel-body"),
+							DIV(CLASS("row"),
+								selectbox("paragraph.Responsible", "Responsible", 6, "persons"),
+								selectbox("paragraph.State", "State", 6, "states"),
+							),
+							BR(),
+							DIV(CLASS("row"),
+								// input("paragraph.Title", "Title", 8),
+								//static("UUID", 8, HTML("{{paragraph.UUID}}")),
+								input("paragraph.Deadline", "Deadline", 6),
+								input("paragraph.EstimatedHours", "Est. Hours", 3, ATTR("type", "number")),
+								static("LastUpdate", 3, HTML("{{paragraph.LastUpdate}}")),
+							),
+						),
+					),
+
+					DIV(CLASS("panel"), CLASS("panel-primary"),
+						DIV(CLASS("panel-heading"), "Text (Markdown)"),
+						DIV(ID("Text"), CLASS("panel-body")),
+					),
+					DIV(CLASS("panel"), CLASS("panel-default"),
+						DIV(CLASS("panel-heading"), "HTML-Preview"),
+						DIV(ID("preview"), CLASS("panel-body")),
 					),
 				),
-			),
-			DIV(
-				CLASS("row"),
-				//goh4.Style{"clear", "both"},
-				BR(),
-				//input("CommentAuthor", "Author", 4, ng.Blur("saveComment()")),
-				selectbox("CommentAuthor", "Author", 4, "persons", ng.Change("setCommentForAuthor()")),
-				textarea("CommentText", "Comment", 8, 4, ng.Change("saveComment()")),
-			),
-			DIV(CLASS("row"),
-				BR(),
-				/*
-					DIV(CLASS("form-group"), CLASS("col-xs-6"),
-						BUTTON(ATTR("type", "submit"), CLASS("btn"), CLASS("btn-primary"), "Save"),
+
+				DIV(CLASS("col-xs-4"),
+					DIV(CLASS("row"),
+						DIV(
+							CLASS("form-group"),
+							CLASS("col-xs-6"),
+							LABEL(
+								ng.Click("forcestore()"),
+								CLASS("btn"),
+								CLASS("btn-warning"),
+								CLASS("form-control"),
+								"Save",
+							),
+						),
+						DIV(
+							CLASS("form-group"),
+							CLASS("col-xs-6"),
+							LABEL(
+								ng.Click("deleteSection()"),
+								ng.Hide("sectionIndex == -1"),
+								CLASS("btn"),
+								CLASS("btn-danger"),
+								CLASS("form-control"),
+								"delete",
+							),
+						),
 					),
-				*/
-				DIV(CLASS("form-group"), CLASS("col-xs-6"),
-					A(
-						// goh4.Style{"float", "right"},
-						ng.Hide("sectionIndex == -1"),
-						ng.Click("deleteSection()"),
-						"delete", CLASS("btn"), CLASS("btn-danger")),
+					BR(),
+					DIV(CLASS("panel"), CLASS("panel-info"),
+						DIV(CLASS("panel-heading"), "Comments"),
+						DIV(CLASS("panel-body"),
+							DIV(
+								CLASS("row"),
+								ng.RepeatKeyVal("author", "comment", "paragraph.Comments"),
+								DIV(CLASS("form-group"), CLASS("col-xs-12"),
+									DIV(CLASS("btn-group"),
+										goh4.Style{"margin-right", "15px"},
+										BUTTON(
+											ATTR("type", "button"),
+											//<span class="glyphicon glyphicon-star"></span>
+											SPAN(CLASS("glyphicon"), CLASS("glyphicon-pencil")),
+											HTML("&nbsp;"),
+											ng.Click("setComment(author, comment)"), "{{author}}",
+											CLASS("btn-sm"),
+											CLASS("btn"), CLASS("btn-default"),
+										),
+										BUTTON(
+											ATTR("type", "button"),
+											goh4.Style{"float", "none"},
+											ng.Click("removeComment(author)"),
+											//CLASS("close"),
+											CLASS("btn"),
+											CLASS("btn-danger"),
+											CLASS("btn-sm"),
+											ATTR("type", "button", "aria-hidden", "true"), HTML("&times;")),
+									),
+								),
+							),
+							BR(),
+
+							DIV(
+								CLASS("row"),
+								selectbox("CommentAuthor", "Author", 12, "persons", ng.Change("setCommentForAuthor()")),
+							),
+							BR(),
+							DIV(
+								CLASS("row"),
+								textarea("CommentText", "Comment", 12, 20, ng.Change("saveComment()")),
+							),
+						),
+					),
+					BR(),
 				),
 			),
 		),

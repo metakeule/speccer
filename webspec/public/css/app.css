@@ -73,5 +73,82 @@ html, body {
  }
 
  .CodeMirror pre {
- 	font-size: 12px!important;
+ 	font-size: 12px;
  }
+
+/*
+.CodeMirror-scroll {
+	padding: 0px;
+}
+*/
+
+ .CodeMirror {
+ 	height: 260px;
+ }
+
+ #Text {
+	height: 300px;	
+}
+
+/*
+#preview {
+	overflow-y: scroll;
+}
+*/
+
+#paragraph-list .panel-body {
+	padding: 0px;
+}
+
+#paragraph-list .panel-body li {
+	padding: 0px;
+}	
+
+#paragraph-list .panel-body .list-group-item {
+	border-top: 0px solid #dddddd;
+	border-left: 0px solid #dddddd;
+	border-right: 0px solid #dddddd;
+/*	border: 0px solid #dddddd; */
+	margin: 0px;
+}
+
+#filter-bar .panel-heading {
+	background: transparent;
+	border-bottom-width: 0px;
+	padding-bottom: 0px;
+}
+
+#filter-bar .panel-body {
+	padding: 0px;
+}
+
+#state-filters {
+	/* padding: 0px;	*/
+}
+
+.badge-danger {
+	background-color: #b94a48;
+}
+
+.badge-success {
+	background-color: #468847;
+}
+
+.badge-warning {
+	background-color: #f0ad4e;
+	font-size: 10px;
+}
+
+/*
+#Text {
+	height: 165px;		
+}
+*/
+
+
+.btn.filteractive {
+	opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+          box-shadow: none;	
+}

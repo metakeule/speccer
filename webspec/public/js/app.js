@@ -86,6 +86,7 @@ app.controller('Spec', function($scope, $http, $location) {
   $scope.filteredPerson = "all";
 
 
+
   $scope.loadInfo = function(callback) {
     $http.get('/spec.json').success(function(data) { 
       //console.log(data);
@@ -115,6 +116,7 @@ app.controller('Spec', function($scope, $http, $location) {
       });
 
       $scope.resetcountResponsibles();
+      $scope.setSectionNumbers();
       //console.log($scope.countResponsibles);
 
       //console.log($scope.persons);
@@ -147,14 +149,107 @@ $scope.store();
     $scope.textchanged = false;
 */
 
+  var valueOfNotFinishedness = {
+    //"PLANNING": 0.95,
+    "PLANNING": 1,
+    "AGREED": 0.8,
+    "IMPLEMENTING": 0.75
+  }
+
+  function progressForSection(paragraphs, progress) {
+    var notFinished = 0;
+    var notAgreed = 0; 
+    var total = 0;
+    for (var i = paragraphs.length - 1; i >= 0; i--) {
+       if ($scope.filteredPerson != "all") {
+        if (paragraphs[i].Responsible !=  $scope.filteredPerson) {
+          continue;
+        }
+       }
+       total++;
+       if (progress) {            
+          $scope.count[paragraphs[i].State] += 1;
+       }
+       var st = paragraphs[i].State
+       if (st != "FINISHED" && st != "OBSOLET") {
+          if (progress) {            
+            notFinished = notFinished + valueOfNotFinishedness[st];
+          } else {
+            notFinished++;
+          }
+          if (st == "PLANNING") {
+            notAgreed++;
+          }
+       }       
+    };
+    return {
+      "notFinished": notFinished,
+      "notAgreed": notAgreed,
+      "total": total
+    }
+  }
+
+  $scope.sectionNumbers = {};
+
+  $scope.setSectionNumbers = function() {
+    console.log("setSectionNumbers called");
+      $scope.sectionNumbers = {};
+      $.each($scope.Sections, function(name, sec){
+        if (name != "OVERVIEW") {
+          var r = progressForSection(sec, false);
+          var notA = Math.floor(r.notAgreed);
+          var notF = Math.floor(r.notFinished);
+          if (notA + notF + r.total > 0) {
+          //  if (notA + notF > 0) {
+            $scope.sectionNumbers[name] = "" + notA + "/" + notF + "/" + r.total;
+            //$scope.sectionNumbers[name] = "" + notA + "/" + notF ;
+          }
+        }
+      });
+  }
+
   $scope.setCounts = function() {
     $scope.resetCount();
-    for (var i = $scope.paragraphs.length - 1; i >= 0; i--) {
-       $scope.count[$scope.paragraphs[i].State] += 1;
-    };
+    $scope.setSectionNumbers();
+    $scope.progressFinished = 0;
+    $scope.progressNotAgreed = 0;
+    //console.log("set counts called for "+ $scope.currentSection);
+
+    if ($scope.currentSection == "OVERVIEW") {
+      //$scope.Se
+      var total = 0;
+      var notFinished = 0;
+      var notAgreed = 0;
+      $.each($scope.Sections, function(name, sec){
+        if (name != "OVERVIEW") {
+          var r = progressForSection(sec, true);
+          total += r.total;
+          notFinished += r.notFinished;
+          notAgreed += r.notAgreed;          
+        }
+      });
+
+      if (total != 0) {
+        $scope.progressFinished = Math.floor(((total - notFinished) * 100) / total);
+        $scope.progressNotAgreed = Math.floor((notAgreed * 100) / total);
+      }
+    } else {
+      var r = progressForSection($scope.paragraphs, true);
+      if (r.total != 0) {
+        $scope.progressFinished = Math.floor(((r.total - r.notFinished) * 100) / r.total);
+        $scope.progressNotAgreed = Math.floor((r.notAgreed * 100) / r.total);
+      }
+    }
+    //var total = $scope.paragraphs.length;
+     
   }
 
   $scope.filterClass = function(state) {
+    var active = $scope.filter[state] ? "filteractive " : "";
+    if ($scope.count[state] > 0 && $scope.currentSection != "OVERVIEW" ) {
+      return active + "btn-primary";
+    }
+    /*
     var active = $scope.filter[state] ? "active " : "";
     if ($scope.count[state] > 0) {
       if ($scope.filter[state]) {
@@ -162,6 +257,8 @@ $scope.store();
       }
       return active + "btn-success";
     } 
+    return active + "btn-default";
+    */
     return active + "btn-default";
   }
 
@@ -172,6 +269,13 @@ $scope.store();
     });
   }
 
+  $scope.setcountResponsibles = function(paragraph) {
+    for (var i = paragraph.length - 1; i >= 0; i--) {
+       $scope.countResponsibles["all"] += 1;
+       $scope.countResponsibles[paragraph[i].Responsible] += 1;
+    };
+  }
+  
   $scope.setParagraphs = function(section) {
     $scope.store();
     //$scope[section] = $scope[section+"S"][this.$index];
@@ -182,14 +286,22 @@ $scope.store();
       $scope.resetCount();
       $scope.setPara();
       $scope.resetcountResponsibles();
+      $.each($scope.Sections, function(name, sec){
+        if (name != "OVERVIEW") {
+          $scope.setcountResponsibles(sec);
+        }
+      });
+      //$scope.setcountResponsibles($scope.paragraphs);
+      $scope.setCounts();
     } else {
       // $scope.store(true);    
     //$scope[section] = {};
+    //$scope.paragraph = {Comments: {}, Text: ""};
       $scope.paragraph = {Comments: {}, Text: ""};
       $scope.enableCodeHighlighting("");
       $scope.sectionIndex = -1;
 
-      $scope.paragraph = null;
+      //$scope.paragraph = null;
       /*
       if ($scope.codeMirrorSet) {
         //console.log("resetting CodeMirror");
@@ -202,10 +314,13 @@ $scope.store();
 
       $scope.paragraphs = $scope.Sections[section];
       $scope.resetcountResponsibles();
+      $scope.setcountResponsibles($scope.paragraphs);
+      /*
       for (var i = $scope.paragraphs.length - 1; i >= 0; i--) {
          $scope.countResponsibles["all"] += 1;
          $scope.countResponsibles[$scope.paragraphs[i].Responsible] += 1;
       };
+      */
       $scope.setCounts();
       $scope.CommentAuthor = "";
       $scope.CommentAuthor = "";
@@ -268,6 +383,9 @@ $scope.store();
     });
   };
   */
+
+  $scope.progressFinished = 0;
+  $scope.progressNotAgreed = 0;
 
   $scope.validate = function() {
     $scope.store();
@@ -647,23 +765,28 @@ $scope.store();
   }
 
   $scope.handleDropped = function(item, box, x, y) {
-    //console.log(item);    
+    //console.log(item);  
+    console.log(box);  
     var boxid = $(box).attr('id');
     var from = $(item).attr("id");
+    var halfheight = $("#paragraph-list li").height() / 2 ;
+    //var halfheight = 0
     if (boxid == 'paragraph-list') {
       var to = 0;
-      $(box).children().each(
+      $("#paragraph-list li").each(
         function() {
-          //console.log($(this).position());
           var $this = $(this);
-          if (($this.position().top + $this.height()) < y) {
-            to = $this.attr("id");
+       //   console.log(this);  
+         // console.log("top: "+$this.offset().top + " halfheight: " + halfheight + " y: "+y);
+          if (($this.offset().top - halfheight)< y) {
+            to =  parseInt($this.attr("id"), 10) ;
+           // console.log("set to "+$this.attr("id"));
           }
         }
       );
       // remove the first item ("new")
-      to = to -1;
-     // console.log(to);
+     //to = to + 1;
+     //console.log(to);
       if (from != to) {
         $scope.moveParagraph(from, to);
       }

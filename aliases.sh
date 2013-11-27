@@ -89,6 +89,15 @@ alias spec_ls-FEATURE='speccer -cmd positions -sec FEATURE';
 alias spec_ls-NONGOAL='speccer -cmd positions -sec NONGOAL';
 alias spec_ls-UNDECIDED='speccer -cmd positions -sec UNDECIDED';
 
+# Get uuids of Paragraphs for a section
+alias spec_uuids='speccer -cmd uuids';
+alias spec_uuids-SCENARIO='speccer -cmd uuids -sec SCENARIO';
+alias spec_uuids-CONTRADICTION='speccer -cmd uuids -sec CONTRADICTION';
+alias spec_uuids-DEFINITION='speccer -cmd uuids -sec DEFINITION';
+alias spec_uuids-FEATURE='speccer -cmd uuids -sec FEATURE';
+alias spec_uuids-NONGOAL='speccer -cmd uuids -sec NONGOAL';
+alias spec_uuids-UNDECIDED='speccer -cmd uuids -sec UNDECIDED';
+
 # Get Comments of Paragraphs for a section
 alias spec_comment-OVERVIEW='speccer -cmd comment -sec OVERVIEW';
 alias spec_comment-SCENARIO-at='speccer -cmd comment -sec SCENARIO -at';
@@ -139,6 +148,7 @@ alias spec-DEADLINE='speccer -cmd meta -sec OVERVIEW -name DEADLINE';
 alias spec-LASTUPDATE='speccer -cmd meta -sec OVERVIEW -name LASTUPDATE';
 alias spec-ESTIMATEDHOURS='speccer -cmd meta -sec OVERVIEW -name ESTIMATEDHOURS';
 alias spec-TITLE='speccer -cmd meta -sec OVERVIEW -name TITLE';
+alias spec-UUID='speccer -cmd meta -sec OVERVIEW -name UUID';
 
 alias spec-SCENARIO-RESPONSIBLE-at='speccer -cmd meta -sec SCENARIO -name RESPONSIBLE -at';
 alias spec-SCENARIO-STATE-at='speccer -cmd meta -sec SCENARIO -name STATE -at';
@@ -146,6 +156,7 @@ alias spec-SCENARIO-DEADLINE-at='speccer -cmd meta -sec SCENARIO -name DEADLINE 
 alias spec-SCENARIO-LASTUPDATE-at='speccer -cmd meta -sec SCENARIO -name LASTUPDATE -at';
 alias spec-SCENARIO-ESTIMATEDHOURS-at='speccer -cmd meta -sec SCENARIO -name ESTIMATEDHOURS -at';
 alias spec-SCENARIO-TITLE-at='speccer -cmd meta -sec SCENARIO -name TITLE -at';
+alias spec-SCENARIO-UUID-at='speccer -cmd meta -sec SCENARIO -name UUID -at';
 
 alias spec-CONTRADICTION-RESPONSIBLE-at='speccer -cmd meta -sec CONTRADICTION -name RESPONSIBLE -at';
 alias spec-CONTRADICTION-STATE-at='speccer -cmd meta -sec CONTRADICTION -name STATE -at';
@@ -153,6 +164,7 @@ alias spec-CONTRADICTION-DEADLINE-at='speccer -cmd meta -sec CONTRADICTION -name
 alias spec-CONTRADICTION-LASTUPDATE-at='speccer -cmd meta -sec CONTRADICTION -name LASTUPDATE -at';
 alias spec-CONTRADICTION-ESTIMATEDHOURS-at='speccer -cmd meta -sec CONTRADICTION -name ESTIMATEDHOURS -at';
 alias spec-CONTRADICTION-TITLE-at='speccer -cmd meta -sec CONTRADICTION -name TITLE -at';
+alias spec-CONTRADICTION-UUID-at='speccer -cmd meta -sec CONTRADICTION -name UUID -at';
 
 alias spec-DEFINITION-RESPONSIBLE-at='speccer -cmd meta -sec DEFINITION -name RESPONSIBLE -at';
 alias spec-DEFINITION-STATE-at='speccer -cmd meta -sec DEFINITION -name STATE -at';
@@ -160,6 +172,7 @@ alias spec-DEFINITION-DEADLINE-at='speccer -cmd meta -sec DEFINITION -name DEADL
 alias spec-DEFINITION-LASTUPDATE-at='speccer -cmd meta -sec DEFINITION -name LASTUPDATE -at';
 alias spec-DEFINITION-ESTIMATEDHOURS-at='speccer -cmd meta -sec DEFINITION -name ESTIMATEDHOURS -at';
 alias spec-DEFINITION-TITLE-at='speccer -cmd meta -sec DEFINITION -name TITLE -at';
+alias spec-DEFINITION-UUID-at='speccer -cmd meta -sec DEFINITION -name UUID -at';
 
 alias spec-FEATURE-RESPONSIBLE-at='speccer -cmd meta -sec FEATURE -name RESPONSIBLE -at';
 alias spec-FEATURE-STATE-at='speccer -cmd meta -sec FEATURE -name STATE -at';
@@ -167,6 +180,7 @@ alias spec-FEATURE-DEADLINE-at='speccer -cmd meta -sec FEATURE -name DEADLINE -a
 alias spec-FEATURE-LASTUPDATE-at='speccer -cmd meta -sec FEATURE -name LASTUPDATE -at';
 alias spec-FEATURE-ESTIMATEDHOURS-at='speccer -cmd meta -sec FEATURE -name ESTIMATEDHOURS -at';
 alias spec-FEATURE-TITLE-at='speccer -cmd meta -sec FEATURE -name TITLE -at';
+alias spec-FEATURE-UUID-at='speccer -cmd meta -sec FEATURE -name UUID -at';
 
 alias spec-NONGOAL-RESPONSIBLE-at='speccer -cmd meta -sec NONGOAL -name RESPONSIBLE -at';
 alias spec-NONGOAL-STATE-at='speccer -cmd meta -sec NONGOAL -name STATE -at';
@@ -174,6 +188,7 @@ alias spec-NONGOAL-DEADLINE-at='speccer -cmd meta -sec NONGOAL -name DEADLINE -a
 alias spec-NONGOAL-LASTUPDATE-at='speccer -cmd meta -sec NONGOAL -name LASTUPDATE -at';
 alias spec-NONGOAL-ESTIMATEDHOURS-at='speccer -cmd meta -sec NONGOAL -name ESTIMATEDHOURS -at';
 alias spec-NONGOAL-TITLE-at='speccer -cmd meta -sec NONGOAL -name TITLE -at';
+alias spec-NONGOAL-UUID-at='speccer -cmd meta -sec NONGOAL -name UUID -at';
 
 alias spec-UNDECIDED-RESPONSIBLE-at='speccer -cmd meta -sec UNDECIDED -name RESPONSIBLE -at';
 alias spec-UNDECIDED-STATE-at='speccer -cmd meta -sec UNDECIDED -name STATE -at';
@@ -181,6 +196,7 @@ alias spec-UNDECIDED-DEADLINE-at='speccer -cmd meta -sec UNDECIDED -name DEADLIN
 alias spec-UNDECIDED-LASTUPDATE-at='speccer -cmd meta -sec UNDECIDED -name LASTUPDATE -at';
 alias spec-UNDECIDED-ESTIMATEDHOURS-at='speccer -cmd meta -sec UNDECIDED -name ESTIMATEDHOURS -at';
 alias spec-UNDECIDED-TITLE-at='speccer -cmd meta -sec UNDECIDED -name TITLE -at';
+alias spec-NONGOAL-UUID-at='speccer -cmd meta -sec NONGOAL -name UUID -at';
 
 # Set Meta Data from Section
 alias spec_set-RESPONSIBLE='speccer -cmd meta -sec OVERVIEW -name RESPONSIBLE -set';

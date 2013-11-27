@@ -17,6 +17,8 @@ var metas = map[string]bool{
 
 func (s *speccer) getMeta(meta string) string {
 	switch meta {
+	case "UUID":
+		return s.Paragraph.UUID
 	case "TITLE":
 		return s.Paragraph.Title
 	case "RESPONSIBLE":

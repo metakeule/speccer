@@ -45,6 +45,8 @@ func (s *speccer) runCMD() error {
 		return s.moveCMD()
 	case "positions":
 		return s.positionsCMD()
+	case "uuids":
+		return s.uuidsCMD()
 	default:
 		return fmt.Errorf("unknown command %#v", s.Args.CMD)
 	}
@@ -108,18 +110,18 @@ func (s *speccer) setParagraph() error {
 		return fmt.Errorf("no section given")
 	}
 	if s.Args.Section == "OVERVIEW" {
-		s.Paragraph = s.Spec.Paragraph
+		s.Paragraph = s.Spec.OVERVIEW
 		s.IsOverview = true
 		return nil
 	}
 	if s.Args.Position < 0 {
 		return fmt.Errorf("no position given")
 	}
-	ps := s.Spec.GetSection(speclib.SectionObj[s.Args.Section])
+	ps := s.Spec.GetSection(s.Args.Section)
 	if s.Args.Position >= len(ps) {
 		return fmt.Errorf("no such position in %#v (too large)", s.Args.Section)
 	}
-	s.Paragraph = ps[s.Args.Position]
+	s.Paragraph = &ps[s.Args.Position]
 	return nil
 }
 
@@ -149,7 +151,7 @@ func (s *speccer) removeCMD() error {
 	if s.Args.Position < 0 {
 		return fmt.Errorf("no position given")
 	}
-	s.Spec.RemoveParagraph(speclib.SectionObj[s.Args.Section], s.Args.Position)
+	s.Spec.RemoveParagraph(s.Args.Section, s.Args.Position)
 	return nil
 }
 
@@ -164,7 +166,7 @@ func (s *speccer) textCMD() error {
 	}
 	if s.Args.Unset {
 		s.shouldSave = true
-		s.Spec.RemoveParagraph(speclib.SectionObj[s.Args.Section], s.Args.Position)
+		s.Spec.RemoveParagraph(s.Args.Section, s.Args.Position)
 		return nil
 	}
 	if s.Args.Set != "" {
@@ -261,7 +263,7 @@ func (s *speccer) addParagraph(def string) error {
 	text = speclib.NormalizeLineFeeds(text)
 	text = strings.Trim(text, "\n")
 	p := s.Spec.NewParagraph(s.Args.Responsible, title, text)
-	s.Spec.AddParagraph(speclib.SectionObj[s.Args.Section], p)
+	s.Spec.AddParagraph(s.Args.Section, p)
 	return nil
 }
 
@@ -399,7 +401,7 @@ func (s *speccer) moveCMD() error {
 	if s.Args.Section == "OVERVIEW" {
 		return fmt.Errorf("can't move within OVERVIEW (single paragraph)")
 	}
-	return s.Spec.MoveParagraph(speclib.SectionObj[s.Args.Section], s.Args.Position, s.Args.TargetPosition)
+	return s.Spec.MoveParagraph(s.Args.Section, s.Args.Position, s.Args.TargetPosition)
 }
 
 func (s *speccer) positionsCMD() error {
@@ -411,32 +413,53 @@ func (s *speccer) positionsCMD() error {
 	return nil
 }
 
+func (s *speccer) uuidsCMD() error {
+	if s.Args.Section == "" {
+		s.shouldPrint = s.allUuidsAllSections()
+	} else {
+		s.shouldPrint = s.allUuids(s.Args.Section)
+	}
+	return nil
+}
+
+func (s *speccer) allUuidsAllSections() string {
+	var buffer bytes.Buffer
+	for _, sec := range speclib.AllSections {
+		s._allUuids(&buffer, sec)
+	}
+	return buffer.String()
+}
+
+func (s *speccer) allUuids(sec string) string {
+	var buffer bytes.Buffer
+	s._allUuids(&buffer, sec)
+	return buffer.String()
+}
+
+func (s *speccer) _allUuids(buffer *bytes.Buffer, sec string) {
+	ps := s.Spec.GetSection(sec)
+	for i, p := range ps {
+		fmt.Fprintf(buffer, "%s %d %s (%s)\n", sec, i+1, p.UUID, p.Title)
+	}
+}
+
 func (s *speccer) allPositionsAllSections() string {
 	var buffer bytes.Buffer
 	for _, sec := range speclib.AllSections {
-		// buffer.WriteString("\n" + sec.String() + "\n")
 		s._allPositions(&buffer, sec)
 	}
 	return buffer.String()
 }
 
-func (s *speccer) _allPositions(buffer *bytes.Buffer, sec speclib.Section) {
+func (s *speccer) _allPositions(buffer *bytes.Buffer, sec string) {
 	ps := s.Spec.GetSection(sec)
 	for i, p := range ps {
-		/*
-			end := strings.Index(p.Text, "\n")
-			if end == -1 {
-				fmt.Fprintf(buffer, "%d %s (%s)\n", i+1, p.Text, p.State)
-			} else {
-				fmt.Fprintf(buffer, "%d %s (%s)\n", i+1, p.Text[0:end], p.State)
-			}
-		*/
-		fmt.Fprintf(buffer, "%s %d %s (%s)\n", sec.String(), i+1, p.Title, p.State)
+		fmt.Fprintf(buffer, "%s %d %s (%s)\n", sec, i+1, p.Title, p.State)
 	}
 }
 
 func (s *speccer) allPositions(sec string) string {
 	var buffer bytes.Buffer
-	s._allPositions(&buffer, speclib.SectionObj[sec])
+	s._allPositions(&buffer, sec)
 	return buffer.String()
 }

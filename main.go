@@ -108,34 +108,45 @@ func (s *speccer) setFilter() error {
 		s.Filter.PROPERTIES = true
 		s.Filter.META = true
 		s.Filter.COMMENTS = true
-		s.Filter.NONGOALS = true
-		s.Filter.CONTRADICTIONS = true
+		s.Filter.NONGOAL = true
+		s.Filter.CONTRADICTION = true
 		s.Filter.UNDECIDED = true
-		s.Filter.SPEC_END = true
 		s.Filter.RESOURCES = true
 		s.Filter.PLANNING = true
-		s.Filter.APPROVED = true
-		s.Filter.PARTLY_IMPLEMENTED = true
+		s.Filter.AGREED = true
+		s.Filter.IMPLEMENTING = true
 		s.Filter.OBSOLET = true
+	case "preview":
+		s.Filter.PROPERTIES = true
+		s.Filter.META = true
+		s.Filter.COMMENTS = true
+		s.Filter.NONGOAL = true
+		s.Filter.CONTRADICTION = true
+		s.Filter.UNDECIDED = true
+		s.Filter.RESOURCES = true
+		s.Filter.PLANNING = true
+		s.Filter.FINISHED = true
+		s.Filter.OBSOLET = true
+		s.Filter.OVERVIEW = true
 	case "approval":
 		s.Filter.META = true
 		s.Filter.COMMENTS = true
-		s.Filter.CONTRADICTIONS = true
+		s.Filter.CONTRADICTION = true
 		s.Filter.UNDECIDED = true
-		s.Filter.SPEC_END = true
 		s.Filter.RESOURCES = true
 		s.Filter.PLANNING = true
 		s.Filter.OBSOLET = true
 	case "discussion":
 		s.Filter.OVERVIEW = true
-		s.Filter.APPROVED = true
-		s.Filter.PARTLY_IMPLEMENTED = true
+		s.Filter.AGREED = true
+		s.Filter.IMPLEMENTING = true
 		s.Filter.OBSOLET = true
-		s.Filter.SPEC_END = true
+		s.Filter.FINISHED = true
+		s.Filter.PROPERTIES_EXTENDED = true
 	case "implementation":
 		s.Filter.UNDECIDED = true
 		s.Filter.PLANNING = true
-		s.Filter.FULLY_IMPLEMENTED = true
+		s.Filter.FINISHED = true
 		s.Filter.OBSOLET = true
 	}
 	return nil

@@ -27,4 +27,7 @@ var Trans_en_US = map[string]string{
 	"STATE":              "state",
 	"TRANSLATIONS":       "Translations",
 	"UNDECIDED":          "Undecided",
+	"PERSONS":            "persons",
+	"PROPERTY":           "property",
+	"VALUE":              "value",
 }

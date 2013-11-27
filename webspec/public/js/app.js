@@ -51,7 +51,7 @@ app.controller('Spec', function($scope, $http, $location) {
 
   $scope.isFiltered = function(state, resp) {
     //isFiltered
-    if ($scope.filteredPerson != "all") {
+    if ($scope.filteredPerson != "ALL") {
       if (resp != $scope.filteredPerson) {
         return true
       }
@@ -83,12 +83,21 @@ app.controller('Spec', function($scope, $http, $location) {
   } 
   */
 
-  $scope.filteredPerson = "all";
+  $scope.filteredPerson = "ALL";
 
+
+$scope.loadTranslations = function(callback) {
+    $http.get(window.location.pathname+"/../translations.json").success(function(data) { 
+      $scope.translations = data;
+      if (callback) {
+        callback();
+      }
+    });
+  }
 
 
   $scope.loadInfo = function(callback) {
-    $http.get('/spec.json').success(function(data) { 
+    $http.get(window.location.pathname+'/../spec.json').success(function(data) { 
       //console.log(data);
       $scope.INFO = data.INFO; 
         //$scope.loadSection('SCENARIO');
@@ -105,7 +114,7 @@ app.controller('Spec', function($scope, $http, $location) {
       $scope.Sections.UNDECIDED = data.Sections.UNDECIDED; 
       $scope.Sections.CONTRADICTION = data.Sections.CONTRADICTION; 
       $scope.Sections.OVERVIEW = data.OVERVIEW; 
-      $scope.personFilter = ["all"];
+      $scope.personFilter = ["ALL"];
       //$scope.personFilter = [];
       $scope.persons = [];
       $.each($scope.INFO.Persons, function(a,b){
@@ -161,7 +170,7 @@ $scope.store();
     var notAgreed = 0; 
     var total = 0;
     for (var i = paragraphs.length - 1; i >= 0; i--) {
-       if ($scope.filteredPerson != "all") {
+       if ($scope.filteredPerson != "ALL") {
         if (paragraphs[i].Responsible !=  $scope.filteredPerson) {
           continue;
         }
@@ -192,6 +201,9 @@ $scope.store();
   $scope.sectionNumbers = {};
 
   $scope.setSectionNumbers = function() {
+    var allNotA = 0;
+    var allNotF = 0;
+    var allTotal = 0;
     console.log("setSectionNumbers called");
       $scope.sectionNumbers = {};
       $.each($scope.Sections, function(name, sec){
@@ -199,13 +211,19 @@ $scope.store();
           var r = progressForSection(sec, false);
           var notA = Math.floor(r.notAgreed);
           var notF = Math.floor(r.notFinished);
-          if (notA + notF + r.total > 0) {
+          if (r.total > 0) {
           //  if (notA + notF > 0) {
+            allNotA += notA;
+            allNotF += notF;
+            allTotal += r.total,
             $scope.sectionNumbers[name] = "" + notA + "/" + notF + "/" + r.total;
             //$scope.sectionNumbers[name] = "" + notA + "/" + notF ;
           }
         }
       });
+      if (allTotal > 0) {
+        $scope.sectionNumbers["OVERVIEW"] = "" + allNotA + "/" + allNotF + "/" + allTotal;
+      }
   }
 
   $scope.setCounts = function() {
@@ -263,7 +281,7 @@ $scope.store();
   }
 
   $scope.resetcountResponsibles = function() {
-    $scope.countResponsibles = {"all": 0};
+    $scope.countResponsibles = {"ALL": 0};
     $.each($scope.INFO.Persons, function(a,b){
         $scope.countResponsibles[a] = 0;
     });
@@ -271,7 +289,7 @@ $scope.store();
 
   $scope.setcountResponsibles = function(paragraph) {
     for (var i = paragraph.length - 1; i >= 0; i--) {
-       $scope.countResponsibles["all"] += 1;
+       $scope.countResponsibles["ALL"] += 1;
        $scope.countResponsibles[paragraph[i].Responsible] += 1;
     };
   }
@@ -350,7 +368,7 @@ $scope.store();
   }
 
   $scope.saveInfo = function() {
-    var url = '/saveInfo';
+    var url = window.location.pathname+'/../saveInfo';
     $scope.infoform.$setPristine();
     $http.post(url, $scope.INFO).success(function(data) {
       $scope.loadInfo();
@@ -387,20 +405,29 @@ $scope.store();
   $scope.progressFinished = 0;
   $scope.progressNotAgreed = 0;
 
+  $scope.translations = {};
+
+  $scope.translate = function (s) {
+    if ($scope.translations[s]) {
+      return $scope.translations[s];
+    }
+    return s;
+  }
+
   $scope.validate = function() {
     $scope.store();
     $scope.paragraph = null;
     $scope.currentSection = "";
     $scope.sectionIndex = -1;
     $scope.paragraphs = [];
-    $http.post("/validate").success(function(data) {
+    $http.post(window.location.pathname+"/../validate").success(function(data) {
       $scope.validationMessage = data;
     });
   }
 
   $scope.changeParagraphSection = function(position, targetsection) {
     $scope.store();
-    var url = '/changeParagraphSection?section='+$scope.currentSection+"&position="+position+"&targetsection="+targetsection;
+    var url = window.location.pathname+'/../changeParagraphSection?section='+$scope.currentSection+"&position="+position+"&targetsection="+targetsection;
     $scope.sectionform.$setPristine();
 
     $http.post(url).success(function(data) {
@@ -416,7 +443,7 @@ $scope.store();
 
   $scope.moveParagraph = function(from, to) {
     $scope.store();
-    var url = '/moveParagraph?section='+$scope.currentSection+"&from="+from+"&to="+to;
+    var url = window.location.pathname+'/../moveParagraph?section='+$scope.currentSection+"&from="+from+"&to="+to;
     $scope.sectionform.$setPristine();
 
     $http.post(url).success(function(data) {
@@ -442,7 +469,7 @@ $scope.store();
 
   $scope.saveSection = function(reload) {
     
-    var url = '/saveSection?section='+$scope.currentSection+"&position="+$scope.sectionIndex;
+    var url = window.location.pathname+'/../saveSection?section='+$scope.currentSection+"&position="+$scope.sectionIndex;
     //var loc = this.$location;
     //console.log(loc);
     $scope.sectionform.$setPristine();
@@ -653,7 +680,7 @@ $scope.store();
   }
 
   $scope.deleteSection = function() {
-    var url = '/deleteSection?section='+$scope.currentSection+"&position="+$scope.sectionIndex;
+    var url = window.location.pathname+'/../deleteSection?section='+$scope.currentSection+"&position="+$scope.sectionIndex;
     $scope.sectionform.$setPristine();
     $http.post(url).success(function(data) {
       //$scope.loadSection($scope.currentSection);
@@ -766,7 +793,7 @@ $scope.store();
 
   $scope.handleDropped = function(item, box, x, y) {
     //console.log(item);  
-    console.log(box);  
+    //console.log(box);  
     var boxid = $(box).attr('id');
     var from = $(item).attr("id");
     var halfheight = $("#paragraph-list li").height() / 2 ;
@@ -880,7 +907,10 @@ $scope.store();
     mode:  "markdown"
   });
   */
-  $scope.loadInfo();
+
+  $scope.loadTranslations(function(){
+    $scope.loadInfo();
+  });
   //$scope.loadSection('SCENARIO');
   //$scope.loadSection('FEATURE');
   //$scope.loadSection('DEFINITION');

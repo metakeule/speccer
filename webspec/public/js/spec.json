@@ -3,12 +3,15 @@
     "UUID": "b18c7bd2-9ffd-4150-aa67-fd1636560d98",
     "Responsible": "mra",
     "Title": "speccer - a CLI tool for specs",
-    "Text": "[*speccer*](https://github.com/metakeule/speccer) is a CLI tool \nfor dealing with specs.\n\nIt is a frontend to the [speclib](https://github.com/metakeule/speclib).\n",
-    "Comments": {},
-    "LastUpdate": "2013-11-23",
+    "Text": "[*speccer*](https://github.com/metakeule/speccer) is a CLI tool \nfor dealing with specs.\n\nIt is a frontend to the [speclib](https://github.com/metakeule/speclib).\n\n",
+    "Comments": {
+      "mra": "just a comment\nchanged",
+      "reason for state": "other comment"
+    },
+    "LastUpdate": "2013-11-27",
     "State": "IMPLEMENTING",
-    "Deadline": "2013-11-11",
-    "EstimatedHours": 0
+    "Deadline": "soon",
+    "EstimatedHours": 2
   },
   "INFO": {
     "Company": "Know GmbH",
@@ -19,10 +22,18 @@
     "RequestedBy": [
       "mra"
     ],
-    "Related": {},
-    "Translations": {},
-    "SupersededBy": {},
-    "Resources": {},
+    "Related": {
+      "other": "http://metakeule.github.io/speccer/spec/other"
+    },
+    "Translations": {
+      "de_DE": "http://metakeule.github.io/speccer/spec/de_DE/spec"
+    },
+    "SupersededBy": {
+      "new": "http://metakeule.github.io/speccer/spec/new"
+    },
+    "Resources": {
+      "img": "http://metakeule.github.io/speccer/spec/spec.png"
+    },
     "Persons": {
       "mra": "Marc René Arns \u003clinux@marcrenearns.de\u003e",
       "reason for state": "Reason why a paragraph has the current state"
@@ -295,10 +306,10 @@
         "UUID": "ad6af27a-b991-488e-9d56-09bf33f181e3",
         "Responsible": "mra",
         "Title": "fix breakage caused by changes in the speclib",
-        "Text": "The `speclib` changed in incompatible ways. This affects also \nthe format of the **json** file.\n\n### TODO\n\n- fix speccer to conform to the new API\n- manually convert the existing `spec.json` of speccer \n  to the new format",
+        "Text": "The `speclib` changed in incompatible ways. This affects also \nthe format of the **json** file.\n\n#### TODO\n\n- fix speccer to conform to the new API\n- manually convert the existing `spec.json` of speccer \n  to the new format",
         "Comments": {},
-        "LastUpdate": "2013-11-23",
-        "State": "AGREED",
+        "LastUpdate": "2013-11-24",
+        "State": "FINISHED",
         "Deadline": "",
         "EstimatedHours": 2
       },
@@ -319,8 +330,8 @@
         "Title": "change states",
         "Text": "some states make no sense for some sections, e.g.\n\n- `NONGOAL` section can't be \"implemented\" in any \n   meaningful way\n\nIn think the following states should change the name:\n\n- `APPROVED`           =\u003e `AGREED`\n- `PARTLY_IMPLEMENTED` =\u003e `IMPLEMENTING`\n- `FULLY_IMPLEMENTED`  =\u003e `FINISHED`\n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-23",
-        "State": "IMPLEMENTING",
+        "LastUpdate": "2013-11-24",
+        "State": "FINISHED",
         "Deadline": "",
         "EstimatedHours": 3
       },
@@ -350,10 +361,10 @@
         "UUID": "a1af5f0a-b5a3-4fef-a6c0-10a91bea14ec",
         "Responsible": "mra",
         "Title": "get the uuids of a section",
-        "Text": "Go into a folder that contains your spec and run\n\n    speccer -cmd uuids -sec SCENARIO\n\nto see a list of all paragraphs of the `SCENARIO` section.\n\nEach paragraph has the title printed followed by \nthe uuid of the paragraph.\n\n\n",
+        "Text": "Go into a folder that contains your spec and run\n\n    speccer -cmd uuids -sec SCENARIO\n\nto see a list of all paragraphs of the `SCENARIO` section.\n\nEach paragraph has the position and the uuid followed by \nthe title of the paragraph.\n\n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-23",
-        "State": "AGREED",
+        "LastUpdate": "2013-11-24",
+        "State": "FINISHED",
         "Deadline": "",
         "EstimatedHours": 0
       }
@@ -542,8 +553,11 @@
         "Responsible": "mra",
         "Title": "Create Specification",
         "Text": "Mike wants to create a specification. He gets a clean\nstarting point with `speccer`.",
-        "Comments": {},
-        "LastUpdate": "2013-11-23",
+        "Comments": {
+          "mra": "comment one",
+          "reason for state": "comment2"
+        },
+        "LastUpdate": "2013-11-24",
         "State": "FINISHED",
         "Deadline": "",
         "EstimatedHours": 0

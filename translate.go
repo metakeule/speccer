@@ -14,7 +14,7 @@ var (
 
 // it does not translate, if there is no translation
 func (s *speccer) translate(in string) (out string) {
-	tr, has := translations[s.Spec.Language]
+	tr, has := translations[s.Spec.INFO.Language]
 	if !has {
 		return in
 	}

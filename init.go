@@ -30,7 +30,7 @@ func (s *speccer) initFlags() {
 
 func (s *speccer) initSections() {
 	for _, sec := range speclib.AllSections {
-		s.Sections[sec.String()] = true
+		s.Sections[sec] = true
 	}
 }
 

@@ -9,7 +9,40 @@ import (
 	"strings"
 )
 
-func dropDownSection(section string) *goh4.Element {
+func (h *handler) personFilter() *goh4.Element {
+	return DIV(CLASS("col-xs-4"),
+		ng.Show("currentSection"),
+		DIV(
+			CLASS("row"),
+			DIV(CLASS("label"), CLASS("label-default"), h.translate("RESPONSIBLE"), CLASS("col-xs-4")),
+
+			DIV(
+				CLASS("form-group"),
+				CLASS("col-xs-8"),
+				SELECT(ng.Model("filteredPerson"),
+					CLASS("form-control"),
+					CLASS("input-sm"),
+					ID("filteredPerson"),
+					ng.Change("setCounts()"),
+					ATTR("ng-options", "key as translate(key) + ' (' + value + ')' for (key , value) in countResponsibles"),
+				),
+			),
+		),
+	)
+}
+
+func (h *handler) stateFilter(state string) *goh4.Element {
+	return LABEL(CLASS("btn"), CLASS("btn-sm"), ng.Class("filterClass('"+state+"')"),
+		ng.Show("currentSection"),
+		InputCheckbox("filter-"+state, ng.Model("filter."+state+""), goh4.Style{"display", "none"},
+			ng.Click("setFilter()"),
+		),
+		SPAN(CLASS("badge"), "{{count."+state+"}}"),
+		" "+h.translate(state),
+	)
+}
+
+func (h *handler) dropDownSection(section string) *goh4.Element {
 	return LI(
 		A(
 			ID(section+"-menu"),
@@ -20,10 +53,10 @@ func dropDownSection(section string) *goh4.Element {
 			ATTR("droppable", "droppable"),
 			ATTR("section", section),
 			ng.Href("#section"),
-			section,
+			h.translate(section),
 			BR(),
 			SPAN(CLASS("badge"), CLASS("badge-warning"), "{{sectionNumbers['"+section+"']}}"),
-			HTML("&nbsp;"),
+			//HTML("&nbsp;"),
 			ng.Click("setParagraphs('"+section+"')")),
 	)
 }
@@ -56,7 +89,7 @@ func selectbox(fieldName string, label string, width int, arraySrc string, i ...
 	i = append(i,
 		ng.Model(fieldName),
 		CLASS("form-control"),
-		ID(fieldName), ATTR("ng-options", "v for v in "+arraySrc))
+		ID(fieldName), ATTR("ng-options", "translate(v) for v in "+arraySrc))
 
 	return DIV(
 		CLASS("form-group"),
@@ -79,13 +112,13 @@ func textarea(fieldName string, label string, width int, rows int, i ...interfac
 	)
 }
 
-func mapList(model, key, value string) *goh4.Element {
+func mapList(model, key, value string, labelmodel, labelkey, labelvalue string) *goh4.Element {
 	var keyD, valD = strings.ToLower(key), strings.ToLower(value)
 	return DIV(
 		BR(),
 		CLASS("row"),
 		DIV(CLASS("form-group"), CLASS("col-xs-6"),
-			LABEL(model),
+			LABEL(labelmodel),
 			BR(),
 			DIV(CLASS("btn-group"),
 				goh4.Style{"margin-right", "15px"},
@@ -108,18 +141,18 @@ func mapList(model, key, value string) *goh4.Element {
 					ATTR("type", "button", "aria-hidden", "true"), HTML("&times;")),
 			),
 		),
-		input(model+key, key, 2, ng.Blur("save"+model+"()")),
-		input(model+value, value, 4, ng.Change("save"+model+"()")),
+		input(model+key, labelkey, 2, ng.Blur("save"+model+"()")),
+		input(model+value, labelvalue, 4, ng.Change("save"+model+"()")),
 	)
 }
 
-func arrayList(model, value string) *goh4.Element {
+func arrayList(model, value string, labelproperty, label string) *goh4.Element {
 	var valD = strings.ToLower(value)
 	return DIV(
 		BR(),
 		CLASS("row"),
 		DIV(CLASS("form-group"), CLASS("col-xs-6"),
-			LABEL(model),
+			LABEL(labelproperty),
 			BR(),
 			DIV(CLASS("btn-group"),
 				goh4.Style{"margin-right", "15px"},
@@ -142,11 +175,11 @@ func arrayList(model, value string) *goh4.Element {
 					ATTR("type", "button", "aria-hidden", "true"), HTML("&times;")),
 			),
 		),
-		input(model+value, value, 4, ng.Blur("add"+model+"()")),
+		input(model+value, label, 4, ng.Blur("add"+model+"()")),
 	)
 }
 
-func contentInfo() *goh4.Element {
+func (h *handler) contentInfo() *goh4.Element {
 	return DIV(
 		ID("info"), ATTR("role", "form"), CLASS("tab-pane"),
 		BR(),
@@ -156,24 +189,24 @@ func contentInfo() *goh4.Element {
 			CLASS("form-inline"),
 			ng.Submit("saveInfo()"),
 			DIV(CLASS("row"),
-				input("INFO.Company", "Company", 6),
-				input("INFO.Project", "Project", 6),
+				input("INFO.Company", h.translate("COMPANY"), 6),
+				input("INFO.Project", h.translate("PROJECT"), 6),
 			),
 			DIV(CLASS("row"),
-				input("INFO.URL", "URL", 6),
-				input("INFO.Parent", "Parent", 6),
+				input("INFO.URL", h.translate("URL"), 6),
+				input("INFO.Parent", h.translate("PARENT"), 6),
 			),
 			DIV(CLASS("row"),
-				input("INFO.Language", "Language", 4),
-				input("INFO.DateFormat", "DateFormat", 4),
-				selectbox("INFO.Approved", "Approved", 4, "[true,false]"),
+				input("INFO.Language", h.translate("LANGUAGE"), 4),
+				input("INFO.DateFormat", h.translate("DATEFORMAT"), 4),
+				selectbox("INFO.Approved", h.translate("APPROVED"), 4, "[true,false]"),
 			),
-			arrayList("RequestedBy", "Name"),
-			mapList("Translations", "Language", "URL"),
-			mapList("Related", "Name", "URL"),
-			mapList("SupersededBy", "Name", "URL"),
-			mapList("Resources", "Name", "URL"),
-			mapList("Persons", "Short", "Full"),
+			arrayList("RequestedBy", "Name", h.translate("REQUESTED_BY"), h.translate("NAME")),
+			mapList("Translations", "Language", "URL", h.translate("TRANSLATIONS"), h.translate("LANGUAGE"), h.translate("URL")),
+			mapList("Related", "Name", "URL", h.translate("RELATED"), h.translate("NAME"), h.translate("URL")),
+			mapList("SupersededBy", "Name", "URL", h.translate("SUPERSEDED_BY"), h.translate("NAME"), h.translate("URL")),
+			mapList("Resources", "Name", "URL", h.translate("RESOURCES"), h.translate("NAME"), h.translate("URL")),
+			mapList("Persons", "Short", "Full", h.translate("PERSONS"), h.translate("SHORTN_AME"), h.translate("NAME")),
 		),
 	)
 }
@@ -211,31 +244,7 @@ func infoMap(name, collection string) *goh4.Element {
 	)
 }
 
-func contentInfoView() *goh4.Element {
-	return DIV(
-		ID("info"), CLASS("tab-pane"),
-		BR(),
-		infoRow("Company:", "{{INFO.Company}}"),
-		infoRow("Project:", "{{INFO.Project}}"),
-
-		infoRow("URL:", "{{INFO.URL}}"),
-		infoRow("Parent:", "{{INFO.Parent}}"),
-
-		infoRow("Language:", "{{INFO.Language}}"),
-		infoRow("DateFormat:", "{{INFO.DateFormat}}"),
-		infoRow("Approved:", "{{INFO.Approved}}"),
-
-		infoArray("RequestedBy:", "INFO.RequestedBy"),
-		infoMap("Translations", "INFO.Translations"),
-
-		infoMap("Related", "INFO.Related"),
-		infoMap("SupersededBy", "INFO.SupersededBy"),
-		infoMap("Resources", "INFO.Resources"),
-		infoMap("Persons", "INFO.Persons"),
-	)
-}
-
-func contentSection() *goh4.Element {
+func (h *handler) contentSection() *goh4.Element {
 	return DIV(
 		ID("section"), ATTR("role", "form"), CLASS("tab-pane"),
 		FORM(
@@ -246,42 +255,37 @@ func contentSection() *goh4.Element {
 			DIV(CLASS("row"),
 				DIV(CLASS("col-xs-8"),
 					DIV(CLASS("panel"), CLASS("panel-default"),
-						//DIV(CLASS("panel-heading"), STRONG("UUID: {{paragraph.UUID}}"), ng.If("sectionIndex != -1 || currentSection == 'OVERVIEW'")),
 						DIV(CLASS("panel-heading"),
-							//
 							DIV(
 								CLASS("form-group"),
 								CLASS("col-xs-12"),
-								LabelFor("paragraph.Title", "Title of UUID {{paragraph.UUID}}", ng.If("sectionIndex != -1 || currentSection == 'OVERVIEW'")),
-								LabelFor("paragraph.Title", "new Title", ng.If("sectionIndex == -1 && currentSection != 'OVERVIEW'")),
+								LabelFor("paragraph.Title", h.translate("TIT_TLE_OF_UUI_D")+" {{paragraph.UUID}}", ng.If("sectionIndex != -1 || currentSection == 'OVERVIEW'")),
+								LabelFor("paragraph.Title", h.translate("NE_W_TI_T_TLE"), ng.If("sectionIndex == -1 && currentSection != 'OVERVIEW'")),
 								InputText("paragraph.Title", ng.Model("paragraph.Title"),
 									CLASS("form-control"),
 									ID("paragraph.Title")),
 							),
 						),
-						//DIV(CLASS("panel-heading"), STRONG("New"), ng.If("sectionIndex == -1 && currentSection != 'OVERVIEW'")),
 						DIV(CLASS("panel-body"),
 							DIV(CLASS("row"),
-								selectbox("paragraph.Responsible", "Responsible", 6, "persons"),
-								selectbox("paragraph.State", "State", 6, "states"),
+								selectbox("paragraph.Responsible", h.translate("RESPONSIBLE"), 6, "persons"),
+								selectbox("paragraph.State", h.translate("STATE"), 6, "states"),
 							),
 							BR(),
 							DIV(CLASS("row"),
-								// input("paragraph.Title", "Title", 8),
-								//static("UUID", 8, HTML("{{paragraph.UUID}}")),
-								input("paragraph.Deadline", "Deadline", 6),
-								input("paragraph.EstimatedHours", "Est. Hours", 3, ATTR("type", "number")),
-								static("LastUpdate", 3, HTML("{{paragraph.LastUpdate}}")),
+								input("paragraph.Deadline", h.translate("DEADLINE"), 6),
+								input("paragraph.EstimatedHours", h.translate("ESTIMATEDHOURS"), 3, ATTR("type", "number")),
+								static(h.translate("LASTUPDATE"), 3, HTML("{{paragraph.LastUpdate}}")),
 							),
 						),
 					),
 
 					DIV(CLASS("panel"), CLASS("panel-primary"),
-						DIV(CLASS("panel-heading"), "Text (Markdown)"),
+						DIV(CLASS("panel-heading"), h.translate("TEX_T_(MARKDOWN)")),
 						DIV(ID("Text"), CLASS("panel-body")),
 					),
 					DIV(CLASS("panel"), CLASS("panel-default"),
-						DIV(CLASS("panel-heading"), "HTML-Preview"),
+						DIV(CLASS("panel-heading"), h.translate("HTM_L_PREVIEW")),
 						DIV(ID("preview"), CLASS("panel-body")),
 					),
 				),
@@ -296,7 +300,7 @@ func contentSection() *goh4.Element {
 								CLASS("btn"),
 								CLASS("btn-warning"),
 								CLASS("form-control"),
-								"Save",
+								h.translate("SAVE"),
 							),
 						),
 						DIV(
@@ -308,13 +312,13 @@ func contentSection() *goh4.Element {
 								CLASS("btn"),
 								CLASS("btn-danger"),
 								CLASS("form-control"),
-								"delete",
+								h.translate("DELETE"),
 							),
 						),
 					),
 					BR(),
 					DIV(CLASS("panel"), CLASS("panel-info"),
-						DIV(CLASS("panel-heading"), "Comments"),
+						DIV(CLASS("panel-heading"), h.translate("COMMEN_TS")),
 						DIV(CLASS("panel-body"),
 							DIV(
 								CLASS("row"),
@@ -324,7 +328,6 @@ func contentSection() *goh4.Element {
 										goh4.Style{"margin-right", "15px"},
 										BUTTON(
 											ATTR("type", "button"),
-											//<span class="glyphicon glyphicon-star"></span>
 											SPAN(CLASS("glyphicon"), CLASS("glyphicon-pencil")),
 											HTML("&nbsp;"),
 											ng.Click("setComment(author, comment)"), "{{author}}",
@@ -344,15 +347,23 @@ func contentSection() *goh4.Element {
 								),
 							),
 							BR(),
-
 							DIV(
 								CLASS("row"),
-								selectbox("CommentAuthor", "Author", 12, "persons", ng.Change("setCommentForAuthor()")),
+
+								DIV(
+									CLASS("form-group"),
+									CLASS("col-xs-12"),
+									LabelFor("CommentAuthor", h.translate("AUTHOR")),
+									SELECT(ng.Model("CommentAuthor"),
+										CLASS("form-control"),
+										ng.Change("setCommentForAuthor()"),
+										ID("CommentAuthor"), ATTR("ng-options", "v for v in persons")),
+								),
 							),
 							BR(),
 							DIV(
 								CLASS("row"),
-								textarea("CommentText", "Comment", 12, 20, ng.Change("saveComment()")),
+								textarea("CommentText", h.translate("COMMENT"), 12, 20, ng.Change("saveComment()")),
 							),
 						),
 					),

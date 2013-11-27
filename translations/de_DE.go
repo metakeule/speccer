@@ -27,4 +27,7 @@ var Trans_de_DE = map[string]string{
 	"STATE":              "Stufe",
 	"TRANSLATIONS":       "Übersetzungen",
 	"UNDECIDED":          "Offen",
+	"PERSONS":            "Personen",
+	"PROPERTY":           "Eigenschaft",
+	"VALUE":              "Wert",
 }

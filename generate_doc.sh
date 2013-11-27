@@ -1,0 +1,1 @@
+./wkhtmltopdf-amd64 -b -s A4 --no-background http://localhost:8282/spec2/spec.html\?theme\=cerulean\&hide-navbar\=1\&usage\=DISCUSSIONFILTER doc2.pdf

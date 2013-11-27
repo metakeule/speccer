@@ -20,3 +20,6 @@ _cgo_export.*
 _testmain.go
 
 *.exe
+
+webspec/public/codemirror-3.19
+webspec/public/markdown-browser-0.6.0-beta1

@@ -1,0 +1,16 @@
+{
+  "Exports": {
+    "init": "082aa350fc1afadb3c2f54fa59e03a75"
+  },
+  "Imports": {
+    "github.com/metakeule/speccer/webspec/handler.FileLoader": "type FileLoader string",
+    "github.com/metakeule/speccer/webspec/handler.FileLoader.Load": "(FileLoader) Load(*github.com/metakeule/speclib.Spec) error",
+    "github.com/metakeule/speccer/webspec/handler.FileSaver": "type FileSaver string",
+    "github.com/metakeule/speccer/webspec/handler.FileSaver.Save": "(FileSaver) Save(*github.com/metakeule/speclib.Spec) error",
+    "github.com/metakeule/speccer/webspec/handler.New": "func (Loader,Saver) *handler",
+    "github.com/metakeule/speccer/webspec/handler.init": "958766fff20fd89fe2fde1903c88493b",
+    "github.com/metakeule/utils/http.Mount": "func (string,net/http.Handler)",
+    "github.com/metakeule/utils/http.init": ""
+  },
+  "Path": "github.com/metakeule/speccer/webspec"
+}

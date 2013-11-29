@@ -1,0 +1,23 @@
+{
+  "Exports": {
+    "Speccer": "&speccer{\n\u0009Sections:\u0009map[string]bool{\"OVERVIEW\": true},\n\u0009Spec:\u0009&speclib.Spec{},\n\u0009Filter:\u0009&speclib.Filter{},\n\u0009Args:\u0009&args{},\n}",
+    "init": "882aec79fe6f35e44804945d8f7a5484"
+  },
+  "Imports": {
+    "github.com/metakeule/speccer/translations.Trans_de_DE": "map[string]string{\n\u0009\"APPROVED\":\u0009\"beschlossen\",\n\u0009\"COMPANY\":\u0009\"Firma\",\n\u0009\"CONTRADICTION\":\u0009\"Widerspruch\",\n\u0009\"DEADLINE\":\u0009\"nächste Frist\",\n\u0009\"DEFINITION\":\u0009\"Definition\",\n\u0009\"ESTIMATEDHOURS\":\u0009\"nächster Stundenaufwand\",\n\u0009\"FEATURE\":\u0009\"Feature\",\n\u0009\"FULLY_IMPLEMENTED\":\u0009\"vollständig umgesetzt\",\n\u0009\"LASTUPDATE\":\u0009\"Stand vom\",\n\u0009\"NONGOAL\":\u0009\"Nicht-Feature\",\n\u0009\"OVERVIEW\":\u0009\"Überblick\",\n\u0009\"OBSOLET\":\u0009\"überholt bzw. nicht mehr gültig\",\n\u0009\"PARENT\":\u0009\"gehört zu\",\n\u0009\"PARTLY_IMPLEMENTED\":\u0009\"teilweise umgesetzt\",\n\u0009\"PROJECT\":\u0009\"Projekt\",\n\u0009\"PLANNING\":\u0009\"in Planung\",\n\u0009\"SUPERSEDED_BY\":\u0009\"ersetzt durch\",\n\u0009\"RELATED\":\u0009\"weitere Spezifikationen\",\n\u0009\"REQUESTED_BY\":\u0009\"angefordert von\",\n\u0009\"RESPONSIBLE\":\u0009\"Verantwortlicher\",\n\u0009\"RESOURCES\":\u0009\"Dateien / externe Quellen\",\n\u0009\"SCENARIO\":\u0009\"Beispiel\",\n\u0009\"SPEC_END\":\u0009\"Ende der Spezifikation\",\n\u0009\"STATE\":\u0009\"Stufe\",\n\u0009\"TRANSLATIONS\":\u0009\"Übersetzungen\",\n\u0009\"UNDECIDED\":\u0009\"Offen\",\n\u0009\"PERSONS\":\u0009\"Personen\",\n\u0009\"PROPERTY\":\u0009\"Eigenschaft\",\n\u0009\"VALUE\":\u0009\"Wert\",\n}",
+    "github.com/metakeule/speccer/translations.Trans_en_US": "map[string]string{\n\u0009\"APPROVED\":\u0009\"approved\",\n\u0009\"COMPANY\":\u0009\"company\",\n\u0009\"CONTRADICTION\":\u0009\"Contradiction\",\n\u0009\"DEADLINE\":\u0009\"next deadline\",\n\u0009\"DEFINITION\":\u0009\"Definition\",\n\u0009\"ESTIMATEDHOURS\":\u0009\"next working hours\",\n\u0009\"FEATURE\":\u0009\"Feature\",\n\u0009\"FULLY_IMPLEMENTED\":\u0009\"fully implemented\",\n\u0009\"LASTUPDATE\":\u0009\"last update\",\n\u0009\"NONGOAL\":\u0009\"Non-Goal\",\n\u0009\"OVERVIEW\":\u0009\"Overview\",\n\u0009\"OBSOLET\":\u0009\"obsolet\",\n\u0009\"PARENT\":\u0009\"is part of\",\n\u0009\"PARTLY_IMPLEMENTED\":\u0009\"partly implemented\",\n\u0009\"PROJECT\":\u0009\"project\",\n\u0009\"PLANNING\":\u0009\"planning\",\n\u0009\"SUPERSEDED_BY\":\u0009\"superseded by\",\n\u0009\"RELATED\":\u0009\"Related Specifications\",\n\u0009\"REQUESTED_BY\":\u0009\"requested by\",\n\u0009\"RESPONSIBLE\":\u0009\"responsible person\",\n\u0009\"RESOURCES\":\u0009\"Files / Resources\",\n\u0009\"SCENARIO\":\u0009\"Scenario\",\n\u0009\"SPEC_END\":\u0009\"End of Specification\",\n\u0009\"STATE\":\u0009\"state\",\n\u0009\"TRANSLATIONS\":\u0009\"Translations\",\n\u0009\"UNDECIDED\":\u0009\"Undecided\",\n\u0009\"PERSONS\":\u0009\"persons\",\n\u0009\"PROPERTY\":\u0009\"property\",\n\u0009\"VALUE\":\u0009\"value\",\n}",
+    "github.com/metakeule/speccer/translations.init": "",
+    "github.com/metakeule/speclib.Filter": "type Filter struct {AGREED bool; COMMENTS bool; CONTRADICTION bool; DEFINITION bool; FEATURE bool; FINISHED bool; IMPLEMENTING bool; META bool; NONGOAL bool; OBSOLET bool; OVERVIEW bool; PLANNING bool; PROPERTIES bool; PROPERTIES_EXTENDED bool; RESOURCES bool; SCENARIO bool; UNDECIDED bool}",
+    "github.com/metakeule/speclib.New": "func (string,string,string) *Spec",
+    "github.com/metakeule/speclib.NormalizeLineFeeds": "func (string) string",
+    "github.com/metakeule/speclib.Paragraph": "type Paragraph struct {Comments map[string]string; Deadline string; EstimatedHours int; LastUpdate string; Responsible string; Spec *Spec; State string; Text string; Title string; UUID string}",
+    "github.com/metakeule/speclib.Paragraph.CommentsMarkdown": "(Paragraph) CommentsMarkdown() string",
+    "github.com/metakeule/speclib.Paragraph.Html": "(Paragraph) Html() string",
+    "github.com/metakeule/speclib.Paragraph.Markdown": "(Paragraph) Markdown(*Filter) string",
+    "github.com/metakeule/speclib.Paragraph.Validate": "(Paragraph) Validate() error",
+    "github.com/metakeule/speclib.Spec": "type Spec struct {INFO Info; OVERVIEW *Paragraph; Sections map[string][]Paragraph}",
+    "github.com/metakeule/speclib.Spec.Copy": "(Spec) Copy(string) *Spec",
+    "github.com/metakeule/speclib.init": ""
+  },
+  "Path": "github.com/metakeule/speccer"
+}

@@ -1,0 +1,30 @@
+{
+  "github.com/go-contrib/uuid": {
+    "VCM": "git",
+    "Rev": "c78c1486a46e767d5172fbd0d30c5ae1d1a3c7f9",
+    "Parent": "github.com/metakeule/speclib",
+    "Tag": "",
+    "RepoRoot": "github.com/go-contrib/uuid"
+  },
+  "github.com/metakeule/fmtdate": {
+    "VCM": "git",
+    "Rev": "3a581709385e389a529a7dec33dc7940b59eafc0",
+    "Parent": "github.com/metakeule/speclib",
+    "Tag": "",
+    "RepoRoot": "github.com/metakeule/fmtdate"
+  },
+  "github.com/metakeule/speclib": {
+    "VCM": "git",
+    "Rev": "f926ee663905a6bdd3d867c25416ef2e47289e54",
+    "Parent": "github.com/metakeule/speccer",
+    "Tag": "",
+    "RepoRoot": "github.com/metakeule/speclib"
+  },
+  "github.com/russross/blackfriday": {
+    "VCM": "git",
+    "Rev": "48d1f9d9cc4926f3465929e318a3a002ef9c8a35",
+    "Parent": "github.com/metakeule/speclib",
+    "Tag": "",
+    "RepoRoot": "github.com/russross/blackfriday"
+  }
+}

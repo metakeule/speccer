@@ -1,7 +1,7 @@
 # Common
 alias spec_create='speccer -cmd create';
 alias spec_validate='speccer -cmd validate';
-alias spec_save='speccer -cmd save';
+alias spec_copy='speccer -cmd copy';
 
 alias spec_markdown='speccer -cmd markdown';
 alias spec_markdown-doc='speccer -cmd markdown -usage "documentation"';
@@ -53,6 +53,7 @@ alias spec_set-project='speccer -cmd property -name PROJECT -set';
 alias spec_set-url='speccer -cmd property -name URL -set';
 alias spec_set-language='speccer -cmd property -name LANGUAGE -set';
 alias spec_set-dateformat='speccer -cmd property -name DATEFORMAT -set';
+alias spec_set-approved='speccer -cmd property -name APPROVED -set';
 alias spec_set-persons='speccer -cmd property -name PERSONS -set';     
 
 # Add Sections

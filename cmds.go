@@ -14,6 +14,8 @@ func (s *speccer) runCMD() error {
 	// operations on the spec
 	case "create":
 		return s.createCMD()
+	case "copy":
+		return s.copyCMD()
 	case "property":
 		return s.propertyCMD()
 	case "validate":
@@ -22,8 +24,6 @@ func (s *speccer) runCMD() error {
 		return s.htmlCMD()
 	case "markdown":
 		return s.markdownCMD()
-	case "save":
-		return s.saveCMD()
 	// operations on a section / paragraph of a section
 	case "text":
 		return s.textCMD()
@@ -246,8 +246,13 @@ func (s *speccer) addCMD() error {
 	return s.addParagraph(all)
 }
 
-func (s *speccer) saveCMD() error {
-	s.shouldSave = true
+func (s *speccer) copyCMD() error {
+	resp := s.Args.Responsible
+	if resp == "" {
+		resp = s.Spec.OVERVIEW.Responsible
+	}
+	c := s.Spec.Copy(resp)
+	fmt.Println(c.Json())
 	return nil
 }
 

@@ -8,7 +8,7 @@
       "mra": "just a comment",
       "reason for state": "other comment"
     },
-    "LastUpdate": "2013-11-24",
+    "LastUpdate": "2013-11-29",
     "State": "IMPLEMENTING",
     "Deadline": "soon",
     "EstimatedHours": 2
@@ -101,6 +101,17 @@
         "State": "FINISHED",
         "Deadline": "",
         "EstimatedHours": 0
+      },
+      {
+        "UUID": "cc3a6fd8-fe1d-493c-997f-5f0c0b61dcc7",
+        "Responsible": "mra",
+        "Title": "Linefeed export",
+        "Text": "Every import and export replaces to `\\n` only. \nEditors should be able to handle it, otherwise other tools would be \nneeded to convert before editing.\n\n",
+        "Comments": {},
+        "LastUpdate": "2013-11-29",
+        "State": "FINISHED",
+        "Deadline": "",
+        "EstimatedHours": 0
       }
     ],
     "FEATURE": [
@@ -108,9 +119,9 @@
         "UUID": "7a6daf30-1bfc-4d97-8e82-dd3ae6f7380e",
         "Responsible": "mra",
         "Title": "create a new spec",
-        "Text": "Go into a folder that should contain your spec and run\n\n    speccer -cmd create\n\nCreates a file `spec.json` in the current folder and exports it\nas `spec.md` (Markdown) and `spec.html` (HTML).\n\nIf the `-language` parameter is set (to e.g. `en_US`) it creates\nthe following files instead:\n\n- `spec_en_US.json`\n- `spec_en_US.md`\n- `spec_en_US.html`\n\nBe aware that the new spec is not valid since there are missing\nproperties. You can validate a spec to see them:\n\n    speccer -cmd validate\n\n\n\n",
+        "Text": "Go into a folder that should contain your spec and run\n\n    speccer -cmd create\n\nThis creates a file `spec.json` in the current folder.\n\nIf the `-language` parameter is set (to e.g. `en_US`) it creates\nthe file `spec_en_US.json` instead.\n\nBe aware that the new spec is not valid since there are missing\nproperties. You can validate a spec to see them:\n\n    speccer -cmd validate\n\n\n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-23",
+        "LastUpdate": "2013-11-29",
         "State": "FINISHED",
         "Deadline": "",
         "EstimatedHours": 0
@@ -127,23 +138,12 @@
         "EstimatedHours": 0
       },
       {
-        "UUID": "248fa143-f906-48ef-888d-01a9db615189",
-        "Responsible": "mra",
-        "Title": "recreate HTML and markdown export based on current spec.json",
-        "Text": "Go into a folder that contains your spec and run\n\n    speccer -cmd save\n\n",
-        "Comments": {},
-        "LastUpdate": "2013-11-23",
-        "State": "FINISHED",
-        "Deadline": "",
-        "EstimatedHours": 0
-      },
-      {
         "UUID": "78af57be-97a0-4a06-8ca1-d5b2c13b25b5",
         "Responsible": "mra",
-        "Title": "export markdown to stdout without overwriting json.md",
+        "Title": "export markdown to stdout",
         "Text": "Go into a folder that contains your spec and run\n\n    speccer -cmd markdown\n\nYou might also pass the usage option to filter out some data, e.g.\n\n    speccer -cmd markdown -usage \"documentation\"\n\n    \n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-23",
+        "LastUpdate": "2013-11-29",
         "State": "FINISHED",
         "Deadline": "",
         "EstimatedHours": 0
@@ -151,10 +151,10 @@
       {
         "UUID": "3f36007c-3063-4ebb-a5c3-2c9ff0bda510",
         "Responsible": "mra",
-        "Title": "export HTML to stdout without overwriting json.html",
+        "Title": "export HTML to stdout",
         "Text": "Go into a folder that contains your spec and run\n\n    speccer -cmd html\n\nYou might also pass the usage option to filter out some data, e.g.\n\n    speccer -cmd html -usage \"documentation\"\n\n\n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-23",
+        "LastUpdate": "2013-11-29",
         "State": "FINISHED",
         "Deadline": "",
         "EstimatedHours": 0
@@ -206,10 +206,10 @@
       {
         "UUID": "936f9d4a-6c84-4a3b-a496-b3022f9fc78c",
         "Responsible": "mra",
-        "Title": "show list of paragraphs of a section",
+        "Title": "show list of paragraphs",
         "Text": "Go into a folder that contains your spec and run\n\n    speccer -cmd positions -sec SCENARIO\n\nto see a list of all paragraphs of the `SCENARIO` section.\n\nEach paragraph has the title printed preceeded by \na number indicating the position of the paragraph inside\nthe section. This position can be used to print or change\nthe paragraph.\n\n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-23",
+        "LastUpdate": "2013-11-29",
         "State": "FINISHED",
         "Deadline": "",
         "EstimatedHours": 0
@@ -217,10 +217,10 @@
       {
         "UUID": "4df2be31-ef24-4630-a8e0-587ab43b4c38",
         "Responsible": "mra",
-        "Title": "show content of a paragraphs of a section",
+        "Title": "show content of a paragraph",
         "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see. Therefor you might want to first \nprint all positions of the section (here `SCENARIO`) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd text -sec SCENARIO -at 3\n\nto see the text for the 3rd paragraph in the\n`SCENARIO` section.\n\nIf you want to include comments and meta data, run\n\n    speccer -cmd text -sec SCENARIO -at 3 -with-comments -with-meta\n\n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-23",
+        "LastUpdate": "2013-11-29",
         "State": "FINISHED",
         "Deadline": "",
         "EstimatedHours": 0
@@ -228,10 +228,10 @@
       {
         "UUID": "ef854fec-9cec-4912-ae8d-6a0e2ceac098",
         "Responsible": "mra",
-        "Title": "change content of a paragraph of a section",
+        "Title": "change content of a paragraph",
         "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see. Therefor you might want to first \nprint all positions of the section (here `SCENARIO`) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd text -sec SCENARIO -at 3 \u003e temp.md\n\nto save the current text and comments for the 3rd paragraph in the\n`SCENARIO` section to the file `temp.md`.\n\nNow fire up your editor to change the content. Then run\n\n    speccer -cmd text -sec SCENARIO -at 3 -set temp.md\n\nto set the text of the 3rd paragraph in the `SCENARIO` section.\n\nThe comments and meta data (including the title) of the \n3rd paragraph are not modified by this operation. \nSo you may want to change them too.\n\n\n\n\n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-23",
+        "LastUpdate": "2013-11-29",
         "State": "FINISHED",
         "Deadline": "",
         "EstimatedHours": 0
@@ -239,10 +239,10 @@
       {
         "UUID": "6daa3b1a-0cda-4861-b935-527474415efb",
         "Responsible": "mra",
-        "Title": "see, add and change comment to a paragraph of a section",
+        "Title": "see, add and change comment to a paragraph",
         "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see. Therefor you might want to first \nprint all positions of the section (here `SCENARIO`) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd comment -sec SCENARIO -at 3\n\nto see the current comments for the 3rd paragraph in the\n`SCENARIO` section.\n\nNow if the author of your comment already made a comment to \nthis paragraph and if you want to append to this old comment,\nyou first have to save the old one.\n\nTo do this, run \n\n    speccer -cmd comment -sec SCENARIO -at 3 -author Jim \u003e temp.md\n\nto save the comment of `Jim` to the file `temp.md`. Then you can edit this\nfile. If you just want to remove the old comment or if there was no\ncomment you may simply start with an empty file `temp.md`.\n\nAfter you edited the file, run \n\n    speccer -cmd comment -sec SCENARIO -at 3 -author Jim -set temp.md\n\nto set the comment of `Jim` on the 3rd paragraph of the `SCENARIO` section\nto the content of the file `temp.md`.\n\n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-23",
+        "LastUpdate": "2013-11-29",
         "State": "FINISHED",
         "Deadline": "",
         "EstimatedHours": 0
@@ -250,10 +250,10 @@
       {
         "UUID": "322afa61-0ddf-4743-b7b5-fbfcf953acee",
         "Responsible": "mra",
-        "Title": "move a paragraph of a section",
+        "Title": "move a paragraph",
         "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to move. Therefor you might want to first \nprint all positions of the section (here `SCENARIO`) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd move -sec SCENARIO -at 3 -to 1\n\nto move the 3rd paragraph in the `SCENARIO` section to be the first.\n\n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-23",
+        "LastUpdate": "2013-11-29",
         "State": "FINISHED",
         "Deadline": "",
         "EstimatedHours": 0
@@ -261,10 +261,10 @@
       {
         "UUID": "0c570c6c-39c5-43c2-ba60-5368260fd448",
         "Responsible": "mra",
-        "Title": "delete a paragraph of a section",
+        "Title": "delete a paragraph",
         "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to delete. Therefor you might want to first \nprint all positions of the section (here `SCENARIO`) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd rm -sec SCENARIO -at 3\n\nto remove the 3rd paragraph in the `SCENARIO` section.\n\n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-23",
+        "LastUpdate": "2013-11-29",
         "State": "FINISHED",
         "Deadline": "",
         "EstimatedHours": 0
@@ -272,10 +272,10 @@
       {
         "UUID": "e9fa657c-1700-4bbe-b265-beb420eb661c",
         "Responsible": "mra",
-        "Title": "see and change meta data of a paragraph of a section",
+        "Title": "see and change meta data of a paragraph",
         "Text": "Go into a folder that contains your spec.\nYou will need to know the position of the paragraph\nyou want to see the meta data. Therefor you might want to first \nprint all positions of the section (here `SCENARIO`) \nwith\n\n    speccer -cmd positions -sec SCENARIO\n\nthen you can run\n\n    speccer -cmd meta -sec SCENARIO -at 3\n\nto see all meta data of the 3rd paragraph in the `SCENARIO` section.\n\nIf you want to change a datum you will have to pass the name:\n\n    speccer -cmd meta -sec SCENARIO -at 3 -name RESPONSIBLE -set Jim\n\n\n\n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-23",
+        "LastUpdate": "2013-11-29",
         "State": "FINISHED",
         "Deadline": "",
         "EstimatedHours": 0
@@ -284,9 +284,9 @@
         "UUID": "e3373cdc-d9c3-45ab-bc00-41d8118df8e1",
         "Responsible": "mra",
         "Title": "shortcuts",
-        "Text": "To use the `bash` / `zsh` shortcuts, copy the `aliases.sh`\ninto your home directory\n\n    cp aliases.sh ~/.speccer_aliases.sh\n\nand write the following into your `.bashrc`\n\n    . ~/.speccer_aliases.sh\n\nThen you will have access to the following shortcuts\n(in bold is an example input to put after the alias).\n\n#### General\n`spec_create`   \n`spec_validate`  \n`spec_save`   \n\n#### Markdown export\n`spec_markdown`   \n`spec_markdown-doc`   \n`spec_markdown-approve`   \n`spec_markdown-discuss`   \n`spec_markdown-implement`   \n`spec_markdown-clean`   \n\n#### HTML export\n`spec_html`   \n`spec_html-doc`   \n`spec_html-approve`   \n`spec_html-discuss`   \n`spec_html-implement`   \n`spec_html-clean`   \n\n#### Spec property getters\n`spec-requestedby`   \n`spec-related`   \n`spec-translations`   \n`spec-supersededby`   \n`spec-resources`   \n`spec-parent`   \n`spec-company`   \n`spec-project`   \n`spec-persons`   \n`spec-url`   \n`spec-language`   \n`spec-dateformat`   \n`spec-approved`   \n\n#### Spec property unsetters\n`spec_uset-requestedby`   \n`spec_uset-related`   \n`spec_uset-translations`   \n`spec_uset-supersededby`   \n`spec_uset-resources`   \n`spec_uset-parent`   \n`spec_uset-persons`   \n\n#### Spec property setters\n`spec_set-requestedby` **Jim**  \n`spec_set-related` **'{\"other\": \"http://other.com/spec\"}'**  \n`spec_set-translations`  **'{\"de_DE\": \"http://de.other.com/spec\"}'**  \n`spec_set-supersededby` **'{\"v2\": \"http://other.com/v2/spec\"}'**  \n`spec_set-resources` **'{\"ER diagramm\": \"http://other.com/er.png\"}'**  \n`spec_set-parent` **'http://other.com/parent-spec'**  \n`spec_set-company` **acme**  \n`spec_set-project` **'my project'**  \n`spec_set-url` **'http://greatspec.com/spec'**  \n`spec_set-language` **en_US**  \n`spec_set-dateformat` **YYYY-MM-DD**  \n`spec_set-approved`  **true**  \n`spec_set-persons`  **'{\"PP\": \"Paul Panther \u003cpaul@panther.com\u003e\"}'**  \n\n#### Add Sections\n`spec_add-SCENARIO`  **new.md**  \n`spec_add-CONTRADICTION`  **new.md**  \n`spec_add-DEFINITION` **new.md**  \n`spec_add-FEATURE` **new.md**  \n`spec_add-NONGOAL`  **new.md**  \n`spec_add-UNDECIDED` **new.md**  \n\n#### Show Sections\n`spec-OVERVIEW`   \n`spec-SCENARIO-at` **2**  \n`spec-CONTRADICTION-at` **5**  \n`spec-DEFINITION-at` **20**  \n`spec-FEATURE-at` **1**  \n`spec-NONGOAL-at`  **2**  \n`spec-UNDECIDED-at`  **5**  \n\n#### Show Sections with comments and meta\n`spec-OVERVIEW-full`  \n`spec-SCENARIO-full-at` **2**  \n`spec-CONTRADICTION-full-at` **2**  \n`spec-DEFINITION-full-at` **5**  \n`spec-FEATURE-full-at` **2**  \n`spec-NONGOAL-full-at`  **7**  \n`spec-UNDECIDED-full-at` **2**  \n\n#### Get list of Paragraphs for all section\n`spec_ls`  \n\n#### Get list of Paragraphs for a section\n`spec_ls-SCENARIO`   \n`spec_ls-CONTRADICTION`   \n`spec_ls-DEFINITION`   \n`spec_ls-FEATURE`   \n`spec_ls-NONGOAL`   \n`spec_ls-UNDECIDED`   \n\n#### Get Comments of Paragraphs for a section\n`spec_comment-OVERVIEW`   \n`spec_comment-SCENARIO-at`  **2**  \n`spec_comment-CONTRADICTION-at`  **2**  \n`spec_comment-DEFINITION-at`  **2**  \n`spec_comment-FEATURE-at`  **2**  \n`spec_comment-NONGOAL-at`  **2**  \n`spec_comment-UNDECIDED-at` **2**  \n\n#### Set Comment of Paragraph for a section\n`spec_comment_replace-OVERVIEW`  **new.md**  \n`spec_comment_replace-SCENARIO`  **new.md -at 2**  \n`spec_comment_replace-CONTRADICTION`  **new.md -at 2**  \n`spec_comment_replace-DEFINITION`  **new.md -at 2**  \n`spec_comment_replace-FEATURE`  **new.md -at 2**  \n`spec_comment_replace-NONGOAL`  **new.md -at 2**  \n`spec_comment_replace-UNDECIDED`  **new.md -at 2**  \n\n#### Replace Sections\n`spec_replace-OVERVIEW`  **new.md**  \n`spec_replace-SCENARIO`  **new.md -at 2**  \n`spec_replace-CONTRADICTION` **new.md -at 2**  \n`spec_replace-DEFINITION` **new.md -at 2**  \n`spec_replace-FEATURE` **new.md -at 2**  \n`spec_replace-NONGOAL` **new.md -at 2**  \n`spec_replace-UNDECIDED` **new.md -at 2**  \n\n#### Move Sections\n`spec_mv-SCENARIO-at`  **2 -to 5**  \n`spec_mv-CONTRADICTION-at` **2 -to 5**  \n`spec_mv-DEFINITION-at` **2 -to 5**  \n`spec_mv-FEATURE-at` **2 -to 5**  \n`spec_mv-NONGOAL-at` **2 -to 5**  \n`spec_mv-UNDECIDED-at` **2 -to 5**  \n\n#### Remove Sections\n`spec_rm-SCENARIO-at` **2**  \n`spec_rm-CONTRADICTION-at` **2**  \n`spec_rm-DEFINITION-at` **2**  \n`spec_rm-FEATURE-at` **2**  \n`spec_rm-NONGOAL-at` **2**  \n`spec_rm-UNDECIDED-at`  **2**  \n\n#### Get Meta Data of Overview / Spec\n`spec-RESPONSIBLE`  \n`spec-STATE`  \n`spec-DEADLINE`  \n`spec-LASTUPDATE`  \n`spec-ESTIMATEDHOURS`  \n`spec-TITLE`  \n\n#### Get Meta Data of Section\n`spec-SCENARIO-RESPONSIBLE-at`  **2**  \n`spec-SCENARIO-STATE-at`  **2**  \n`spec-SCENARIO-DEADLINE-at`  **2**  \n`spec-SCENARIO-LASTUPDATE-at`  **2**  \n`spec-SCENARIO-ESTIMATEDHOURS-at`  **2**  \n`spec-SCENARIO-TITLE-at`  **2**  \n\n`spec-CONTRADICTION-RESPONSIBLE-at`  **2**  \n`spec-CONTRADICTION-STATE-at`  **2**  \n`spec-CONTRADICTION-DEADLINE-at`  **2**  \n`spec-CONTRADICTION-LASTUPDATE-at`  **2**  \n`spec-CONTRADICTION-ESTIMATEDHOURS-at`  **2**  \n`spec-CONTRADICTION-TITLE-at`  **2**  \n\n`spec-DEFINITION-RESPONSIBLE-at`  **2**  \n`spec-DEFINITION-STATE-at`  **2**  \n`spec-DEFINITION-DEADLINE-at`  **2**  \n`spec-DEFINITION-LASTUPDATE-at`  **2**  \n`spec-DEFINITION-ESTIMATEDHOURS-at`  **2**  \n`spec-DEFINITION-TITLE-at`  **2**  \n\n`spec-FEATURE-RESPONSIBLE-at`  **2**  \n`spec-FEATURE-STATE-at`  **2**  \n`spec-FEATURE-DEADLINE-at`  **2**  \n`spec-FEATURE-LASTUPDATE-at`  **2**  \n`spec-FEATURE-ESTIMATEDHOURS-at`  **2**  \n`spec-FEATURE-TITLE-at`  **2**  \n\n`spec-NONGOAL-RESPONSIBLE-at`  **2**  \n`spec-NONGOAL-STATE-at`  **2**  \n`spec-NONGOAL-DEADLINE-at`   **2**  \n`spec-NONGOAL-LASTUPDATE-at`  **2**  \n`spec-NONGOAL-ESTIMATEDHOURS-at`  **2**  \n`spec-NONGOAL-TITLE-at`  **2**  \n\n`spec-UNDECIDED-RESPONSIBLE-at`  **2**  \n`spec-UNDECIDED-STATE-at`  **2**  \n`spec-UNDECIDED-DEADLINE-at`  **2**  \n`spec-UNDECIDED-LASTUPDATE-at`  **2**  \n`spec-UNDECIDED-ESTIMATEDHOURS-at` **2**  \n`spec-UNDECIDED-TITLE-at`  **2**  \n\n#### Set Meta Data of Overview / Spec\n`spec_set-RESPONSIBLE` **'Peter Pan'**  \n`spec_set-PLANNING`  \n`spec_set-AGREED`  \n`spec_set-IMPLEMENTING`  \n`spec_set-FINISHED`   \n`spec_set-OBSOLET`  \n`spec_set-DEADLINE`  **'2014-12-24'**  \n`spec_set-ESTIMATEDHOURS`  **12**  \n`spec_set-TITLE`  **'my title'**  \n\n#### Set Meta Data of Section\n\n`spec_set-SCENARIO-RESPONSIBLE`   **'Peter Pan' -at 2**    \n`spec_set-SCENARIO-PLANNING`  **-at 2**  \n`spec_set-SCENARIO-AGREED`   **-at 2**  \n`spec_set-SCENARIO-IMPLEMENTING`   **-at 2**  \n`spec_set-SCENARIO-FINISHED`   **-at 2**  \n`spec_set-SCENARIO-OBSOLET`   **-at 2**  \n`spec_set-SCENARIO-DEADLINE`   **'2014-12-24' -at 2**  \n`spec_set-SCENARIO-ESTIMATEDHOURS`  **12 -at 2**  \n`spec_set-SCENARIO-TITLE`  **'my title' -at 3**  \n\n`spec_set-CONTRADICTION-RESPONSIBLE`  **'Peter Pan' -at 2**    \n`spec_set-CONTRADICTION-PLANNING`   **-at 2**  \n`spec_set-CONTRADICTION-AGREED`   **-at 2**  \n`spec_set-CONTRADICTION-IMPLEMENTING`   **-at 2**  \n`spec_set-CONTRADICTION-FINISHED`   **-at 2**  \n`spec_set-CONTRADICTION-OBSOLET`   **-at 2**  \n`spec_set-CONTRADICTION-DEADLINE`  **'2014-12-24' -at 2**  \n`spec_set-CONTRADICTION-ESTIMATEDHOURS`  **3 -at 2**  \n`spec_set-CONTRADICTION-TITLE`  **'my title' -at 3**  \n\n`spec_set-DEFINITION-RESPONSIBLE` **'Peter Pan' -at 2**    \n`spec_set-DEFINITION-PLANNING`   **-at 2**  \n`spec_set-DEFINITION-AGREED`   **-at 2**  \n`spec_set-DEFINITION-IMPLEMENTING`   **-at 2**  \n`spec_set-DEFINITION-FINISHED`   **-at 2**  \n`spec_set-DEFINITION-OBSOLET`   **-at 2**  \n`spec_set-DEFINITION-DEADLINE`  **'2014-12-24' -at 2**  \n`spec_set-DEFINITION-ESTIMATEDHOURS`  **3 -at 2**  \n`spec_set-DEFINITION-TITLE`  **'my title' -at 3**  \n\n`spec_set-FEATURE-RESPONSIBLE`  **'Peter Pan' -at 2**    \n`spec_set-FEATURE-PLANNING`  **-at 2**  \n`spec_set-FEATURE-AGREED`  **-at 2**  \n`spec_set-FEATURE-IMPLEMENTING`  **-at 2**  \n`spec_set-FEATURE-FINISHED`  **-at 2**  \n`spec_set-FEATURE-OBSOLET`   **-at 2**  \n`spec_set-FEATURE-DEADLINE`  **'2014-12-24' -at 2**  \n`spec_set-FEATURE-ESTIMATEDHOURS`  **3 -at 2**  \n`spec_set-FEATURE-TITLE`  **'my title' -at 3**  \n\n`spec_set-NONGOAL-RESPONSIBLE` **'Peter Pan' -at 2**    \n`spec_set-NONGOAL-PLANNING`   **-at 2**  \n`spec_set-NONGOAL-AGREED`   **-at 2**  \n`spec_set-NONGOAL-IMPLEMENTING`  **-at 2**  \n`spec_set-NONGOAL-FINISHED`   **-at 2**  \n`spec_set-NONGOAL-OBSOLET`   **-at 2**  \n`spec_set-NONGOAL-DEADLINE`  **'2014-12-24' -at 2**  \n`spec_set-NONGOAL-ESTIMATEDHOURS`  **3 -at 2**  \n`spec_set-NONGOAL-TITLE`  **'my title' -at 3**  \n\n`spec_set-UNDECIDED-RESPONSIBLE`  **'Peter Pan' -at 2**    \n`spec_set-UNDECIDED-PLANNING`   **-at 2**  \n`spec_set-UNDECIDED-AGREED`   **-at 2**  \n`spec_set-UNDECIDED-IMPLEMENTING`   **-at 2**  \n`spec_set-UNDECIDED-FINISHED`   **-at 2**  \n`spec_set-UNDECIDED-OBSOLET`   **-at 2**  \n`spec_set-UNDECIDED-DEADLINE`  **'2014-12-24' -at 2**  \n`spec_set-UNDECIDED-ESTIMATEDHOURS`  **3 -at 2**  \n`spec_set-UNDECIDED-TITLE`  **'my title' -at 3**  \n\n",
+        "Text": "Some commands and options are hard to remember.\nBut instead of bake new options into `speccer` we\ndeliver an alias file you could use in your bash or zsh shell.\n\nTo use the `bash` / `zsh` shortcuts, copy the `aliases.sh`\ninto your home directory\n\n    cp aliases.sh ~/.speccer_aliases.sh\n\nand write the following into your `.bashrc`\n\n    . ~/.speccer_aliases.sh\n\nThen you will have access to the following shortcuts\n(in bold is an example input to put after the alias).\n\n#### General\n`spec_create`   \n`spec_validate`  \n`spec_copy`  \n\n#### Markdown export\n`spec_markdown`   \n`spec_markdown-doc`   \n`spec_markdown-approve`   \n`spec_markdown-discuss`   \n`spec_markdown-implement`   \n`spec_markdown-clean`   \n\n#### HTML export\n`spec_html`   \n`spec_html-doc`   \n`spec_html-approve`   \n`spec_html-discuss`   \n`spec_html-implement`   \n`spec_html-clean`   \n\n#### Spec property getters\n`spec-requestedby`   \n`spec-related`   \n`spec-translations`   \n`spec-supersededby`   \n`spec-resources`   \n`spec-parent`   \n`spec-company`   \n`spec-project`   \n`spec-persons`   \n`spec-url`   \n`spec-language`   \n`spec-dateformat`   \n`spec-approved`   \n\n#### Spec property unsetters\n`spec_uset-requestedby`   \n`spec_uset-related`   \n`spec_uset-translations`   \n`spec_uset-supersededby`   \n`spec_uset-resources`   \n`spec_uset-parent`   \n`spec_uset-persons`   \n\n#### Spec property setters\n`spec_set-requestedby` **Jim**  \n`spec_set-related` **'{\"other\": \"http://other.com/spec\"}'**  \n`spec_set-translations`  **'{\"de_DE\": \"http://de.other.com/spec\"}'**  \n`spec_set-supersededby` **'{\"v2\": \"http://other.com/v2/spec\"}'**  \n`spec_set-resources` **'{\"ER diagramm\": \"http://other.com/er.png\"}'**  \n`spec_set-parent` **'http://other.com/parent-spec'**  \n`spec_set-company` **acme**  \n`spec_set-project` **'my project'**  \n`spec_set-url` **'http://greatspec.com/spec'**  \n`spec_set-language` **en_US**  \n`spec_set-dateformat` **YYYY-MM-DD**  \n`spec_set-approved`  **true**  \n`spec_set-persons`  **'{\"PP\": \"Paul Panther \u003cpaul@panther.com\u003e\"}'**  \n\n#### Add Sections\n`spec_add-SCENARIO`  **new.md**  \n`spec_add-CONTRADICTION`  **new.md**  \n`spec_add-DEFINITION` **new.md**  \n`spec_add-FEATURE` **new.md**  \n`spec_add-NONGOAL`  **new.md**  \n`spec_add-UNDECIDED` **new.md**  \n\n#### Show Sections\n`spec-OVERVIEW`   \n`spec-SCENARIO-at` **2**  \n`spec-CONTRADICTION-at` **5**  \n`spec-DEFINITION-at` **20**  \n`spec-FEATURE-at` **1**  \n`spec-NONGOAL-at`  **2**  \n`spec-UNDECIDED-at`  **5**  \n\n#### Show Sections with comments and meta\n`spec-OVERVIEW-full`  \n`spec-SCENARIO-full-at` **2**  \n`spec-CONTRADICTION-full-at` **2**  \n`spec-DEFINITION-full-at` **5**  \n`spec-FEATURE-full-at` **2**  \n`spec-NONGOAL-full-at`  **7**  \n`spec-UNDECIDED-full-at` **2**  \n\n#### Get list of Paragraphs for all section\n`spec_ls`  \n\n#### Get list of Paragraphs for a section\n`spec_ls-SCENARIO`   \n`spec_ls-CONTRADICTION`   \n`spec_ls-DEFINITION`   \n`spec_ls-FEATURE`   \n`spec_ls-NONGOAL`   \n`spec_ls-UNDECIDED`   \n\n#### Get uuids of Paragraphs for a section\n`spec_uuids`\n`spec_uuids-SCENARIO`\n`spec_uuids-CONTRADICTION`\n`spec_uuids-DEFINITION`\n`spec_uuids-FEATURE`\n`spec_uuids-NONGOAL`\n`spec_uuids-UNDECIDED`\n\n#### Get Comments of Paragraphs for a section\n`spec_comment-OVERVIEW`   \n`spec_comment-SCENARIO-at`  **2**  \n`spec_comment-CONTRADICTION-at`  **2**  \n`spec_comment-DEFINITION-at`  **2**  \n`spec_comment-FEATURE-at`  **2**  \n`spec_comment-NONGOAL-at`  **2**  \n`spec_comment-UNDECIDED-at` **2**  \n\n#### Set Comment of Paragraph for a section\n`spec_comment_replace-OVERVIEW`  **new.md**  \n`spec_comment_replace-SCENARIO`  **new.md -at 2**  \n`spec_comment_replace-CONTRADICTION`  **new.md -at 2**  \n`spec_comment_replace-DEFINITION`  **new.md -at 2**  \n`spec_comment_replace-FEATURE`  **new.md -at 2**  \n`spec_comment_replace-NONGOAL`  **new.md -at 2**  \n`spec_comment_replace-UNDECIDED`  **new.md -at 2**  \n\n#### Replace Sections\n`spec_replace-OVERVIEW`  **new.md**  \n`spec_replace-SCENARIO`  **new.md -at 2**  \n`spec_replace-CONTRADICTION` **new.md -at 2**  \n`spec_replace-DEFINITION` **new.md -at 2**  \n`spec_replace-FEATURE` **new.md -at 2**  \n`spec_replace-NONGOAL` **new.md -at 2**  \n`spec_replace-UNDECIDED` **new.md -at 2**  \n\n#### Move Sections\n`spec_mv-SCENARIO-at`  **2 -to 5**  \n`spec_mv-CONTRADICTION-at` **2 -to 5**  \n`spec_mv-DEFINITION-at` **2 -to 5**  \n`spec_mv-FEATURE-at` **2 -to 5**  \n`spec_mv-NONGOAL-at` **2 -to 5**  \n`spec_mv-UNDECIDED-at` **2 -to 5**  \n\n#### Remove Sections\n`spec_rm-SCENARIO-at` **2**  \n`spec_rm-CONTRADICTION-at` **2**  \n`spec_rm-DEFINITION-at` **2**  \n`spec_rm-FEATURE-at` **2**  \n`spec_rm-NONGOAL-at` **2**  \n`spec_rm-UNDECIDED-at`  **2**  \n\n#### Get Meta Data of Overview / Spec\n`spec-RESPONSIBLE`  \n`spec-STATE`  \n`spec-DEADLINE`  \n`spec-LASTUPDATE`  \n`spec-ESTIMATEDHOURS`  \n`spec-TITLE`  \n`spec-UUID`\n\n#### Get Meta Data of Section\n`spec-SCENARIO-RESPONSIBLE-at`  **2**  \n`spec-SCENARIO-STATE-at`  **2**  \n`spec-SCENARIO-DEADLINE-at`  **2**  \n`spec-SCENARIO-LASTUPDATE-at`  **2**  \n`spec-SCENARIO-ESTIMATEDHOURS-at`  **2**  \n`spec-SCENARIO-TITLE-at`  **2**  \n`spec-SCENARIO-UUID-at`  **2**  \n\n`spec-CONTRADICTION-RESPONSIBLE-at`  **2**  \n`spec-CONTRADICTION-STATE-at`  **2**  \n`spec-CONTRADICTION-DEADLINE-at`  **2**  \n`spec-CONTRADICTION-LASTUPDATE-at`  **2**  \n`spec-CONTRADICTION-ESTIMATEDHOURS-at`  **2**  \n`spec-CONTRADICTION-TITLE-at`  **2**  \n`spec-CONTRADICTION-UUID-at`  **2**  \n\n`spec-DEFINITION-RESPONSIBLE-at`  **2**  \n`spec-DEFINITION-STATE-at`  **2**  \n`spec-DEFINITION-DEADLINE-at`  **2**  \n`spec-DEFINITION-LASTUPDATE-at`  **2**  \n`spec-DEFINITION-ESTIMATEDHOURS-at`  **2**  \n`spec-DEFINITION-TITLE-at`  **2**  \n`spec-DEFINITION-UUID-at`  **2**  \n\n`spec-FEATURE-RESPONSIBLE-at`  **2**  \n`spec-FEATURE-STATE-at`  **2**  \n`spec-FEATURE-DEADLINE-at`  **2**  \n`spec-FEATURE-LASTUPDATE-at`  **2**  \n`spec-FEATURE-ESTIMATEDHOURS-at`  **2**  \n`spec-FEATURE-TITLE-at`  **2**  \n`spec-FEATURE-UUID-at`  **2**  \n\n`spec-NONGOAL-RESPONSIBLE-at`  **2**  \n`spec-NONGOAL-STATE-at`  **2**  \n`spec-NONGOAL-DEADLINE-at`   **2**  \n`spec-NONGOAL-LASTUPDATE-at`  **2**  \n`spec-NONGOAL-ESTIMATEDHOURS-at`  **2**  \n`spec-NONGOAL-TITLE-at`  **2**  \n`spec-NONGOAL-UUID-at`  **2**  \n\n`spec-UNDECIDED-RESPONSIBLE-at`  **2**  \n`spec-UNDECIDED-STATE-at`  **2**  \n`spec-UNDECIDED-DEADLINE-at`  **2**  \n`spec-UNDECIDED-LASTUPDATE-at`  **2**  \n`spec-UNDECIDED-ESTIMATEDHOURS-at` **2**  \n`spec-UNDECIDED-TITLE-at`  **2**  \n`spec-NONGOAL-UUID-at`  **2**  \n\n#### Set Meta Data of Overview / Spec\n`spec_set-RESPONSIBLE` **'Peter Pan'**  \n`spec_set-PLANNING`  \n`spec_set-AGREED`  \n`spec_set-IMPLEMENTING`  \n`spec_set-FINISHED`   \n`spec_set-OBSOLET`  \n`spec_set-DEADLINE`  **'2014-12-24'**  \n`spec_set-ESTIMATEDHOURS`  **12**  \n`spec_set-TITLE`  **'my title'**  \n\n#### Set Meta Data of Section\n\n`spec_set-SCENARIO-RESPONSIBLE`   **'Peter Pan' -at 2**    \n`spec_set-SCENARIO-PLANNING`  **-at 2**  \n`spec_set-SCENARIO-AGREED`   **-at 2**  \n`spec_set-SCENARIO-IMPLEMENTING`   **-at 2**  \n`spec_set-SCENARIO-FINISHED`   **-at 2**  \n`spec_set-SCENARIO-OBSOLET`   **-at 2**  \n`spec_set-SCENARIO-DEADLINE`   **'2014-12-24' -at 2**  \n`spec_set-SCENARIO-ESTIMATEDHOURS`  **12 -at 2**  \n`spec_set-SCENARIO-TITLE`  **'my title' -at 3**  \n\n`spec_set-CONTRADICTION-RESPONSIBLE`  **'Peter Pan' -at 2**    \n`spec_set-CONTRADICTION-PLANNING`   **-at 2**  \n`spec_set-CONTRADICTION-AGREED`   **-at 2**  \n`spec_set-CONTRADICTION-IMPLEMENTING`   **-at 2**  \n`spec_set-CONTRADICTION-FINISHED`   **-at 2**  \n`spec_set-CONTRADICTION-OBSOLET`   **-at 2**  \n`spec_set-CONTRADICTION-DEADLINE`  **'2014-12-24' -at 2**  \n`spec_set-CONTRADICTION-ESTIMATEDHOURS`  **3 -at 2**  \n`spec_set-CONTRADICTION-TITLE`  **'my title' -at 3**  \n\n`spec_set-DEFINITION-RESPONSIBLE` **'Peter Pan' -at 2**    \n`spec_set-DEFINITION-PLANNING`   **-at 2**  \n`spec_set-DEFINITION-AGREED`   **-at 2**  \n`spec_set-DEFINITION-IMPLEMENTING`   **-at 2**  \n`spec_set-DEFINITION-FINISHED`   **-at 2**  \n`spec_set-DEFINITION-OBSOLET`   **-at 2**  \n`spec_set-DEFINITION-DEADLINE`  **'2014-12-24' -at 2**  \n`spec_set-DEFINITION-ESTIMATEDHOURS`  **3 -at 2**  \n`spec_set-DEFINITION-TITLE`  **'my title' -at 3**  \n\n`spec_set-FEATURE-RESPONSIBLE`  **'Peter Pan' -at 2**    \n`spec_set-FEATURE-PLANNING`  **-at 2**  \n`spec_set-FEATURE-AGREED`  **-at 2**  \n`spec_set-FEATURE-IMPLEMENTING`  **-at 2**  \n`spec_set-FEATURE-FINISHED`  **-at 2**  \n`spec_set-FEATURE-OBSOLET`   **-at 2**  \n`spec_set-FEATURE-DEADLINE`  **'2014-12-24' -at 2**  \n`spec_set-FEATURE-ESTIMATEDHOURS`  **3 -at 2**  \n`spec_set-FEATURE-TITLE`  **'my title' -at 3**  \n\n`spec_set-NONGOAL-RESPONSIBLE` **'Peter Pan' -at 2**    \n`spec_set-NONGOAL-PLANNING`   **-at 2**  \n`spec_set-NONGOAL-AGREED`   **-at 2**  \n`spec_set-NONGOAL-IMPLEMENTING`  **-at 2**  \n`spec_set-NONGOAL-FINISHED`   **-at 2**  \n`spec_set-NONGOAL-OBSOLET`   **-at 2**  \n`spec_set-NONGOAL-DEADLINE`  **'2014-12-24' -at 2**  \n`spec_set-NONGOAL-ESTIMATEDHOURS`  **3 -at 2**  \n`spec_set-NONGOAL-TITLE`  **'my title' -at 3**  \n\n`spec_set-UNDECIDED-RESPONSIBLE`  **'Peter Pan' -at 2**    \n`spec_set-UNDECIDED-PLANNING`   **-at 2**  \n`spec_set-UNDECIDED-AGREED`   **-at 2**  \n`spec_set-UNDECIDED-IMPLEMENTING`   **-at 2**  \n`spec_set-UNDECIDED-FINISHED`   **-at 2**  \n`spec_set-UNDECIDED-OBSOLET`   **-at 2**  \n`spec_set-UNDECIDED-DEADLINE`  **'2014-12-24' -at 2**  \n`spec_set-UNDECIDED-ESTIMATEDHOURS`  **3 -at 2**  \n`spec_set-UNDECIDED-TITLE`  **'my title' -at 3**  \n\n",
         "Comments": {},
-        "LastUpdate": "2013-11-23",
+        "LastUpdate": "2013-11-29",
         "State": "FINISHED",
         "Deadline": "",
         "EstimatedHours": 0
@@ -367,6 +367,17 @@
         "State": "FINISHED",
         "Deadline": "",
         "EstimatedHours": 0
+      },
+      {
+        "UUID": "7e686080-17ba-4885-bcb9-f5de5da2c227",
+        "Responsible": "mra",
+        "Title": "copy spec and create new uuids for every paragraph",
+        "Text": "Go into a folder that contains the spec you want to copy and run\n\n    speccer -cmd copy \u003e target/spec.json\n\nThis creates a file `spec.json` in the folder `target` as copy\nof the current spec. Inside the copy every `UUID` is replaced \nby a new one and all comments are removed.\n\nBe aware that the copy may not be valid since there may be missing\nproperties. You can validate the new copy like this:\n\n    cd target && speccer -cmd validate\n\n",
+        "Comments": {},
+        "LastUpdate": "2013-11-29",
+        "State": "AGREED",
+        "Deadline": "",
+        "EstimatedHours": 0
       }
     ],
     "NONGOAL": [
@@ -419,17 +430,6 @@
         "Responsible": "mra",
         "Title": "No merging of specs",
         "Text": "`speccer` won't provide any mechanism to merge specs.\nSince you can export and import parts of the specs in\nplain text or markdown, it is not hard to merge by hand.",
-        "Comments": {},
-        "LastUpdate": "2013-11-23",
-        "State": "FINISHED",
-        "Deadline": "",
-        "EstimatedHours": 0
-      },
-      {
-        "UUID": "6d4469f7-9074-4bd4-9f2c-e78c64841f17",
-        "Responsible": "mra",
-        "Title": "No copying of specs",
-        "Text": "`speccer` won't help you copying specs, since you can simply\ncopy the json files yourself and then edit the copy.",
         "Comments": {},
         "LastUpdate": "2013-11-23",
         "State": "FINISHED",
@@ -518,17 +518,6 @@
         "Responsible": "mra",
         "Title": "No time tracking",
         "Text": "Each paragraph has a field `ESTIMATEDHOURS` that could be used \nto do basic scheduling.\n\nAn external tool could then collect the estimated hours and \ncompare them to the real time to drive conclusions about the \nschedule.\n\nMore time tracking functionality is not part of this project.\n",
-        "Comments": {},
-        "LastUpdate": "2013-11-23",
-        "State": "FINISHED",
-        "Deadline": "",
-        "EstimatedHours": 0
-      },
-      {
-        "UUID": "cf61a100-02a5-46a8-836c-2108c8a01398",
-        "Responsible": "mra",
-        "Title": "No shortcuts for commands or presets",
-        "Text": "Some commands and options are hard to remember.\nBut instead of bake new options into `speccer` we\ndeliver an alias file you could use in your bash or zsh shell.\n\nHave a look at it to see how easy you could do one on your own.\nIn the alias you could also set defaults for responsibles etc.\n",
         "Comments": {},
         "LastUpdate": "2013-11-23",
         "State": "FINISHED",
@@ -638,22 +627,19 @@
         "State": "FINISHED",
         "Deadline": "",
         "EstimatedHours": 0
-      }
-    ],
-    "UNDECIDED": [
+      },
       {
-        "UUID": "cc3a6fd8-fe1d-493c-997f-5f0c0b61dcc7",
+        "UUID": "472220e2-848b-4629-a8cb-9bb0140cebc8",
         "Responsible": "mra",
-        "Title": "Linefeed export",
-        "Text": "It is not really clear how the linefeed is \nexported in markdown and json.\nSee the linefeed definition in speclib\n\n",
-        "Comments": {
-          "reason for state": "No longer an issue. Every import and export replaces to `\\n` only. \nEditors should be able to handle it, otherwise other tools would be \nneeded to convert before editing."
-        },
-        "LastUpdate": "2013-11-23",
-        "State": "OBSOLET",
+        "Title": "Templating",
+        "Text": "John wants to reuse specs. But the new spec with their parts should get \nnew UUIDs to be saved in the Database.",
+        "Comments": {},
+        "LastUpdate": "2013-11-29",
+        "State": "AGREED",
         "Deadline": "",
         "EstimatedHours": 0
       }
-    ]
+    ],
+    "UNDECIDED": []
   }
 }

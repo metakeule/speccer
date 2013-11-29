@@ -34,13 +34,5 @@ func (s *speccer) saveMarkdown() error {
 
 func (s *speccer) save() error {
 	s.Spec.Update()
-	err := s.writeFile(s.File, s.Spec.Json())
-	if err != nil {
-		return err
-	}
-	err = s.saveMarkdown()
-	if err != nil {
-		return err
-	}
-	return s.saveHtml()
+	return s.writeFile(s.File, s.Spec.Json())
 }

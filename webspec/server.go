@@ -7,6 +7,7 @@ import (
 	utils "github.com/metakeule/utils/http"
 	"net/http"
 	"os"
+	"path/filepath"
 )
 
 func my(rw http.ResponseWriter, req *http.Request) {
@@ -68,13 +69,15 @@ func main() {
 		//os.Exit(1)
 	}
 
+	_ = specfile
+
 	pwd, err := os.Getwd()
-	fmt.Printf("%#v\n", pwd)
-	// fileserver := http.FileServer(http.Dir(pwd))
-	fileserver := http.FileServer(http.Dir(pwd))
 	if err != nil {
 		panic(err.Error())
 	}
+
+	//fmt.Printf("%#v\n", pwd)
+	// fileserver := http.FileServer(http.Dir(pwd))
 
 	mountpoint := "/spec"
 
@@ -85,9 +88,28 @@ func main() {
 			handler.OmniSaver(specfile),
 		),
 	)
-	http.Handle("/", fileserver)
 
-	fmt.Printf("listening on http://%s%s/admin\n", server, mountpoint)
+	fileDir := filepath.Join(pwd, "file")
+	d, e := os.Stat(fileDir)
+	if e != nil {
+		fmt.Printf("warning: no file directory found\n")
+	} else {
+		if !d.IsDir() {
+			fmt.Printf("warning: %s is no directory\n", fileDir)
+		} else {
+			fileserver := http.FileServer(http.Dir(fileDir))
+			http.Handle("/spec/file/", http.StripPrefix("/spec/file", fileserver))
+		}
+	}
+
+	/*
+		http.Handle("/", handler.New(
+			handler.FileLoader(specfile+".json"),
+			handler.OmniSaver(specfile),
+		))
+	*/
+
+	//fmt.Printf("listening on http://%s%s/admin\n", server, mountpoint)
 	err = http.ListenAndServe(server, nil)
 	//err = http.ListenAndServe(":"+port, handler.New(fmt.Sprintf("%s", spec)))
 	if err != nil {

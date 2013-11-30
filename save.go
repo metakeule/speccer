@@ -23,7 +23,7 @@ func (s *speccer) writeTranslatedFile(file, content string) error {
 func (s *speccer) saveHtml() error {
 	return s.writeTranslatedFile(
 		s.SetExtension(".html"),
-		s.Spec.HtmlFromMarkdown(nil))
+		s.Spec.Html(nil))
 }
 
 func (s *speccer) saveMarkdown() error {
@@ -34,5 +34,13 @@ func (s *speccer) saveMarkdown() error {
 
 func (s *speccer) save() error {
 	s.Spec.Update()
-	return s.writeFile(s.File, s.Spec.Json())
+	err := s.writeFile(s.File, s.Spec.Json())
+	if err != nil {
+		return err
+	}
+	err = s.saveHtml()
+	if err != nil {
+		return err
+	}
+	return s.saveMarkdown()
 }

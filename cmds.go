@@ -96,7 +96,7 @@ func (s *speccer) validateCMD() error {
 }
 
 func (s *speccer) htmlCMD() error {
-	s.shouldPrint = s.translate(s.Spec.HtmlFromMarkdown(s.Filter))
+	s.shouldPrint = s.translate(s.Spec.Html(s.Filter))
 	return nil
 }
 

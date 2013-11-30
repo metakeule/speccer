@@ -3,7 +3,7 @@ package handler
 import (
 	"encoding/json"
 	// "fmt"
-	tr "github.com/metakeule/speccer/webspec/translations"
+	tr "github.com/metakeule/speccer/translations"
 
 	"net/http"
 	"strings"

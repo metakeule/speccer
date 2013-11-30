@@ -3,12 +3,12 @@
     "UUID": "b18c7bd2-9ffd-4150-aa67-fd1636560d98",
     "Responsible": "mra",
     "Title": "speccer - a CLI tool for specs",
-    "Text": "[*speccer*](https://github.com/metakeule/speccer) is a CLI tool \nfor dealing with specs.\n\nIt is a frontend to the [speclib](https://github.com/metakeule/speclib).\n",
+    "Text": "[*speccer*](https://github.com/metakeule/speccer) is a CLI tool \nfor dealing with specs.\n\nIt is a frontend to the [speclib](https://github.com/metakeule/speclib).\n\n",
     "Comments": {
       "mra": "just a comment",
       "reason for state": "other comment"
     },
-    "LastUpdate": "2013-11-29",
+    "LastUpdate": "2013-11-30",
     "State": "IMPLEMENTING",
     "Deadline": "soon",
     "EstimatedHours": 2

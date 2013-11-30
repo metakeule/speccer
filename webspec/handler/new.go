@@ -41,6 +41,24 @@ func (h *handler) mountAll() {
 	h.ServeMux.Handle("/public/", fileserver)
 }
 
+// saves into three files:
+// - [string].json
+// - [string].md
+// - [string].html
+type OmniSaver string
+
+func (os OmniSaver) Save(s *speclib.Spec) error {
+	err := ioutil.WriteFile(string(os+".json"), []byte(s.Json()), 0644)
+	if err != nil {
+		return err
+	}
+	err = ioutil.WriteFile(string(os+".html"), []byte(translate(s.INFO.Language, s.Html(nil))), 0644)
+	if err != nil {
+		return err
+	}
+	return ioutil.WriteFile(string(os+".md"), []byte(translate(s.INFO.Language, s.Markdown(nil))), 0644)
+}
+
 type FileSaver string
 
 func (fs FileSaver) Save(s *speclib.Spec) error {

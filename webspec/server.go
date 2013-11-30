@@ -58,8 +58,10 @@ func main() {
 		)
 	*/
 
-	specfile := "spec.json"
+	//specfile := "spec.json"
+	specfile := "spec"
 	if len(os.Args) > 1 {
+		//specfile = os.Args[1]
 		specfile = os.Args[1]
 
 		//fmt.Println("no file given")
@@ -68,6 +70,7 @@ func main() {
 
 	pwd, err := os.Getwd()
 	fmt.Printf("%#v\n", pwd)
+	// fileserver := http.FileServer(http.Dir(pwd))
 	fileserver := http.FileServer(http.Dir(pwd))
 	if err != nil {
 		panic(err.Error())
@@ -78,8 +81,8 @@ func main() {
 	utils.Mount(
 		mountpoint,
 		handler.New(
-			handler.FileLoader(specfile),
-			handler.FileSaver(specfile),
+			handler.FileLoader(specfile+".json"),
+			handler.OmniSaver(specfile),
 		),
 	)
 	http.Handle("/", fileserver)

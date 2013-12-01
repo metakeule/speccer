@@ -102,14 +102,7 @@ func main() {
 		}
 	}
 
-	/*
-		http.Handle("/", handler.New(
-			handler.FileLoader(specfile+".json"),
-			handler.OmniSaver(specfile),
-		))
-	*/
-
-	//fmt.Printf("listening on http://%s%s/admin\n", server, mountpoint)
+	fmt.Printf("listening on http://%s%s/admin\n", server, mountpoint)
 	err = http.ListenAndServe(server, nil)
 	//err = http.ListenAndServe(":"+port, handler.New(fmt.Sprintf("%s", spec)))
 	if err != nil {

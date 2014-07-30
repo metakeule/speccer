@@ -2,143 +2,144 @@ package handler
 
 import (
 	"fmt"
-	"github.com/metakeule/goh4"
-	. "github.com/metakeule/goh4/tag"
-	. "github.com/metakeule/goh4/tag/short"
-	"github.com/metakeule/ng"
 	"strings"
+
+	. "github.com/go-on/lib/html"
+	. "github.com/go-on/lib/html/internal/element"
+	"github.com/go-on/lib/internal/ng"
+	. "github.com/go-on/lib/internal/shared"
 )
 
-func (h *handler) personFilter() *goh4.Element {
-	return DIV(CLASS("col-xs-4"),
+func (h *handler) personFilter() *Element {
+	return DIV(Class("col-xs-4"),
 		ng.Show("currentSection"),
 		DIV(
-			CLASS("row"),
-			DIV(CLASS("label"), CLASS("label-default"), h.translate("RESPONSIBLE"), CLASS("col-xs-4")),
+			Class("row"),
+			DIV(Class("label"), Class("label-default"), h.translate("RESPONSIBLE"), Class("col-xs-4")),
 
 			DIV(
-				CLASS("form-group"),
-				CLASS("col-xs-8"),
+				Class("form-group"),
+				Class("col-xs-8"),
 				SELECT(ng.Model("filteredPerson"),
-					CLASS("form-control"),
-					CLASS("input-sm"),
-					ID("filteredPerson"),
+					Class("form-control"),
+					Class("input-sm"),
+					Id("filteredPerson"),
 					ng.Change("setCounts()"),
-					ATTR("ng-options", "key as translate(key) + ' (' + value + ')' for (key , value) in countResponsibles"),
+					Attrs_("ng-options", "key as translate(key) + ' (' + value + ')' for (key , value) in countResponsibles"),
 				),
 			),
 		),
 	)
 }
 
-func (h *handler) stateFilter(state string) *goh4.Element {
-	return LABEL(CLASS("btn"), CLASS("btn-sm"), ng.Class("filterClass('"+state+"')"),
+func (h *handler) stateFilter(state string) *Element {
+	return LABEL(Class("btn"), Class("btn-sm"), ng.Class("filterClass('"+state+"')"),
 		ng.Show("currentSection"),
-		InputCheckbox("filter-"+state, ng.Model("filter."+state+""), goh4.Style{"display", "none"},
+		InputCheckbox("filter-"+state, ng.Model("filter."+state+""), Style{"display", "none"},
 			ng.Click("setFilter()"),
 		),
-		SPAN(CLASS("badge"), "{{count."+state+"}}"),
+		SPAN(Class("badge"), "{{count."+state+"}}"),
 		" "+h.translate(state),
 	)
 }
 
-func (h *handler) dropDownSection(section string) *goh4.Element {
+func (h *handler) dropDownSection(section string) *Element {
 	return LI(
 		A(
-			ID(section+"-menu"),
-			// CLASS("btn"),
-			// CLASS("btn-default"),
-			//CLASS("btn-success"),
-			ATTR("data-toggle", "tab"),
-			ATTR("droppable", "droppable"),
-			ATTR("section", section),
+			Id(section+"-menu"),
+			// Class("btn"),
+			// Class("btn-default"),
+			//Class("btn-success"),
+			Attrs_("data-toggle", "tab"),
+			Attrs_("droppable", "droppable"),
+			Attrs_("section", section),
 			ng.Href("#section"),
 			h.translate(section),
 			BR(),
-			SPAN(CLASS("badge"), CLASS("badge-warning"), "{{sectionNumbers['"+section+"']}}"),
-			//HTML("&nbsp;"),
+			SPAN(Class("badge"), Class("badge-warning"), "{{sectionNumbers['"+section+"']}}"),
+			//HTMLString("&nbsp;"),
 			ng.Click("setParagraphs('"+section+"')")),
 	)
 }
 
-func input(fieldName string, label string, width int, i ...interface{}) *goh4.Element {
+func input(fieldName string, label string, width int, i ...interface{}) *Element {
 	i = append(i,
 		ng.Model(fieldName),
-		CLASS("form-control"),
-		ID(fieldName))
+		Class("form-control"),
+		Id(fieldName))
 	return DIV(
-		CLASS("form-group"),
-		CLASS(fmt.Sprintf("col-xs-%d", width)),
+		Class("form-group"),
+		Class(fmt.Sprintf("col-xs-%d", width)),
 		LabelFor(fieldName, label),
 		InputText(fieldName, i...),
 	)
 }
 
-func static(label string, width int, i ...interface{}) *goh4.Element {
+func static(label string, width int, i ...interface{}) *Element {
 	i = append(i,
-		CLASS("form-control-static"))
+		Class("form-control-static"))
 	return DIV(
-		CLASS("form-group"),
-		CLASS(fmt.Sprintf("col-xs-%d", width)),
+		Class("form-group"),
+		Class(fmt.Sprintf("col-xs-%d", width)),
 		LABEL(label),
 		P(i...),
 	)
 }
 
-func selectbox(fieldName string, label string, width int, arraySrc string, i ...interface{}) *goh4.Element {
+func selectbox(fieldName string, label string, width int, arraySrc string, i ...interface{}) *Element {
 	i = append(i,
 		ng.Model(fieldName),
-		CLASS("form-control"),
-		ID(fieldName), ATTR("ng-options", "translate(v) for v in "+arraySrc))
+		Class("form-control"),
+		Id(fieldName), Attrs_("ng-options", "translate(v) for v in "+arraySrc))
 
 	return DIV(
-		CLASS("form-group"),
-		CLASS(fmt.Sprintf("col-xs-%d", width)),
+		Class("form-group"),
+		Class(fmt.Sprintf("col-xs-%d", width)),
 		LabelFor(fieldName, label),
 		SELECT(i...),
 	)
 }
 
-func textarea(fieldName string, label string, width int, rows int, i ...interface{}) *goh4.Element {
+func textarea(fieldName string, label string, width int, rows int, i ...interface{}) *Element {
 	i = append(i,
 		ng.Model(fieldName),
-		CLASS("form-control"),
-		ID(fieldName),
-		ATTR("rows", fmt.Sprintf("%d", rows), "value", "{{fieldName}}", "name", fieldName))
-	return DIV(CLASS("form-group"),
-		CLASS(fmt.Sprintf("col-xs-%d", width)),
+		Class("form-control"),
+		Id(fieldName),
+		Attrs_("rows", fmt.Sprintf("%d", rows), "value", "{{fieldName}}", "name", fieldName))
+	return DIV(Class("form-group"),
+		Class(fmt.Sprintf("col-xs-%d", width)),
 		LabelFor(fieldName, label),
 		TEXTAREA(i...),
 	)
 }
 
-func mapList(model, key, value string, labelmodel, labelkey, labelvalue string) *goh4.Element {
+func mapList(model, key, value string, labelmodel, labelkey, labelvalue string) *Element {
 	var keyD, valD = strings.ToLower(key), strings.ToLower(value)
 	return DIV(
 		BR(),
-		CLASS("row"),
-		DIV(CLASS("form-group"), CLASS("col-xs-6"),
+		Class("row"),
+		DIV(Class("form-group"), Class("col-xs-6"),
 			LABEL(labelmodel),
 			BR(),
-			DIV(CLASS("btn-group"),
-				goh4.Style{"margin-right", "15px"},
+			DIV(Class("btn-group"),
+				Style{"margin-right", "15px"},
 				ng.RepeatKeyVal(keyD, valD, "INFO."+model),
 				BUTTON(
-					ATTR("type", "button"),
-					SPAN(CLASS("glyphicon"), CLASS("glyphicon-pencil")),
-					HTML("&nbsp;"),
-					CLASS("btn-sm"),
-					ng.Click("set"+model+"("+keyD+", "+valD+")"), "{{"+keyD+"}}", CLASS("btn"), CLASS("btn-default"),
+					Attrs_("type", "button"),
+					SPAN(Class("glyphicon"), Class("glyphicon-pencil")),
+					HTMLString("&nbsp;"),
+					Class("btn-sm"),
+					ng.Click("set"+model+"("+keyD+", "+valD+")"), "{{"+keyD+"}}", Class("btn"), Class("btn-default"),
 				),
 				BUTTON(
-					ATTR("type", "button"),
-					goh4.Style{"float", "none"},
+					Attrs_("type", "button"),
+					Style{"float", "none"},
 					ng.Click("remove"+model+"("+keyD+")"),
-					//CLASS("close"),
-					CLASS("btn"),
-					CLASS("btn-danger"),
-					CLASS("btn-sm"),
-					ATTR("type", "button", "aria-hidden", "true"), HTML("&times;")),
+					//Class("close"),
+					Class("btn"),
+					Class("btn-danger"),
+					Class("btn-sm"),
+					Attrs_("type", "button", "aria-hidden", "true"), HTMLString("&times;")),
 			),
 		),
 		input(model+key, labelkey, 2, ng.Blur("save"+model+"()")),
@@ -146,57 +147,57 @@ func mapList(model, key, value string, labelmodel, labelkey, labelvalue string) 
 	)
 }
 
-func arrayList(model, value string, labelproperty, label string) *goh4.Element {
+func arrayList(model, value string, labelproperty, label string) *Element {
 	var valD = strings.ToLower(value)
 	return DIV(
 		BR(),
-		CLASS("row"),
-		DIV(CLASS("form-group"), CLASS("col-xs-6"),
+		Class("row"),
+		DIV(Class("form-group"), Class("col-xs-6"),
 			LABEL(labelproperty),
 			BR(),
-			DIV(CLASS("btn-group"),
-				goh4.Style{"margin-right", "15px"},
+			DIV(Class("btn-group"),
+				Style{"margin-right", "15px"},
 				ng.Repeat(valD, "INFO."+model),
 				BUTTON(
-					ATTR("type", "button"),
-					SPAN(CLASS("glyphicon"), CLASS("glyphicon-pencil")),
-					HTML("&nbsp;"),
-					"{{"+valD+"}}", CLASS("btn"), CLASS("btn-default"),
-					CLASS("btn-sm"),
+					Attrs_("type", "button"),
+					SPAN(Class("glyphicon"), Class("glyphicon-pencil")),
+					HTMLString("&nbsp;"),
+					"{{"+valD+"}}", Class("btn"), Class("btn-default"),
+					Class("btn-sm"),
 				),
 				BUTTON(
-					ATTR("type", "button"),
-					goh4.Style{"float", "none"},
+					Attrs_("type", "button"),
+					Style{"float", "none"},
 					ng.Click("remove"+model+"("+valD+")"),
-					//CLASS("close"),
-					CLASS("btn"),
-					CLASS("btn-danger"),
-					CLASS("btn-sm"),
-					ATTR("type", "button", "aria-hidden", "true"), HTML("&times;")),
+					//Class("close"),
+					Class("btn"),
+					Class("btn-danger"),
+					Class("btn-sm"),
+					Attrs_("type", "button", "aria-hidden", "true"), HTMLString("&times;")),
 			),
 		),
 		input(model+value, label, 4, ng.Blur("add"+model+"()")),
 	)
 }
 
-func (h *handler) contentInfo() *goh4.Element {
+func (h *handler) contentInfo() *Element {
 	return DIV(
-		ID("info"), ATTR("role", "form"), CLASS("tab-pane"),
+		Id("info"), Attrs_("role", "form"), Class("tab-pane"),
 		BR(),
 		FORM(
-			ID("info-form"),
-			ATTR("name", "infoform"),
-			CLASS("form-inline"),
+			Id("info-form"),
+			Attrs_("name", "infoform"),
+			Class("form-inline"),
 			ng.Submit("saveInfo()"),
-			DIV(CLASS("row"),
+			DIV(Class("row"),
 				input("INFO.Company", h.translate("COMPANY"), 6),
 				input("INFO.Project", h.translate("PROJECT"), 6),
 			),
-			DIV(CLASS("row"),
+			DIV(Class("row"),
 				input("INFO.URL", h.translate("URL"), 6),
 				input("INFO.Parent", h.translate("PARENT"), 6),
 			),
-			DIV(CLASS("row"),
+			DIV(Class("row"),
 				input("INFO.Language", h.translate("LANGUAGE"), 4),
 				input("INFO.DateFormat", h.translate("DATEFORMAT"), 4),
 				selectbox("INFO.Approved", h.translate("APPROVED"), 4, "[true,false]"),
@@ -211,31 +212,31 @@ func (h *handler) contentInfo() *goh4.Element {
 	)
 }
 
-func infoRow(name, value string) *goh4.Element {
-	return DIV(CLASS("row"),
-		DIV(CLASS("col-xs-2"), H3(name)),
-		DIV(CLASS("col-xs-10"), value),
+func infoRow(name, value string) *Element {
+	return DIV(Class("row"),
+		DIV(Class("col-xs-2"), H3(name)),
+		DIV(Class("col-xs-10"), value),
 	)
 }
 
-func infoArray(name, collection string) *goh4.Element {
-	return DIV(CLASS("row"),
-		DIV(CLASS("col-xs-2"), H3(name)),
-		DIV(CLASS("col-xs-10"),
+func infoArray(name, collection string) *Element {
+	return DIV(Class("row"),
+		DIV(Class("col-xs-2"), H3(name)),
+		DIV(Class("col-xs-10"),
 			SPAN(
 				ng.Repeat("v", collection),
-				CLASS("btn"), CLASS("btn-default"),
-				goh4.Style{"margin-right", "12px"},
+				Class("btn"), Class("btn-default"),
+				Style{"margin-right", "12px"},
 				"{{v}}"),
 		),
 	)
 }
 
-func infoMap(name, collection string) *goh4.Element {
-	return DIV(CLASS("row"),
-		DIV(CLASS("col-xs-2"), H3(name)),
-		DIV(CLASS("col-xs-10"),
-			DL(CLASS("dl-horizontal"),
+func infoMap(name, collection string) *Element {
+	return DIV(Class("row"),
+		DIV(Class("col-xs-2"), H3(name)),
+		DIV(Class("col-xs-10"),
+			DL(Class("dl-horizontal"),
 				ng.RepeatKeyVal("k", "v", collection),
 				DT("{{k}}"),
 				DD("{{v}}"),
@@ -244,125 +245,125 @@ func infoMap(name, collection string) *goh4.Element {
 	)
 }
 
-func (h *handler) contentSection() *goh4.Element {
+func (h *handler) contentSection() *Element {
 	return DIV(
-		ID("section"), ATTR("role", "form"), CLASS("tab-pane"),
+		Id("section"), Attrs_("role", "form"), Class("tab-pane"),
 		FORM(
-			ID("section-form"),
-			ATTR("name", "sectionform"),
-			CLASS("form-inline"),
+			Id("section-form"),
+			Attrs_("name", "sectionform"),
+			Class("form-inline"),
 			ng.Submit("saveSection()"),
-			DIV(CLASS("row"),
-				DIV(CLASS("col-xs-8"),
-					DIV(CLASS("panel"), CLASS("panel-default"),
-						DIV(CLASS("panel-heading"),
+			DIV(Class("row"),
+				DIV(Class("col-xs-8"),
+					DIV(Class("panel"), Class("panel-default"),
+						DIV(Class("panel-heading"),
 							DIV(
-								CLASS("form-group"),
-								CLASS("col-xs-12"),
+								Class("form-group"),
+								Class("col-xs-12"),
 								LabelFor("paragraph.Title", h.translate("TIT_TLE_OF_UUI_D")+" {{paragraph.UUID}}", ng.If("sectionIndex != -1 || currentSection == 'OVERVIEW'")),
 								LabelFor("paragraph.Title", h.translate("NE_W_TI_T_TLE"), ng.If("sectionIndex == -1 && currentSection != 'OVERVIEW'")),
 								InputText("paragraph.Title", ng.Model("paragraph.Title"),
-									CLASS("form-control"),
-									ID("paragraph.Title")),
+									Class("form-control"),
+									Id("paragraph.Title")),
 							),
 						),
-						DIV(CLASS("panel-body"),
-							DIV(CLASS("row"),
+						DIV(Class("panel-body"),
+							DIV(Class("row"),
 								selectbox("paragraph.Responsible", h.translate("RESPONSIBLE"), 6, "persons"),
 								selectbox("paragraph.State", h.translate("STATE"), 6, "states"),
 							),
 							BR(),
-							DIV(CLASS("row"),
+							DIV(Class("row"),
 								input("paragraph.Deadline", h.translate("DEADLINE"), 6),
-								input("paragraph.EstimatedHours", h.translate("ESTIMATEDHOURS"), 3, ATTR("type", "number")),
-								static(h.translate("LASTUPDATE"), 3, HTML("{{paragraph.LastUpdate}}")),
+								input("paragraph.EstimatedHours", h.translate("ESTIMATEDHOURS"), 3, Attrs_("type", "number")),
+								static(h.translate("LASTUPDATE"), 3, HTMLString("{{paragraph.LastUpdate}}")),
 							),
 						),
 					),
 
-					DIV(CLASS("panel"), CLASS("panel-primary"),
-						DIV(CLASS("panel-heading"), h.translate("TEX_T_(MARKDOWN)")),
-						DIV(ID("Text"), CLASS("panel-body")),
+					DIV(Class("panel"), Class("panel-primary"),
+						DIV(Class("panel-heading"), h.translate("TEX_T_(MARKDOWN)")),
+						DIV(Id("Text"), Class("panel-body")),
 					),
-					DIV(CLASS("panel"), CLASS("panel-default"),
-						DIV(CLASS("panel-heading"), h.translate("HTM_L_PREVIEW")),
-						DIV(ID("preview"), CLASS("panel-body")),
+					DIV(Class("panel"), Class("panel-default"),
+						DIV(Class("panel-heading"), h.translate("HTM_L_PREVIEW")),
+						DIV(Id("preview"), Class("panel-body")),
 					),
 				),
 
-				DIV(CLASS("col-xs-4"),
-					DIV(CLASS("row"),
+				DIV(Class("col-xs-4"),
+					DIV(Class("row"),
 						DIV(
-							CLASS("form-group"),
-							CLASS("col-xs-6"),
+							Class("form-group"),
+							Class("col-xs-6"),
 							LABEL(
 								ng.Click("forcestore()"),
-								CLASS("btn"),
-								CLASS("btn-warning"),
-								CLASS("form-control"),
+								Class("btn"),
+								Class("btn-warning"),
+								Class("form-control"),
 								h.translate("SAVE"),
 							),
 						),
 						DIV(
-							CLASS("form-group"),
-							CLASS("col-xs-6"),
+							Class("form-group"),
+							Class("col-xs-6"),
 							LABEL(
 								ng.Click("deleteSection()"),
 								ng.Hide("sectionIndex == -1"),
-								CLASS("btn"),
-								CLASS("btn-danger"),
-								CLASS("form-control"),
+								Class("btn"),
+								Class("btn-danger"),
+								Class("form-control"),
 								h.translate("DELETE"),
 							),
 						),
 					),
 					BR(),
-					DIV(CLASS("panel"), CLASS("panel-info"),
-						DIV(CLASS("panel-heading"), h.translate("COMMEN_TS")),
-						DIV(CLASS("panel-body"),
+					DIV(Class("panel"), Class("panel-info"),
+						DIV(Class("panel-heading"), h.translate("COMMEN_TS")),
+						DIV(Class("panel-body"),
 							DIV(
-								CLASS("row"),
+								Class("row"),
 								ng.RepeatKeyVal("author", "comment", "paragraph.Comments"),
-								DIV(CLASS("form-group"), CLASS("col-xs-12"),
-									DIV(CLASS("btn-group"),
-										goh4.Style{"margin-right", "15px"},
+								DIV(Class("form-group"), Class("col-xs-12"),
+									DIV(Class("btn-group"),
+										Style{"margin-right", "15px"},
 										BUTTON(
-											ATTR("type", "button"),
-											SPAN(CLASS("glyphicon"), CLASS("glyphicon-pencil")),
-											HTML("&nbsp;"),
+											Attrs_("type", "button"),
+											SPAN(Class("glyphicon"), Class("glyphicon-pencil")),
+											HTMLString("&nbsp;"),
 											ng.Click("setComment(author, comment)"), "{{author}}",
-											CLASS("btn-sm"),
-											CLASS("btn"), CLASS("btn-default"),
+											Class("btn-sm"),
+											Class("btn"), Class("btn-default"),
 										),
 										BUTTON(
-											ATTR("type", "button"),
-											goh4.Style{"float", "none"},
+											Attrs_("type", "button"),
+											Style{"float", "none"},
 											ng.Click("removeComment(author)"),
-											//CLASS("close"),
-											CLASS("btn"),
-											CLASS("btn-danger"),
-											CLASS("btn-sm"),
-											ATTR("type", "button", "aria-hidden", "true"), HTML("&times;")),
+											//Class("close"),
+											Class("btn"),
+											Class("btn-danger"),
+											Class("btn-sm"),
+											Attrs_("type", "button", "aria-hidden", "true"), HTMLString("&times;")),
 									),
 								),
 							),
 							BR(),
 							DIV(
-								CLASS("row"),
+								Class("row"),
 
 								DIV(
-									CLASS("form-group"),
-									CLASS("col-xs-12"),
+									Class("form-group"),
+									Class("col-xs-12"),
 									LabelFor("CommentAuthor", h.translate("AUTHOR")),
 									SELECT(ng.Model("CommentAuthor"),
-										CLASS("form-control"),
+										Class("form-control"),
 										ng.Change("setCommentForAuthor()"),
-										ID("CommentAuthor"), ATTR("ng-options", "v for v in persons")),
+										Id("CommentAuthor"), Attrs_("ng-options", "v for v in persons")),
 								),
 							),
 							BR(),
 							DIV(
-								CLASS("row"),
+								Class("row"),
 								textarea("CommentText", h.translate("COMMENT"), 12, 20, ng.Change("saveComment()")),
 							),
 						),

@@ -3,14 +3,17 @@ package handler
 import (
 	"encoding/json"
 	"fmt"
+
 	"github.com/go-contrib/uuid"
-	"github.com/metakeule/goh4"
-	. "github.com/metakeule/goh4/tag"
-	. "github.com/metakeule/goh4/tag/short"
-	"github.com/metakeule/speclib"
+	. "github.com/go-on/lib/html"
+	. "github.com/go-on/lib/internal/shared"
+	// . "github.com/go-on/html/h"
+	// . "github.com/go-on/html/tag"
 	"io/ioutil"
 	"net/http"
 	"strconv"
+
+	"github.com/metakeule/speclib"
 )
 
 func (h *handler) markdown(rw http.ResponseWriter, req *http.Request) {
@@ -219,23 +222,25 @@ func (h *handler) index(rw http.ResponseWriter, req *http.Request) {
 	body := BODY(
 		themeSelect(theme), h.usageSelect(usage),
 		xmp(
-			ATTR("theme", theme),
-			goh4.Style{"display", "none"},
+			Attrs_("theme", theme),
+			Style{"display", "none"},
 			translate(h.Spec.INFO.Language, h.Spec.Markdown(filterForUsage(usage))),
 		),
 		JsSrc("public/js/strapdown.min.js"),
 	)
 	if hideNavbar != "" {
-		body.Add(CLASS("hide-navbar"))
+		body.Add(Class("hide-navbar"))
 	}
 	HTML5(
-		HEAD(
-			TITLE(h.Spec.OVERVIEW.Title),
-			JsSrc("public/js/jquery-1.10.2.min.js"),
-			JsSrc("public/js/themes/bootstrap.min.js"),
-			JsSrc("public/js/theme.js"),
+		HTML(
+			HEAD(
+				TITLE(h.Spec.OVERVIEW.Title),
+				JsSrc("public/js/jquery-1.10.2.min.js"),
+				JsSrc("public/js/themes/bootstrap.min.js"),
+				JsSrc("public/js/theme.js"),
+			),
+			body,
 		),
-		body,
 	).WriteTo(rw)
 }
 

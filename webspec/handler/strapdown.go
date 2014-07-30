@@ -1,13 +1,15 @@
 package handler
 
 import (
-	"github.com/metakeule/goh4"
-	. "github.com/metakeule/goh4/tag"
+	. "github.com/go-on/lib/html"
+	. "github.com/go-on/lib/html/internal/element"
+	. "github.com/go-on/lib/internal/shared"
+
 	"github.com/metakeule/speclib"
 )
 
-func xmp(i ...interface{}) (e *goh4.Element) {
-	e = goh4.NewElement("xmp", goh4.WithoutEscaping)
+func xmp(i ...interface{}) (e *Element) {
+	e = NewElement("xmp", WithoutEscaping)
 	e.Add(i...)
 	return
 }
@@ -38,12 +40,12 @@ var usages = []string{
 	"PREVIEWFILTER",
 }
 
-func themeSelect(selected string) *goh4.Element {
-	s := SELECT(ID("selecttheme"))
+func themeSelect(selected string) *Element {
+	s := SELECT(Id("selecttheme"))
 	for i := 0; i < len(themes); i++ {
 		t := themes[i]
 		if t == selected {
-			s.Add(OPTION(t, ATTR("selected", "selected")))
+			s.Add(OPTION(t, Attrs_("selected", "selected")))
 		} else {
 			s.Add(OPTION(t))
 		}
@@ -51,16 +53,16 @@ func themeSelect(selected string) *goh4.Element {
 	return s
 }
 
-func (h *handler) usageSelect(selected string) *goh4.Element {
-	s := SELECT(ID("selectusage"))
+func (h *handler) usageSelect(selected string) *Element {
+	s := SELECT(Id("selectusage"))
 	h.SpecLock.RLock()
 	defer h.SpecLock.RUnlock()
 	for i := 0; i < len(usages); i++ {
 		t := usages[i]
 		if t == selected {
-			s.Add(OPTION(translate(h.Spec.INFO.Language, t), ATTR("selected", "selected", "value", t)))
+			s.Add(OPTION(translate(h.Spec.INFO.Language, t), Attrs_("selected", "selected", "value", t)))
 		} else {
-			s.Add(OPTION(translate(h.Spec.INFO.Language, t), ATTR("value", t)))
+			s.Add(OPTION(translate(h.Spec.INFO.Language, t), Attrs_("value", t)))
 		}
 	}
 	return s

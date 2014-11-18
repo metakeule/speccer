@@ -3,7 +3,7 @@ package handler
 import (
 	. "github.com/go-on/lib/html"
 	"github.com/go-on/lib/internal/ng"
-	. "github.com/go-on/lib/internal/shared"
+	. "github.com/go-on/lib/types"
 )
 
 func (h *handler) layout(content ...interface{}) *DocType {

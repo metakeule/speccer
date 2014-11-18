@@ -3,7 +3,7 @@ package handler
 import (
 	. "github.com/go-on/lib/html"
 	. "github.com/go-on/lib/html/internal/element"
-	. "github.com/go-on/lib/internal/shared"
+	. "github.com/go-on/lib/types"
 
 	"github.com/metakeule/speclib"
 )

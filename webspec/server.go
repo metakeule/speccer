@@ -3,11 +3,12 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/metakeule/speccer/webspec/handler"
-	utils "github.com/metakeule/utils/http"
 	"net/http"
 	"os"
 	"path/filepath"
+
+	"github.com/metakeule/speccer/webspec/handler"
+	utils "github.com/metakeule/utils/http"
 )
 
 func my(rw http.ResponseWriter, req *http.Request) {
@@ -61,16 +62,17 @@ func main() {
 
 	//specfile := "spec.json"
 	specfile := "spec"
-	if len(os.Args) > 1 {
-		//specfile = os.Args[1]
-		specfile = os.Args[1]
+	/*
+		if len(os.Args) > 1 {
+			//specfile = os.Args[1]
+			specfile = os.Args[1]
 
-		//fmt.Println("no file given")
-		//os.Exit(1)
-	}
+			//fmt.Println("no file given")
+			//os.Exit(1)
+		}
 
-	_ = specfile
-
+		_ = specfile
+	*/
 	pwd, err := os.Getwd()
 	if err != nil {
 		panic(err.Error())

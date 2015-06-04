@@ -1,9 +1,9 @@
 package handler
 
 import (
-	. "github.com/go-on/lib/html"
-	"github.com/go-on/lib/internal/ng"
-	. "github.com/go-on/lib/types"
+	. "gopkg.in/go-on/lib.v2/html"
+	"gopkg.in/go-on/lib.v2/internal/ng"
+	. "gopkg.in/go-on/lib.v2/types"
 )
 
 func (h *handler) layout(content ...interface{}) *DocType {
